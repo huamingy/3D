@@ -1,0 +1,31 @@
+{
+  "infoWindowField": {
+    "temp1": {
+      "id":"modbusAhu7_temp1",
+      "label": "温度_1",
+      "value": "℃"
+    },
+    "temp2": {
+      "id":"modbusAhu7_temp2",
+      "label": "温度_2",
+      "value": "℃"
+    },
+    "temp3": {
+      "id":"modbusAhu7_temp3",
+      "label": "温度_3",
+      "value": "℃"
+    },
+    "temp4": {
+      "id":"modbusAhu7_temp4",
+      "label": "温度_4",
+      "value": "℃"
+    },
+    "temp5": {
+      "id":"modbusAhu7_temp5",
+      "label": "温度_5",
+      "value": "℃"
+    }
+    
+   
+  }
+}

@@ -1,0 +1,92 @@
+body{
+overflow: hidden;
+margin: 0;
+}
+.AllDept_class{
+  overflow: scroll;
+  position: absolute;
+  right: 0px;
+  top: 617px;
+  width: 340px;
+  height: 370px;
+  background-color: rgba(5, 25, 55, 0.5);
+  color: aqua;
+  /* border-radius: 10px; */
+  /* border: 1px solid #fff; */
+}
+.deptaccout{
+  width: 326px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 20px;
+  font-family: 等线;
+  font-weight: 600;
+  padding-left: 10px;
+  border-top: 2px solid rgba(1, 153, 209, .5);
+
+
+  border-bottom: 2px solid rgba(1, 153, 209, .5);
+}
+.outclass{
+width: 200px;
+
+}
+.dept_name{
+clear: both;
+float: left;
+width: 90px;
+color: #fff;
+}
+.dept_unit{
+  float: left;
+  width: 110px;
+  line-height: 25px;
+}
+.Dept_class{
+
+  padding-left: 30px;
+  color: rgb(207, 221, 13);
+ 
+}
+
+
+
+::-webkit-scrollbar {
+  width: 4px;
+  /*对垂直流动条有效*/
+  height: 5px;
+  /*对水平流动条有效*/
+}
+
+
+/*定义滚动条的轨道颜色、内阴影及圆角*/
+
+::-webkit-scrollbar-track {
+  border-radius: 3px;
+}
+
+
+/*定义滑块颜色、内阴影及圆角*/
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  border-width: 2px;
+  background-color: #0b6ea3
+}
+
+
+/*定义两端按钮的样式*/
+
+::-webkit-scrollbar-button {
+  border-radius: 7px;
+}
+
+
+/*定义右下角汇合处的样式*/
+
+::-webkit-scrollbar-corner {
+  /* background:#FFFF00; */
+  border-radius: 8px;
+}
+
+

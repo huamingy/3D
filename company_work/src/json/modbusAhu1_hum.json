@@ -1,0 +1,50 @@
+{
+  "infoWindowField": {
+    "humidity1": {
+      "id":"modbusAhu1_humidity1",
+      "label": "湿度_1",
+      "value": "%"
+    },
+ 
+    "humidity2": {
+      "id":"modbusAhu1_humidity2",
+      "label": "湿度_2",
+      "value": "%"
+    },
+  
+    "humidity3": {
+      "id":"modbusAhu1_humidity3",
+      "label": "湿度_3",
+      "value": "%"
+    },
+ 
+    "humidity4": {
+      "id":"modbusAhu1_humidity4",
+      "label": "湿度_4",
+      "value": "%"
+    },
+    "humidity5": {
+      "id":"modbusAhu1_humidity5",
+      "label": "湿度_5",
+      "value": "%"
+    },
+    "humidity6": {
+      "id":"modbusAhu1_humidity6",
+      "label": "湿度_6",
+      "value": "%"
+    },
+    
+    "humidity7": {
+      "id":"modbusAhu1_humidity7",
+      "label": "湿度_7",
+      "value": "%"
+    },
+    "humidity8": {
+      "id":"modbusAhu1_humidity8",
+      "label": "湿度_8",
+      "value": "%"
+    }
+    
+   
+  }
+}

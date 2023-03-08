@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./css/loading-bar.css" />
+    <link rel="stylesheet" type="text/css" href="./css/main.css" />
+    <link rel="stylesheet" type="text/css" href="./css/winbox.min.css" />
+
+    <script type="module" src="./js/tool/winbox.min.js"></script>
+    <script type="text/javascript" src="./jsm/tween.umd.js"></script>
+    <script type="text/javascript" src="./js/tool/pace.min.js"></script>
+    <script type="text/javascript" src="./js/tool/jquery.js"></script>
+
+    <title>激光楼动画</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="AHU"></div>
+
+    <div id="controllabel" class="controllabelclass">
+      <div>
+        <img
+          id="TemHum"
+          style="cursor: pointer"
+          title="设备 "
+          src="./img/设备.png"
+        />
+      </div>
+
+      <div id="allLabel" class="display-ul">
+        <div id="outletopcity" class="twofloorclass">
+          <img class="all" src="./img/内部.png" />
+          <div class="name">展示内部</div>
+        </div>
+
+        <div id="btn" class="twofloorclass">
+          <img class="all" src="./img/分离动画.png" />
+          <div class="name">顶部分离</div>
+        </div>
+        <div id="btn_rolu" class="threePipeclass">
+          <img class="all" src="./img/停止旋转.png" />
+          <div class="name">开始/停止旋转</div>
+        </div>
+        <div id="LengShuiTa" class="btn_roluClass">
+          <img class="all" title="冷水塔 " src="./img/冷却楼设备.png" />
+          <div class="name">冷水塔位置</div>
+        </div>
+
+        <div id="ZLBianPingLengQueShuiJiZu" class="exitclass">
+          <img
+            class="all"
+            title="直变频工艺冷冻水机组"
+            src="./img/工艺冷冻水机.png"
+          />
+          <div class="name">工艺冷冻水外机</div>
+        </div>
+        <div id="GongYiLengQueShuiPump" class="cameraclass">
+          <img class="all" src="./img/工艺冷却水泵.png" />
+          <div class="name">工艺冷却水泵</div>
+        </div>
+
+        <div id="ShuiLengLuoGanJiZu" class="threePipeclass">
+          <img class="all" src="./img/水冷螺杆机组.png" />
+          <div class="name">水冷螺杆机组</div>
+        </div>
+
+        <div id="LengQueLouPipe" class="twoVentclass">
+          <img class="all" src="./img/冷却楼管道.png" />
+          <div class="name">冷却楼管道</div>
+        </div>
+
+        <div id="JiGuangLouEquipment" class="twoPipeclass">
+          <img class="all" src="./img/空调设备.png" />
+          <div class="name">空调设备</div>
+        </div>
+        <div id="out" class="twoPipeclass">
+          <img class="all" src="./img/退出.png" />
+          <div class="name">恢复初始视角</div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./js/3D-map-ocpity.js"></script>
+    <script type="module" src="./js/BTN.js"></script>
+
+    <script id="fragmentShader" type="x-shader/x-fragment">
+
+      uniform float time;
+
+      uniform float fogDensity;
+      uniform vec3 fogColor;
+
+      uniform sampler2D texture1;
+      uniform sampler2D texture2;
+
+      varying vec2 vUv;
+
+      void main( void ) {
+
+      	vec2 position = - 1.0 + 2.0 * vUv;
+
+      	vec4 noise = texture2D( texture1, vUv );
+      	vec2 T1 = vUv + vec2( 1.5, - 1.5 ) * time * 0.02;
+      	vec2 T2 = vUv + vec2( - 0.5, 2.0 ) * time * 0.01;
+
+      	T1.x += noise.x * 2.0;
+      	T1.y += noise.y * 2.0;
+      	T2.x -= noise.y * 0.2;
+      	T2.y += noise.z * 0.2;
+
+      	float p = texture2D( texture1, T1 * 2.0 ).a;
+
+      	vec4 color = texture2D( texture2, T2 * 2.0 );
+      	vec4 temp = color * ( vec4( p, p, p, p ) * 2.0 ) + ( color * color - 0.1 );
+
+        if( temp.r > 1.0 ) { temp.bg += clamp( temp.r - 2.0, 0.0, 100.0 ); }
+      	if( temp.g > 1.0 ) { temp.rb += temp.g - 1.0; }
+        if( temp.b > 1.0 ) { temp.rg += temp.b - 1.0; }
+
+      	gl_FragColor = temp;
+
+      	float depth = gl_FragCoord.z / gl_FragCoord.w;
+      	const float LOG2 = 1.442695;
+      	float fogFactor = exp2( - fogDensity * fogDensity * depth * depth * LOG2 );
+      	fogFactor = 1.7 - clamp( fogFactor, 0.0, 1.0 );
+
+      	gl_FragColor = mix( gl_FragColor, vec4( fogColor, gl_FragColor.w ), fogFactor );
+
+      }
+    </script>
+
+    <script id="vertexShader" type="x-shader/x-vertex">
+
+      uniform vec2 uvScale;
+      varying vec2 vUv;
+
+      void main()
+      {
+
+      	vUv = uvScale * uv;
+      	vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+      	gl_Position = projectionMatrix * mvPosition;
+
+      }
+    </script>
+
+    <script type="x-shader/x-vertex" id="vertexshader">
+
+      varying vec2 vUv;
+
+      void main() {
+
+      	vUv = uv;
+
+      	gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+
+      }
+    </script>
+
+    <script type="x-shader/x-fragment" id="fragmentshader">
+
+      uniform sampler2D baseTexture;
+      uniform sampler2D bloomTexture;
+
+      varying vec2 vUv;
+
+      void main() {
+
+      	gl_FragColor = ( texture2D( baseTexture, vUv ) + vec4( 1.0 ) * texture2D( bloomTexture, vUv ) );
+
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+{
+  "msg": "操作成功",
+  "code": 200,
+  "data": [
+    {
+      "info": {
+        "rowId": "e03b345602570c25c8e474b69a611756",
+        "deviceCode": "20220424160726360",
+        "deviceName": "实验室",
+        "deviceLocation": "江苏省南京市建邺区沙洲街道嘉陵江东街",
+        "deviceDetailAddress": "9楼9223",
+        "groupId": null,
+        "groupName": null
+      },
+      "statusContent": "待处理"
+    },
+    {
+      "info": {
+        "rowId": "e03b345602570c25c8e474b69a611756",
+        "deviceCode": "20220919152036998",
+        "deviceName": "实验室",
+        "deviceLocation": "江苏省南京市建邺区沙洲街道嘉陵江东街",
+        "deviceDetailAddress": "5楼509",
+        "groupId": null,
+        "groupName": null,
+        "deviceBrand": "",
+        "deviceType": "",
+        "overhaulPeriod": null,
+        "isLock": 1,
+        "deviceCategory": "整体实验室"
+  
+      },
+      "statusContent": "待处理"
+    },
+    {
+      "info": {
+        "rowId": "e03b345602570c25c8e474b69a611756",
+        "deviceCode": "20220919151845582",
+        "deviceName": "实验室",
+        "deviceLocation": "江苏省南京市建邺区沙洲街道嘉陵江东街",
+        "deviceDetailAddress": "7楼9223",
+        "groupId": null,
+        "groupName": null,
+        "deviceBrand": "",
+        "deviceType": "",
+        "overhaulPeriod": null,
+        "isLock": 1,
+        "deviceCategory": "整体实验室"
+  
+      },
+      "statusContent": "待处理"
+    }
+  ]
+}

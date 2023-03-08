@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./css/loading-bar.css" />
+    <link rel="stylesheet" type="text/css" href="./css/main.css" />
+    <link rel="stylesheet" type="text/css" href="./css/winbox.min.css" />
+
+    <script type="module" src="./js/tool/winbox.min.js"></script>
+    <script type="text/javascript" src="./jsm/tween.umd.js"></script>
+    <script type="text/javascript" src="./js/tool/pace.min.js"></script>
+    <script type="text/javascript" src="./js/tool/jquery.js"></script>
+
+    <title>激光楼动画</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+
+  <body>
+    <iframe
+      id="iframe"
+      style="position: absolute; top: 100px"
+      width="100%"
+      src="./3D-map-ocpity.html"
+    ></iframe>
+    <div id="stats-4">dvgfdv</div>
+    <!-- <script type="module" src="./js/3D-map-ocpity.js"></script> -->
+    <!-- <script type="module" src="./js/BTN.js"></script> -->
+    <script>
+      addEventListener('message', (e) => {
+        console.log(e.data)
+      })
+      window.onload = function () {
+        var _iframe = document.getElementById('iframe').contentWindow
+        console.log('_iframe: ', _iframe)
+
+        var _div = _iframe.document.getElementById('stats')
+        console.log('_div: ', _div)
+
+        document.body.appendChild(_div)
+        _div.children[0].style.width = '192px'
+        _div.children[0].style.height = '132px'
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <script src="./js/pace.min.js"></script>
+    <link rel="stylesheet" href="./css/loading-bar.css" />
+
+    <script src="./js/jquery.js"></script>
+    <title>大楼模型</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div
+      id="label"
+      style="
+        visibility: hidden;
+        width: 15%;
+        height: 30%;
+        font-size: 10px;
+        background-color: rgba(34, 64, 88);
+      "
+    >
+      <h3 style="text-align: center; line-height: 30px; color: #42a4f6">
+        空调详细数据
+      </h3>
+      <div
+        style="
+          position: absolute;
+          left: 10%;
+          top: 30px;
+          background-color: #1e304e;
+          width: 80%;
+          height: 40%;
+        "
+      >
+        <div style="position: absolute; top: 11px; left: 10px; color: #ffffff">
+          运行状态：<span style="color: #8ada84">正常运行</span>
+        </div>
+        <div style="position: absolute; top: 28px; left: 10px; color: #ffffff">
+          运行状态：<span style="color: rgb(250, 199, 60)">正常</span>
+        </div>
+        <div style="position: absolute; top: 45px; left: 10px; color: #ffffff">
+          运行周期：<span style="color: #8ada84">90.6H</span>
+        </div>
+        <div
+          style="
+            text-align: left;
+            position: absolute;
+            top: 80px;
+            left: 10px;
+            color: rgb(250, 199, 60);
+          "
+        >
+          送风温度：<span style="color: #ffffff">25℃</span>
+        </div>
+        <div
+          style="
+            text-align: left;
+            position: absolute;
+            top: 100px;
+            left: 10px;
+            color: #62d844;
+          "
+        >
+          送风湿度：<span style="color: #ffffff">55%</span>
+        </div>
+      </div>
+    </div>
+    <div class="AllDept_class" id="AllDept_out">
+      <div class="deptaccout">报修设备共<a id="deptaccout">0</a>台</div>
+      <span style="padding: 10px 10px; color: #62d844"> 设备名称以及位置:</span>
+      <div id="AllDept" class="Dept_class"></div>
+    </div>
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../css/control.css" />
+    <script type="text/javascript" src="../../js/jquery.js"></script>
+
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="close" class="divlog">
+      <img class="iframe-loginout" src="../../img/8.181.png" />
+    </div>
+    <div id="th_label"></div>
+  </body>
+  <script type="module" src="../js/control-system-main.js"></script>
+  <script>
+    $('#close').click(function () {
+      console.log('16156165')
+      parent.$('#no').trigger('hello') //触发父页面元素的hello方法
+    })
+  </script>
+</html>

@@ -1,0 +1,89 @@
+{
+  "modbusAhu1":{
+      "systemStartStopTcp":1,
+  "setReturnAirTemperature":2,
+  "setReturnAirTemperatureUpperLimit":3,
+  "setReturnAirTemperatureLowerLimit":4,
+  "setFanFrequency":5,
+  "setNewDamperOpen":6,
+  "faultReset":68
+  },
+  "modbusAhu2":{
+      "systemStartStopTcp":1,
+  "setReturnAirTemperature":2,
+  "setReturnAirTemperatureUpperLimit":3,
+  "setReturnAirTemperatureLowerLimit":4,
+  "setFanFrequency":5,
+  "setNewDamperOpen":6,
+  "faultReset":68
+  },
+  "modbusAhu3":{
+      "systemStartStopTcp":1,
+  "setReturnAirTemperature":2,
+  "setReturnAirTemperatureUpperLimit":3,
+  "setReturnAirTemperatureLowerLimit":4,
+  "setFanFrequency":5,
+  "setNewDamperOpen":6,
+  "faultReset":68
+  },
+  "modbusAhu4":{
+      "systemStartStopTcp":1,
+  "setReturnAirTemperature":2,
+  "setReturnAirTemperatureUpperLimit":3,
+  "setReturnAirTemperatureLowerLimit":4,
+  "setFanFrequency":5,
+  "setNewDamperOpen":6,
+  "faultReset":68
+  },
+  "modbusAhu5":{
+      "systemStartStopTcp":1,
+  "setReturnAirTemperature":2,
+  "setReturnAirTemperatureUpperLimit":3,
+  "setReturnAirTemperatureLowerLimit":4,
+  "setFanFrequency":5,
+  "setNewDamperOpen":6,
+  "faultReset":68
+  },
+  "modbusAhu6":{
+      "systemStartStopTcp":1,
+  "setReturnAirTemperature":2,
+  "setReturnAirTemperatureUpperLimit":3,
+  "setReturnAirTemperatureLowerLimit":4,
+  "setFanFrequency":5,
+  "setNewDamperOpen":6,
+  "faultReset":68
+  },
+  "modbusAhu7":{
+      "systemStartStopTcp":1,
+  "setReturnAirTemperature":2,
+  "setReturnAirTemperatureUpperLimit":3,
+  "setReturnAirTemperatureLowerLimit":4,
+  "setFanFrequency":5,
+  "setNewDamperOpen":6,
+  "faultReset":68
+  },
+  "modbusAhu8":{
+      "systemStartStopTcp":1,
+      
+  "setReturnAirTemperature":3,
+  "setReturnAirTemperatureUpperLimit":4,
+  "setReturnAirTemperatureLowerLimit":5,
+  "setFanFrequency":6,
+  "setNewDamperOpen":7,
+  "faultReset":2
+  },
+  "modbusCraftOuter":{
+"modbusCraftOuter-systemStartStopTcp":1,
+  "modbusCraftOuter-waterplaneFaultReset":2
+  
+  },
+  "modbusCraftInner":{
+  "modbusCraftInner-faultReset":1
+  },
+  "modbusCoolTower":{
+    "modbusCoolTower-systemStartStopTcp":1
+  
+  }
+  
+
+}

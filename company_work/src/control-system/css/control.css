@@ -1,0 +1,329 @@
+body {
+  overflow: hidden;
+  margin: 0;}
+
+
+  .divlog{
+    position: absolute;
+    right: 0px;
+    cursor: pointer;
+  }
+
+
+  .btn-switch {
+  
+    cursor: pointer;
+    width: 50px;
+    height: 31px;
+    position: relative;
+    border: 1px solid #dfdfdf;
+    background-color: #fdfdfd;
+    box-shadow: #dfdfdf 0 0 0 0 inset;
+    border-radius: 20px;
+    background-clip: content-box;
+    display: inline-block;
+    -webkit-appearance: none;
+    user-select: none;
+    outline: none !important;
+    }
+    
+    .btn-switch.large {
+    width: 50px;
+    height: 20px;
+    border-radius: 20px;
+    }
+    
+    .btn-switch.large:before {
+    content: '';
+    width: 22px;
+    height: 20px;
+    border-radius: 10px;
+    }
+    
+    .btn-switch.large:after {
+    content: '关闭';
+    color: #999;
+    left: 19px;
+    position: absolute;
+    line-height: 20px;
+    font-size: 14px;
+    }
+    
+    .btn-switch.large:checked:after {
+    content: '开启';
+    color: #fff;
+    left: 5px;
+    position: absolute;
+    line-height: 20px;
+    font-size: 12px;
+    }
+    
+    .btn-switch.large:checked:before {
+    left: 30px;
+    }
+    
+    .btn-switch:before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    }
+    
+    .btn-switch:checked {
+    border-color: #55aaff;
+    box-shadow: #13d230 0 0 0 16px inset;
+    background-color: #ffaaff;
+    }
+    
+    .btn-switch:checked:before {
+    left: 15px;
+    }
+    
+    .btn-switch.btn-switch-animbg {
+    transition: background-color ease 0.4s;
+    }
+    
+    .btn-switch.btn-switch-animbg:before {
+    transition: left 0.3s;
+    }
+    
+    .btn-switch.btn-switch-animbg:checked {
+    box-shadow: #dfdfdf 0 0 0 0 inset;
+    background-color: #13d230;
+    transition: border-color 0.4s, background-color ease 0.4s;
+    }
+    
+    .btn-switch.btn-switch-animbg:checked:before {
+    transition: left 0.3s;
+    }
+    
+    .btn-switch.btn-switch-anim {
+    transition: border cubic-bezier(0, 0, 0, 1) 0.4s, box-shadow cubic-bezier(0, 0, 0, 1) 0.4s;
+    }
+    
+    .btn-switch.btn-switch-anim:before {
+    transition: left 0.3s;
+    }
+    
+    .btn-switch.btn-switch-anim:checked {
+    box-shadow: #13d230 0 0 0 16px inset;
+    background-color: #55aaff;
+    transition: border ease 0.4s, box-shadow ease 0.4s, background-color ease 1.2s;
+    }
+    
+    .btn-switch.btn-switch-anim:checked:before {
+    transition: left 0.3s;
+    }
+
+    .AHU_BF_input{
+
+      width: 90px;
+    }
+ .label_class{ 
+ border: 1px solid #fff ;
+ border-radius: 5px;
+      background-color: #0d0c0ca4;
+  }
+.chinsesname{
+width: 80px;
+text-align: center;
+color: #fdfdfd;
+}
+.BF_temptrue_value{
+    float: left;  
+    clear: both;
+    color: #fdfdfd;
+    padding-left: 20px;
+   }
+   .BF_temptrue_unit{
+    color: #fdfdfd;
+   }
+   
+   
+
+
+
+
+
+
+
+
+
+
+   
+  /*温度数据样式*/
+.out_label{
+  padding-top: 20px;
+  width: 250px;
+  height: 130px;
+  line-height: 40px;
+  /* background-color: #2370e3; */
+}
+
+  .labelname_class{
+    color: black;
+    width: 60px;
+    height: 50px;
+    padding-top: 10px;
+    padding-left: 10px;
+font-size: 40px;
+float: left;
+
+  }
+  .labelvalue_class{
+    
+    padding-left: 10px;
+    color: chartreuse;
+    width: 50px;
+    height: 80px;
+    line-height:90px;
+    padding-top: 10px;
+    font-size: 40px;
+    float: left;
+
+  }
+  .AHU01{
+    border-radius:8px;
+   
+    /* background-color:rgba(193, 210, 215, 0.5); */
+    border: 3px  solid  #23dfe3 ;
+  }
+
+  .AHU02{
+    border-radius:8px;
+    
+    /* background-color:rgba(166, 162, 240, 0.5); */
+    
+    border: 3px  solid  #2370e3 ;
+  }
+
+  .AHU03{
+    border-radius:8px;
+    
+    /* background-color:rgba(236, 231, 133, 0.5); */
+
+    border: 3px  solid  #2370e3 ;
+  }
+  .AHU04{
+    border-radius:8px;
+/*  */
+    /* background-color:rgba(173, 236, 133, 0.5); */
+  
+    border: 3px  solid  #2370e3 ;
+  }
+  .AHU05{
+    border-radius:8px;
+    
+    /* background-color:rgba(145, 241, 187, 0.5); */
+    
+    border: 3px  solid  #2370e3 ;
+  }
+  .AHU06{
+    border-radius:8px;
+    /* background-color:rgba(128, 200, 233, 0.5); */
+    border: 3px  solid  #2370e3 ;
+  }
+
+  .AHU07{
+    border-radius:8px;
+    /* background-color:rgba(166, 155, 232, 0.5); */
+    border: 3px  solid  #2370e3 ;
+  }
+
+  .tempture{
+width: 80px;
+height: 100px;
+  }
+
+  .humidity{
+    width: 80px;
+    height: 100px;
+      }
+
+      .humidityname_class{
+        color: black;
+        width: 60px;
+        height: 50px;
+        padding-top: 10px;
+        padding-left: 10px;
+    font-size: 40px;
+    float: left;
+    
+      }
+      .humidityvalue_class{
+        
+        padding-left: 10px;
+        color: rgba(255, 217, 0, 0.902);
+        width: 50px;
+        height: 80px;
+        line-height:90px;
+        padding-top: 10px;
+        font-size: 40px;
+        float: left;
+    
+      }
+
+
+
+/* *  滑块样式
+input[class="AHU_BF_input"] {
+  display: block;
+  -webkit-appearance: none;
+  background-color: #fdfffc;
+  width: 80px;
+   height: 6px; 
+  border-radius: 2px;
+  margin: 0 auto;
+  outline: 0; 
+}
+input[class="AHU_BF_input"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background-color: #001effdd;
+  width: 1px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2px solid white;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+ input[class="AHU_BF_input"]::-webkit-slider-thumb:hover {
+  background-color: #bfe0bb;
+  border: 2px solid #07a958;
+}
+input[class="AHU_BF_input"]::-webkit-slider-thumb:active {
+  transform: scale(1.6);
+
+} */
+
+input[class="AHU_BF_input"]{
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  outline: 0;
+  background-color: transparent;
+  width: 80px;
+}
+input[class="AHU_BF_input"]::-webkit-slider-runnable-track {
+  height: 2px;
+  background: #eee;
+}
+input[class="AHU_BF_input"]::-webkit-slider-container {
+  height: 20px;
+  overflow: hidden;
+}
+input[class="AHU_BF_input"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #3672f4;
+  border: 1px solid transparent;
+  margin-top: -7px;
+  border-image: linear-gradient(#3672f4,#3672f4) 0 fill / 8 10 8 0 / 0px 0px 0 2000px;
+}
