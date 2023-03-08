@@ -1,0 +1,130 @@
+{
+  "infoWindowField": {
+   
+    "systemStatus": {
+      "label": "系统运行状态",
+      "value": ""
+    },
+    "systemStartStopStatus": {
+      "label": "系统启停状态",
+      "value": ""
+    },
+    "fanStatus": {
+      "label": "风机运行状态",
+      "value": ""
+    },
+    "initializationStatus": {
+      "label": "初始化状态",
+      "value": ""
+    },
+    "systemStandbyStatus": {
+      "label": "系统待机状态",
+      "value": ""
+    },
+    "fanRemotelyStatus": {
+      "label": "风机远程状态",
+      "value": ""
+    },
+    "heatingStatus": {
+      "label": "制热状态",
+      "value": ""
+    },
+    "refrigerationStatus": {
+      "label": "制冷状态",
+      "value": ""
+    },
+    "dehumidificationStatus": {
+      "label": "除湿状态",
+      "value": ""
+    },
+    "humidificationStatus": {
+      "label": "加湿状态",
+      "value": ""
+    },
+    "blowerFrequency": {
+      "label": "送风机运行频率HZ",
+      "value": ""
+    },
+
+    "airSupplyTemp": {
+      "label": "送风温度",
+      "value": "℃"
+    },
+    "airSupplyHumidity": {
+      "label": "送风湿度",
+      "value": "%"
+    },
+    "airSupplyAmount": {
+      "label": "送风量",
+      "value": ""
+    },
+    "airNewAmount": {
+      "label": "新风量",
+      "value": ""
+    },
+    "temp1": {
+      "label": "温度_1",
+      "value": "℃"
+    },
+    "temp2": {
+      "label": "温度_2",
+      "value": "℃"
+    },
+    "temp3": {
+      "label": "温度_3",
+      "value": "℃"
+    },
+    "temp4": {
+      "label": "温度_4",
+      "value": "℃"
+    },
+    "temp5": {
+      "label": "温度_5",
+      "value": "℃"
+    },
+    "temp6": {
+      "label": "温度_6",
+      "value": "℃"
+    },
+    "temp7": {
+      "label": "温度_7",
+      "value": "℃"
+    },
+    "temp8NoProbe": {
+      "label": "温度_8",
+      "value": "℃"
+    },
+    "humidity1": {
+      "label": "湿度_1",
+      "value": " %"
+    },
+    "humidity2": {
+      "label": "湿度_2",
+      "value": " %"
+    },
+    "humidity3": {
+      "label": "湿度_3",
+      "value": "%"
+    },
+    "humidity4": {
+      "label": "湿度_4",
+      "value": "%"
+    },
+    "humidity5": {
+      "label": "湿度_5",
+      "value": "%"
+    },
+    "humidity6": {
+      "label": "湿度_6",
+      "value": "%"
+    },
+    "tempAvg": {
+      "label": "温度_平均",
+      "value": "℃"
+    },
+    "humidityAvg": {
+      "label": "湿度_平均",
+      "value": "%"
+    }
+  }
+}

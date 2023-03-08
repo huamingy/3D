@@ -1,0 +1,53 @@
+{
+  "ModbusVav3f1":{
+    "BF3-1":32
+    
+  },
+
+  "ModbusVav3f6":{
+    "BF3-2":29
+    
+  },
+
+  "ModbusVav3f12":{
+    "BF3-7":32
+    
+  },
+
+  "ModbusVav3f14":{
+    "BF3-4":28
+    
+  },
+
+  "ModbusVav3f15":{
+    "BF3-5":28
+    
+  },
+
+  "ModbusVav3f16":{
+    "BF3-6":28
+    
+  },
+
+  "ModbusVav3f17":{
+    "BF3-8":31
+    
+  },
+
+  "ModbusVav3f18":{
+    "BF3-3":22
+    
+  },
+
+  "ModbusVav3f21":{
+    "BF3-9":22
+    
+  },
+
+  "ModbusVav3f23":{
+    "BF3-10":25
+    
+  }
+
+
+}

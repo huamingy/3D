@@ -1,0 +1,305 @@
+
+/* .ktname{
+color: #ffffff;	text-align: center; line-height: 10px;	
+}
+
+
+.value_color_yellow{
+  display:block;
+  color: #00FF00;
+  float: left;
+	width: 210px;
+}
+
+
+.TH_name{
+  padding-top: 20px;
+}
+.t_name{
+  padding-left: 80px;color: #fac73c;
+}
+.h_name{
+  padding-left: 80px;color: #00FF00;
+}
+
+
+.outline{
+  visibility: hidden;
+  overflow: scroll;
+  width: 460px;height: 500px; 
+  background-color:rgba(118, 187, 188, 0.3) ;
+  border-radius: 7px;  */
+  /* font: 30px 微软雅黑; */
+  /* border:5px solid #fff; */
+  /* font-weight: 900;
+} */
+
+.outline1{
+  overflow: scroll;
+  visibility: hidden;
+  width: 460px;height: 500px; 
+  background-color:rgba(232,230,226,0.3) ;
+  border-radius: 7px; font: 30px 微软雅黑;
+  /* border:5px solid #fff; */
+  font-weight: 900;
+}
+
+.font{
+   border-bottom:1px solid rgba(236, 240, 241, 0.5);
+				width: 600px;
+				height: 40px;
+}
+/* .r_name{
+  color: #e2e9eb;
+   padding-left:15px;
+   line-height: 40px;
+   float: left;
+   width: 320px;
+   display:block;
+}
+.valuecolor{
+  color:#00FF00;
+} */
+
+			
+
+
+  /* .btncs{
+    float: right;
+    position: absolue; top: 0px; left:0px;
+  }
+   */
+.backimg{
+  background-image: url(./img/img_titlebg.png);
+  background-repeat:no-repeat;
+  background-size:contain ;
+  height: 50px;
+  
+  background-position-x: 50%;
+  /* background-position-y: 10%; */
+}
+  .namesyle{ 
+ color: rgb(240, 245, 245);font-family: '等线';font-size: 20px;
+ line-height: 30px;
+ font-weight: 700;text-align: center; padding-top: 10px;
+   
+  }
+  .backg >.wb-body{
+    /* color: aliceblue; */
+    /* visibility: hidden; */
+    /* overflow: scroll; */
+    color: #ffffff;
+    background-color: rgba(16,45,86,0.8);
+  }
+  
+  .backg{
+   
+    opacity: 0.8;
+  }
+
+  .font{
+    width:370px;
+    height: 30px;
+    padding-top: 8px;
+    /* background-color: #12398d; */
+  }
+  .style1{
+    width: 180px;height: 25px;float: left;padding-left: 10px; font-size: 15px; line-height: 25px; color: #aabfe6;
+  }
+  .style2{
+    width: 110px;height: 25px; padding-left: 10px; float: right;font-size:15px;  line-height:25px; color: #aabfe6;
+  }
+  
+  
+::-webkit-scrollbar {
+  width: 10px; /*对垂直流动条有效*/
+  height: 10px; /*对水平流动条有效*/
+  }
+  
+  /*定义滚动条的轨道颜色、内阴影及圆角*/
+  ::-webkit-scrollbar-track{
+  
+  border-radius: 3px;
+  }
+  
+  
+  /*定义滑块颜色、内阴影及圆角*/
+  ::-webkit-scrollbar-thumb{
+  border-radius: 7px;
+  background-color: #64645b;
+  }
+  
+  /*定义两端按钮的样式*/
+  ::-webkit-scrollbar-button {
+    border-radius: 7px;
+
+  }
+  
+  /*定义右下角汇合处的样式*/
+  ::-webkit-scrollbar-corner {
+  /* background:#FFFF00; */
+  border-radius: 8px;
+  }
+
+
+  .ControlClass{
+
+    position: absolute;
+    left: 10px;
+    top: 100px;
+    width: 70px;
+    height: 500px;
+
+
+
+  }
+
+  .all{
+    /* margin-top: 5px; */
+    /* background-color: rgba(232,230,226,0.8); */
+    width: 45px;
+    height: 45px;
+    /* background-color: #21b00b; */
+    text-align: center;
+    font-size: 10px;
+    line-height: 20px;
+    border-radius: 5px;
+    /* background-image:url(../img/2楼管道.png); */
+    /* background-repeat: no-repeat; */
+    /* background-size: contain; */
+    cursor: pointer;
+  }
+
+  .AHU01{
+    border-radius:8px;
+    width:300px;
+    height:200px;
+    background-color:rgba(193, 210, 215, 0.5);
+    border: 3px  solid  #23dfe3 ;
+  }
+
+  .AHU02{
+    border-radius:8px;
+    width:300px;
+    height:200px;
+    background-color:rgba(166, 162, 240, 0.5);
+    
+    border: 3px  solid  #2370e3 ;
+  }
+
+  .AHU03{
+    border-radius:8px;
+    width:300px;
+    height:200px;
+    background-color:rgba(236, 231, 133, 0.5);
+
+    border: 3px  solid  #2370e3 ;
+  }
+  .AHU04{
+    border-radius:8px;
+    width:300px;
+    height:200px;
+    background-color:rgba(173, 236, 133, 0.5);
+  
+    border: 3px  solid  #2370e3 ;
+  }
+  .AHU05{
+    border-radius:8px;
+    width:300px;
+    height:200px;
+    background-color:rgba(145, 241, 187, 0.5);
+    
+    border: 3px  solid  #2370e3 ;
+  }
+  .AHU06{
+    border-radius:8px;
+    width:300px;
+    height:200px;
+    background-color:rgba(128, 200, 233, 0.5);
+  
+    border: 3px  solid  #2370e3 ;
+  }
+
+  .AHU07{
+    border-radius:8px;
+    width:300px;
+    height:200px;
+    background-color:rgba(166, 155, 232, 0.5);
+ 
+    border: 3px  solid  #2370e3 ;
+  }
+/*温度数据样式*/
+.out_label{
+  padding-top: 20px;
+  width: 280px;height: 70px;line-height: 40px;
+  /* background-color: #2370e3; */
+}
+
+  .labelname_class{
+    color: black;
+    width: 150px;
+    height: 50px;
+    padding-top: 10px;
+    padding-left: 2px;
+font-size: 40px;
+float: left;
+
+  }
+  .labelvalue_class{
+    color: chartreuse;
+    width: 50px;
+    height: 50px;
+    padding-top: 10px;
+    font-size: 40px;
+    float: left;
+
+  }
+
+
+
+
+
+  /*导航栏效果*/
+
+  *{margin: 0;padding: 0;}
+			ul,li{
+			    list-style: none;
+			}
+			/* 一级导航菜单 */
+			ul{padding-top: 5px;
+				 cursor: pointer;
+			    width: 80px;
+			    padding-left: 50px;
+			}
+			li{
+        
+			    width: 45px;
+				height: 45px;
+			}
+		
+			ul li:hover{
+    
+        border-radius: 5px;
+			    border: 1px solid #29c9e9;
+			}
+			 
+			/* 二级导航菜单 */
+			ul li ul{
+			    display: none; /* 先隐藏二级导航菜单 */
+			}
+			
+			ul li ul li{
+			    width: 50px;
+			    text-align: center;
+			    /* background-color: rgb(85, 255, 127); */
+			    /* float: none; /* 纵向显示，即不浮动  */
+			}
+			ul li:hover ul{
+        position: absolute;
+        top: 190px;
+        /* padding-top: -5px; */
+			    display: block; /* 鼠标悬停时，显示二级导航菜单 */
+			}
+			ul li:hover ul a:hover{
+			    background-color: #ffffff;
+			}

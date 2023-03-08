@@ -1,0 +1,86 @@
+{
+  "ModbusBms2f13":{
+    "ModbusBms2f13_Lable":39
+    
+  },
+
+  "ModbusBms2f1":{
+    "ModbusBms2f1__PAU-2-1":15
+    
+  },
+
+  "ModbusBms2f3":{
+    "ModbusBms2f3__PAU-2-2":15
+    
+  },
+
+  "ModbusBms2f5":{
+    "ModbusBms2f5__PAU-2-3":15
+  },
+
+  "ModbusBms2f6":{
+    "ModbusBms2f6_Lable":15
+  },
+
+  "ModbusBms2f10":{
+    "ModbusBms2f10__PAU-2-5":16
+    
+  },
+
+  "ModbusBms2f2":{
+    "ModbusBms2f2_Lable":63
+    
+  },
+
+  "ModbusBms2f4":{
+    "ModbusBms2f4__MAU-2-2":89
+  },
+
+  "ModbusBms2f7":{
+    "ModbusBms2f7_Lable":38
+    
+  },
+
+  "ModbusBms2f8":{
+    "ModbusBms2f8_Lable":112
+    
+  },
+
+  "ModbusBms2f9":{
+    "ModbusBms2f9_Lable":67
+    
+  },
+
+  "ModbusBms2f11":{
+    "ModbusBms2f11_Lable":102
+    
+  },
+
+  "ModbusBms2f12":{
+    "ModbusBms2f12_Lable":45
+    
+  },
+  "ModbusBms3f1":{
+    "PF4-1":45
+  },
+  "ModbusBms3f2":{ 
+    "PF4-5":48
+},
+"ModbusBms3f3":{ 
+  "PF4-12":49
+  
+},
+"ModbusBms3f4":{ 
+  "PF4-14":52
+},
+
+"ModbusBms3f5":{ 
+  "AHU-3-1":23
+},
+
+"ModbusBms3f7":{ 
+  "AHU-3-2":23
+
+}
+
+}

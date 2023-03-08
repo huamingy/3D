@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ch">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="../css/Alllabel.css" />
+    <title>灵山大楼九层</title>
+  </head>
+  <body>
+    <div id="label" class="backg">
+      <div class="namesyle"><a id="2Dname">0</a></div>
+      <div class="label">
+        <div class="zbname">指标名称</div>
+        <div class="zbvalue">指标值</div>
+      </div>
+
+      <div id="label1" class="font">
+        <div class="style1">丢包率</div>
+        <div class="style2"><a id="dbl">0</a>%</div>
+      </div>
+
+      <div id="label1" class="nofont">
+        <div class="style1">cpu平均利用率</div>
+        <div class="style2"><a id="cpuPjLyl">0</a>%</div>
+      </div>
+
+      <div id="label1" class="font">
+        <div class="style1">接收广播包率</div>
+        <div class="style2"><a id="jsGbBl">0</a>包/秒</div>
+      </div>
+
+      <div id="label1" class="nofont">
+        <div class="style1">发送广播包率</div>
+        <div class="style2"><a id="fsGbBl">0</a>包/秒</div>
+      </div>
+      <div id="label1" class="font">
+        <div class="style1">广播包率</div>
+        <div class="style2"><a id="gbBl">0</a>包/秒</div>
+      </div>
+
+      <div id="label1" class="nofont">
+        <div class="style1">发送丢包率</div>
+        <div class="style2"><a id="fsDbl">0</a>%</div>
+      </div>
+      <div id="label1" class="font">
+        <div class="style1">接收丢包率</div>
+        <div class="style2"><a id="jsGbBl">0</a>%</div>
+      </div>
+
+      <div id="label1" class="nofont">
+        <div class="style1">响应时间</div>
+        <div class="style2"><a id="xySj">0</a>毫秒</div>
+      </div>
+      <div id="label1" class="font">
+        <div class="style1">吞吐量</div>
+        <div class="style2"><a id="ttl">0</a>Mbps</div>
+      </div>
+
+      <div id="label1" class="nofont">
+        <div class="style1">内存利用率</div>
+        <div class="style2"><a id="ncLyl">0</a>%</div>
+      </div>
+    </div>
+    <div id="AClabel" style="visibility: hidden"></div>
+
+    <script type="module" src="../js/LingShanBuilding_9F.js"></script>
+    <script type="module">
+      import { renderer, controls } from '../js/render.js'
+    </script>
+  </body>
+</html>

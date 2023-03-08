@@ -1,0 +1,40 @@
+{
+  "data":{
+"0":{
+  "warnInfo":"艾默生空调",
+  "deviceNo":"S0E31",
+  "data":"5F"
+
+},
+
+"1":{
+  "warnInfo":"1#UPS",
+
+  "deviceNo":"S0E11",
+  "data":"5F"
+},
+"2":{
+  "warnInfo":"2#UPS",
+
+  "deviceNo":"S0E12",
+  "data":"5F"
+},
+"3":{
+  "deviceNo":"S0E41",
+  "warnInfo":"1#蓄电池组"
+  
+},
+"4":{
+  "deviceNo":"S0E42",
+  "warnInfo":"2#蓄电池组"
+  
+},
+"5":{
+  "deviceNo":"S0E61",
+  "warnInfo":"佳力图空调"
+  
+}
+
+}
+}
+

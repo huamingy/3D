@@ -1,0 +1,306 @@
+import * as THREE from '../../../build/three.module.js'
+import {
+  CSS3DObject,
+  CSS3DRenderer,
+  CSS3DSprite,
+} from '../../jsm/renderers/CSS3DRenderer.js'
+import { scene, camera } from './scene.js'
+
+var primaryMesh = []
+
+// 创建一个CSS3渲染器CSS2DRenderer
+var labelRenderer = new CSS3DRenderer()
+labelRenderer.setSize(window.innerWidth, window.innerHeight)
+labelRenderer.domElement.style.position = 'absolute'
+// 避免renderer.domElement影响HTMl标签定位，设置top为0px
+labelRenderer.domElement.style.top = '0px'
+labelRenderer.domElement.style.left = '0px'
+//设置.pointerEvents=none，以免模型标签HTML元素遮挡鼠标选择场景模型
+labelRenderer.domElement.style.pointerEvents = 'auto'
+document.body.appendChild(labelRenderer.domElement)
+
+function addMeshToPrimary(Click_Mesh) {
+  scene.getObjectByName(Click_Mesh).traverse(function (mesh) {
+    mesh.isMesh && primaryMesh.push(mesh)
+  })
+
+  console.log(primaryMesh)
+}
+
+var pointermoveMesh
+function pointermove() {
+  if (pointermoveMesh) {
+    pointermoveMesh.material.emissive.set(0x000000)
+    HiddenLabelData()
+  }
+
+  var Sx = event.clientX //鼠标单击位置横坐标
+  var Sy = event.clientY //鼠标单击位置纵坐标
+  //屏幕坐标转WebGL标准设备坐标
+  var x = (Sx / window.innerWidth) * 2 - 1 //WebGL标准设备横坐标
+  var y = -(Sy / window.innerHeight) * 2 + 1 //WebGL标准设备纵坐标
+  //创建一个射线投射器`Raycaster`
+  var raycaster = new THREE.Raycaster()
+  //通过鼠标单击位置标准设备坐标和相机参数计算射线投射器`Raycaster`的射线属性.ray
+  raycaster.setFromCamera(new THREE.Vector2(x, y), camera)
+  //返回.intersectObjects()参数中射线选中的网格模型对象
+  // 未选中对象返回空数组[],选中一个数组1个元素，选中两个数组两个元素
+  var intersects = raycaster.intersectObjects(primaryMesh)
+
+  //   intersects.length大于0说明，说明选中了模型
+  if (intersects.length > 0) {
+    pointermoveMesh = intersects[0].object
+    // console.log('pointermoveMesh: ', pointermoveMesh.name)
+
+    pointermoveMesh.material.emissive.set(0x28be28)
+
+    showLabelData(pointermoveMesh)
+  }
+}
+
+function showLabelData(pointermoveMesh) {
+  var JgMessage
+
+  $.ajax({
+    type: 'get',
+    url: '../json/mudus.json',
+    data: JgMessage,
+    dataType: 'json',
+    async: false, //默认为true 异步
+    success: function (data) {
+      JgMessage = data
+    },
+  })
+
+  for (var i in JgMessage) {
+    if (JgMessage[i].deviceNo == pointermoveMesh.name) {
+      $('#pointmove').html('')
+      $('#pointmove').append(
+        `
+
+<div  id="JG_Data"  >
+			<div  class="JG_Data_label_title">
+			<a>` +
+          JgMessage[i].warnInfo +
+          `</a>
+			</div>
+			<div  class="JG_Data_label"><a>状态</a></div>
+			<div  class="JG_Data_label"><a>地铁大厦5F</a></div>
+		</div>
+`
+      )
+      var T = document.getElementById('JG_Data')
+      var CSS3Tlabel = new CSS3DSprite(T)
+      CSS3Tlabel.scale.set(0.06, 0.06, 0.06)
+      CSS3Tlabel.name = 'JG_label'
+      CSS3Tlabel.position.copy(pointermoveMesh.getWorldPosition())
+      CSS3Tlabel.position.y += 10
+      scene.add(CSS3Tlabel)
+    }
+  }
+}
+
+function HiddenLabelData() {
+  let name = scene.getChildByName('JG_label')
+  if (name) name.parent.remove(name)
+}
+
+function addTemHUM(URl, THGroup, LS, YG) {
+  var message
+  $.ajax({
+    type: 'get',
+    url: URl,
+    data: message,
+    dataType: 'json',
+    async: false, //默认为true 异步
+    success: function (data) {
+      message = data.data
+    },
+  })
+  console.log('message: ', message)
+  $.each(message, function (i, team) {
+    if (i % 2 == 0 && i < 8) {
+      addData(message, i, i, THGroup, '℃', '../img/温度.png', '温度', 4)
+      addData(message, i + 1, i, THGroup, '%', '../img/湿度.png', '湿度', 0)
+    } else if (message[i].deviceName.search('漏水') >= 0) {
+      console.log(i)
+      addData(
+        message,
+        i,
+        2 * (i - 8),
+        LS,
+        '',
+        '../img/漏水感应器.png',
+        '漏水',
+        0
+      )
+    }
+  })
+}
+
+function addData(message, i, m, THGroup, unit, imgurl, LabelName, positionz) {
+  $('#TH_Label').append(
+    `
+    <div   id="TH` +
+      i +
+      `">
+<img  src="` +
+      imgurl +
+      `"/>
+
+<div   class="TH_class" >` +
+      message[i].deviceName +
+      `：` +
+      message[i].data +
+      unit +
+      `</div></div>`
+  )
+  var T = document.getElementById('TH' + i)
+  var CSS3Tlabel = new CSS3DSprite(T)
+  CSS3Tlabel.scale.set(0.015, 0.015, 0.015)
+
+  if (THGroup.search('TH') >= 0 || THGroup.search('_WLA') >= 0) {
+    CSS3Tlabel.position.copy(
+      scene.getChildByName(THGroup).children[m / 2].getWorldPosition()
+    )
+    THGroup.search('_WLA') >= 0
+      ? (CSS3Tlabel.position.y -= 20)
+      : (CSS3Tlabel.position.y += 5)
+  } else if (THGroup.search('_SAFE') >= 0) {
+    CSS3Tlabel.position.copy(scene.getChildByName(THGroup).getWorldPosition())
+  }
+
+  CSS3Tlabel.name = LabelName + m / 2
+  CSS3Tlabel.position.z += positionz
+  scene.add(CSS3Tlabel)
+
+  addOtherBigLabel(i, m, unit, message, THGroup)
+}
+
+/**温湿度标签的鼠标悬浮事件 */
+function addOtherBigLabel(i, m, unit, message, THGroup) {
+  document.getElementById('TH' + i).onpointermove = function () {
+    if (scene.getObjectByName('Tlabel' + i) != undefined) {
+      scene.getObjectByName('Tlabel' + i).element.style.visibility = 'visible'
+    }
+    $('#pointmove').html('')
+    $('#pointmove').append(
+      `<div id="H_value` +
+        i +
+        `"  class="TH_class_point" >` +
+        message[i].deviceName +
+        `：` +
+        message[i].data +
+        unit +
+        `</div>`
+    )
+
+    var T = document.getElementById('pointmove')
+    var Tlabel = new CSS3DSprite(T)
+    Tlabel.scale.set(0.06, 0.06, 0.06)
+    Tlabel.name = 'Tlabel' + i
+    if (THGroup.search('TH') >= 0 || THGroup.search('_WLA') >= 0) {
+      Tlabel.position.copy(
+        scene.getChildByName(THGroup).children[m / 2].getWorldPosition()
+      )
+      THGroup.search('_WLA') >= 0
+        ? (Tlabel.position.y -= 16)
+        : (Tlabel.position.y += 5)
+    } else if (THGroup.search('_SAFE') >= 0) {
+      Tlabel.position.copy(scene.getChildByName(THGroup).getWorldPosition())
+    }
+    Tlabel.position.y += 10
+
+    scene.add(Tlabel)
+  }
+
+  document.getElementById('TH' + i).onpointerleave = function () {
+    let label = scene.getObjectByName('Tlabel' + i)
+    label.element.style.visibility = 'hidden'
+  }
+}
+
+// function(){
+
+// }
+var faultmessage
+function monitor(FaultURL) {
+  $.ajax({
+    type: 'get',
+    url: FaultURL,
+    data: faultmessage,
+    dataType: 'json',
+    async: false, //默认为true 异步
+    success: function (data) {
+      faultmessage = data.data
+    },
+  })
+
+  if (faultmessage.length > 0) {
+    for (const i in faultmessage) {
+      addJG_label(i, faultmessage)
+    }
+  }
+}
+
+function addJG_label(i, message) {
+  $('body').append(
+    `<div id="` +
+      message[i].deviceNo +
+      `">
+<img src="../img/故障.png" >
+</div>`
+  )
+
+  // scene.getObjectByName(i).material.emissive.set(0x963200)
+
+  var H = document.getElementById(message[i].deviceNo)
+  var CSS3Hlabel = new CSS3DSprite(H)
+  CSS3Hlabel.scale.set(0.015, 0.015, 0.015)
+  CSS3Hlabel.position.copy(
+    scene.getObjectByName(message[i].deviceNo).getWorldPosition()
+  )
+  CSS3Hlabel.position.y += 2
+  scene.add(CSS3Hlabel)
+
+  document.getElementById(message[i].deviceNo).onpointermove = function () {
+    if (scene.getObjectByName('Tlabel' + i) != undefined) {
+      scene.getObjectByName('Tlabel' + i).element.style.visibility = 'visible'
+    }
+
+    console.log('故障进入')
+    $('body').append(
+      `<div  class="fault-class"   id="label` +
+        i +
+        `">
+  ` +
+        message[i].warnInfo +
+        `
+  </div>`
+    )
+
+    var T = document.getElementById('label' + i)
+    var Tlabel = new CSS3DSprite(T)
+    Tlabel.scale.set(0.06, 0.06, 0.06)
+    Tlabel.name = 'Tlabel' + i
+    // scene.getChildByName(message[i].deviceNo).emissive.set(0xf4a460)
+    Tlabel.position.copy(
+      scene.getChildByName(message[i].deviceNo).getWorldPosition()
+    )
+    Tlabel.position.z += 7
+    scene.add(Tlabel)
+  }
+  document.getElementById(message[i].deviceNo).onpointerleave = function () {
+    let label = scene.getObjectByName('Tlabel' + i)
+    label.element.style.visibility = 'hidden'
+  }
+}
+
+export {
+  addTemHUM,
+  addMeshToPrimary,
+  primaryMesh,
+  labelRenderer,
+  pointermove,
+  monitor,
+}

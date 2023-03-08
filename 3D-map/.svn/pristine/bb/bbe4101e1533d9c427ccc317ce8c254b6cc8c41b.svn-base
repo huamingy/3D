@@ -1,0 +1,262 @@
+body {
+  margin: 0;
+  overflow: hidden;
+}
+.btncs{
+  float: right;
+  position: absolue; top: 0px; left:0px;
+}
+.zbname{
+  width: 175px;
+  height: 30px;
+  padding-top: 10px;
+  float: left;
+  font-weight: 600;
+  font-size: 25px;
+  color: #458ae6;
+}
+.zbvalue{
+  width: 175px;
+            height: 30px;
+            padding-top: 10px;
+            float: left;
+            font-weight: 600;
+            font-size: 25px;
+            color: #458ae6; 
+}
+.namesyle {
+  color: aqua;
+  font-family: '等线';
+  font-size: 30px;
+  font-weight: 700;
+  text-align: center;
+  top: 10px;
+  padding-top: 10px;
+}
+.backg {
+  -webkit-animation: fadeleftIn .4s;
+  animation: fadeleftIn .4s;
+  animation-duration:4s;
+  -webkit-animation-name: popIn;
+  animation-name: popIn;
+  visibility: hidden;
+  width: 350px;
+  height: 440px;
+  background-color: #102d56;
+}
+
+
+
+@keyframes ball /*Safari and Chrome*/
+{
+	0% {opacity: 0.01;font-size: 1px;width: 33px;height: 44px;}
+	100% {opacity: 0.8;font-size: 15px;width: 350px;height: 440px;}  
+}
+
+.label {
+  width: 350px;
+  height: 40px;
+  font-family: '等线';
+}
+.font {
+  width: 350px;
+  height: 30px;
+  background-color: #12398d;
+}
+.nofont {
+  width: 350px;
+  height: 30px;
+}
+.style1 {
+  width: 165px;
+  height: 25px;
+  float: left;
+  padding-left: 10px;
+  font-size: 15px;
+  line-height: 25px;
+  color: #ffffff;
+}
+.style2 {
+  width: 165px;
+  height: 25px;
+  padding-left: 10px;
+  float: left;
+  font-size: 15px;
+  line-height: 25px;
+  color: #ffffff;
+}
+.THnamediv{
+  
+  border-radius: 40px;
+			width: 80px;height: 80px;background-color:rgb(47,79,79,0.5);
+			font-size: 13px;
+}
+.THname{
+  position: absolute; left: 14px; top:15px;font-weight:800;color: #00FFFF;
+}
+.THname_t{
+  position: absolute; top:35px;left: 13px; color: #FFFFFF;
+}
+.THname_h{
+  position: absolute; top:54px;left: 13px; color: #FFFFFF;
+}
+.THname_t_value{
+  position: absolute;  top:35px;left: 44px;color:#ffff00;
+}
+.THname_h_value{
+  position: absolute;  top:54px;left: 44px;color: chartreuse;
+}
+
+/* 弹出框样式 */
+.TH_name{
+  color: #FFFFFF; font-size: 20px;padding-top: 5px; text-align: center;
+}
+.TH_name_out{
+  visibility: hidden;
+  font-size: 10px; width:240px;height: 400px;background-color: #2F4F4F;overflow: scroll;
+}
+.TH_tagname_out{	
+  width: 240px;height: 25px;line-height: 25px;
+}
+.TH_name_out2{
+  background-color: #4a7d7d; width: 240px;height: 25px;line-height: 25px; 
+}
+.TH_tagname{
+  padding-left: 10px;
+  float: left; width: 160px; height: 25px; color: #FFFFFF;
+}
+.TH_name_value{
+  padding-left: 10px;
+  width: 50px;
+  height: 25px;
+  float: left; color: #00ff00;
+}
+
+::-webkit-scrollbar {
+  width: 10px; /*对垂直流动条有效*/
+  height: 10px; /*对水平流动条有效*/
+  }
+  
+  /*定义滚动条的轨道颜色、内阴影及圆角*/
+  ::-webkit-scrollbar-track{
+  /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3); */
+  background-color:  #2F4F4F;
+  border-radius: 3px;
+  }
+  
+  
+  /*定义滑块颜色、内阴影及圆角*/
+  ::-webkit-scrollbar-thumb{
+  border-radius: 7px;
+  /* -webkit-box-shadow: inset 0 0 6px rgba(0, 80, 0, 0.3); */
+  background-color: #00ac00;
+  }
+  
+  /*定义两端按钮的样式*/
+  ::-webkit-scrollbar-button {
+  background-color:#2F4F4F;
+  }
+  
+  /*定义右下角汇合处的样式*/
+  ::-webkit-scrollbar-corner {
+  background:#2F4F4F;
+  }
+
+
+  .popIn {
+    -webkit-animation: fadeleftIn .4s;
+    animation: fadeleftIn .4s;
+    -webkit-animation-name: popIn;
+    animation-name: popIn;
+}
+
+
+.DeptName_class{
+visibility: hidden;
+  width: 150px; 
+  height: 20px; 
+  background-color: #9c9ca0
+
+
+}
+
+
+
+@-webkit-keyframes popIn {
+    0% {
+        -webkit-transform: scale3d(0, 0, 0);
+        transform: scale3d(0.5, 0.5, 0.5);
+        opacity: 0;
+    }
+    50% {
+        -webkit-animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+        animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+    }
+    100% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+        -webkit-animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        opacity: 1;
+    }
+}
+
+@keyframes popIn {
+    0% {
+        -webkit-transform: scale3d(0, 0, 0);
+        transform: scale3d(0.5, 0.5, 0.5);
+        opacity: 0;
+    }
+    50% {
+        -webkit-animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+        animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+    }
+    100% {
+        -webkit-transform: scale3d(1, 1, 1);
+        transform: scale3d(1, 1, 1);
+        -webkit-animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        opacity: 1;
+    }
+}
+
+/*机房标签样式*/
+.TH_class{
+  font-size: 30px;  
+  color: #f7f7f7;
+}
+
+.TH_class_point{
+  font-size: 30px;  
+  color: #0a0101;
+}
+/*机房浮动温湿度标签样式*/
+.label_pointmove_class{
+
+background-color: #fbfbfd;
+
+}
+
+/*
+机柜悬浮标签样式
+*/
+
+
+.JG_Data_label_title{
+			
+  background-color: #dedede
+  }
+  .JG_Data_label{
+    background-color: #ffffff ;
+  }
+  
+  .JG_Data_label,.JG_Data_label_title{
+    font-size: 28px;
+    padding-left: 15px;
+    height: 40px;
+      line-height: 40px;
+    width: 400px;
+    
+    
+  }
+  

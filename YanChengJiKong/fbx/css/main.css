@@ -1,0 +1,1696 @@
+body {
+    overflow: hidden;
+    margin: 0;
+    background-color: #000;
+    color: #fff;
+    font-family: Monospace;
+    font-size: 13px;
+    line-height: 24px;
+    /* overscroll-behavior: none; */
+}
+
+/* a {
+    color: #ff0;
+    text-decoration: none;
+} */
+
+
+
+
+/*多联机开关样式*/
+.btn-switch {
+  
+  cursor: pointer;
+  width: 50px;
+  height: 31px;
+  position: relative;
+  border: 1px solid #dfdfdf;
+  background-color: #fdfdfd;
+  box-shadow: #dfdfdf 0 0 0 0 inset;
+  border-radius: 20px;
+  background-clip: content-box;
+  display: inline-block;
+  -webkit-appearance: none;
+  user-select: none;
+  outline: none !important;
+  }
+  
+  .btn-switch.large {
+  width: 60px;
+  height: 30px;
+  border-radius: 20px;
+  }
+  
+  .btn-switch.large:before {
+  content: '';
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+  }
+  
+  .btn-switch.large:after {
+  content: '关闭';
+  color: #999;
+  left: 19px;
+  position: absolute;
+  line-height: 30px;
+  font-size: 14px;
+  }
+  
+  .btn-switch.large:checked:after {
+  content: '开启';
+  color: rgb(255, 255, 255);
+  left: 5px;
+  position: absolute;
+  line-height: 30px;
+  font-size: 15px;
+  }
+  
+  .btn-switch.large:checked:before {
+  left: 30px;
+  }
+  
+  .btn-switch:before {
+  content: '';
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.493);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  }
+  
+  .btn-switch:checked {
+  border-color: #55aaff;
+  box-shadow: #13d230bf 0 0 0 16px inset;
+  background-color: #ffaaff;
+  }
+  
+  .btn-switch:checked:before {
+  left: 15px;
+  }
+  
+  .btn-switch.btn-switch-animbg {
+  transition: background-color ease 0.4s;
+  }
+  
+  .btn-switch.btn-switch-animbg:before {
+  transition: left 0.3s;
+  }
+  
+  .btn-switch.btn-switch-animbg:checked {
+  box-shadow: #dfdfdf9f 0 0 0 0 inset;
+  background-color: #13d230a4;
+  transition: border-color 0.4s, background-color ease 0.4s;
+  }
+  
+  .btn-switch.btn-switch-animbg:checked:before {
+  transition: left 0.3s;
+  }
+  
+  .btn-switch.btn-switch-anim {
+  transition: border cubic-bezier(0, 0, 0, 1) 0.4s, box-shadow cubic-bezier(0, 0, 0, 1) 0.4s;
+  }
+  
+  .btn-switch.btn-switch-anim:before {
+  transition: left 0.3s;
+  }
+  
+  .btn-switch.btn-switch-anim:checked {
+  box-shadow: #13d230 0 0 0 16px inset;
+  background-color: #55aaff;
+  transition: border ease 0.4s, box-shadow ease 0.4s, background-color ease 1.2s;
+  }
+  
+  .btn-switch.btn-switch-anim:checked:before {
+  transition: left 0.3s;
+  }
+ 
+
+
+
+
+
+/*监控界面样式，插件定义*/
+.playWnd {
+/* visibility: hidden; */
+  margin: 30px 0 0px 920px;
+  width: 1000px;                  /*播放容器的宽和高设定*/
+  height: 600px;
+  /* border: 1px solid red; */
+}
+.operate {
+     margin-top: 24px;
+}
+.operate::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.module {
+  float: left;
+  width: 340px;
+  /*min-height: 320px;*/
+  margin-left: 16px;
+  padding: 16px 8px;
+  box-sizing: border-box;
+  border: 1px solid #e5e5e5;
+}
+.module .item {
+  margin-bottom: 4px;
+}
+.module input[type="text"] {
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 0;
+  width: 150px;
+  min-height: 20px;
+}
+.module .btn {
+  min-width: 80px;
+  min-height: 24px;
+  margin-top: 100px;
+  margin-left: 80px;
+}
+
+
+/*  旧版空调样式*/
+.labelstyle {
+    visibility: hidden;
+    overflow: scroll;
+    position: absolute;
+    left: 10px;
+    top: 30px;
+    background-color: rgba(30, 48, 78, 0.5);
+    width: 300px;
+    height: 400px;
+}
+
+.namestyle {
+    font-family: 微软雅黑;
+    padding-top: 10px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 40px;
+    color: #42a4f6
+}
+
+.namestyle_first {
+    border-bottom: 1px solid rgba(236, 240, 241, 0.5);
+    font-family: 微软雅黑;
+    font-size: 15px;
+    padding-left: 10px;
+}
+
+.namestyle_first_name {
+    float: left;
+    width: 150px;
+}
+
+.namestyle_first_value {
+    color: rgb(9, 255, 0);
+    width: 100px;
+    padding-left: 80px;
+}
+
+/* 新版空调数据页面样式*/
+
+.AHU_outerClass {
+    font-family: '等线';
+    color: aliceblue;
+    width: 700px;
+    height: 500px;
+    background-color: rgba(5, 5, 5, 0.5);
+  }
+  .miandeptClass {
+    position: relative;
+    top: 200px;
+    left: 100px;
+    width: 50px;
+    height: 70px;
+    background-color: #0000ff;
+  }
+  .dataclass {
+    /* padding-top: 1px; */
+    font-size: 25px;
+    float: right;
+    position: relative;
+    left: -370px;
+    top: 30px;
+    width: 240px;
+    height: 150px;
+    /* background-color: rgba(9, 32, 54, 0.5); */
+    /* padding: 10px; */
+    margin-right: 10px;
+  }
+  .dataclass_value {
+    padding-top: 15px;
+  }
+  /* .AHU_dataclass_value{
+    color: #FFFF00;
+  } */
+
+  .imgclass_png {
+    opacity: 0.5;
+    display: block;
+    width: 250px;
+    height: 260px;
+    position: relative;
+    top: 50px;
+    left: 310px;
+  }
+
+  .imgclass_gif {
+    opacity: 0.5;
+    display: block;
+    width: 250px;
+    height: 260px;
+    position: relative;
+    top: -210px;
+    left: 310px;
+  }
+
+  .AHU_name {
+    padding-left: 10px;
+    font-size: 40px;
+    line-height: 60px;
+    font-weight: 800;
+    width: 100%;
+    border-bottom: 1px solid #a0a0ac;
+    color: aqua;
+  }
+  .AHU_PL {
+    font-size: 30px;
+    position: absolute;
+    left: 600px;
+    top: 120px;
+  }
+  .AHU_CMH {
+    font-size: 30px;
+    position: absolute;
+    left: 535px;
+    top: 95px;
+  }
+
+  .AHU_SD {
+    font-size: 30px;
+    position: absolute;
+    left: 590px;
+    top: 290px;
+  }
+  .AHU_WD {
+    font-size: 30px;
+    position: absolute;
+    left: 580px;
+    top: 250px;
+  }
+  .AHU_SFJ {
+    position: absolute;
+    left: 580px;
+    top: 400px;
+    font-size: 30px;
+  }
+  .AHU_STAUS_imgclass {
+    width: 190px;
+    height: 60px;
+    position: absolute;
+    top: 300px;
+    left: 80px;
+  }
+  .AHU_wjzT {
+    font-size: 26px;
+    position: absolute;
+    top: 315px;
+    left: 100px;
+    font-family: '等线';
+  }
+  .AHU_module_imgclass {
+    position: absolute;
+    left: 80px;
+    top: 370px;
+    width: 330px;
+    height: 60px;
+  }
+  .AHU_WJMS {
+    font-family: '等线';
+    font-size: 26px;
+    position: absolute;
+    top: 385px;
+    left: 100px;
+  }
+  .AHU_Time {
+    position: relative;
+    left: 410px;
+    top: 20px;
+    height: 40px;
+    font-size: 20px;
+    line-height: 40px;
+  }
+  /* .AHU_value{
+    color: #33FF33;
+  } */
+  .AHU_unit {
+    font-size: 30px;
+  }
+  .AHU_satus {
+    font-size: 30px;
+  }
+  .AHU_loginout {
+    position: absolute;
+    top: 6px;
+    left: 630px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+  }
+
+ .AHU_input_out{
+  font-size: 20px;
+  position: absolute;
+  top: 230px;left: 80px;
+ }
+.AHU_input_hum{
+color: aqua;
+  position: absolute;
+  top: 0px;
+width: 50px;
+background-color: rgba(216, 225, 215, 0.3);
+
+}
+.AHU_input_tem{
+  color: aqua;
+  background-color: rgba(216, 225, 215, 0.3);
+  position: absolute;
+  top: 30px;
+  width: 50px;
+
+}
+
+
+
+
+
+
+
+
+
+/* .VideoClass_btn{
+  float: right;
+  background-color: #696d71;
+} */
+
+.VideoClass {
+    visibility: hidden;
+    width: 520px;
+    height: 300px;
+    padding-left: 450px;
+}
+
+.vclose {
+    z-index: 3;
+    position: absolute;
+    right: 2%;
+    top: 4%;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.controllabelclass {
+    position: absolute;
+    left: 400px;
+    top: 150px;
+    width: 40px;
+   
+    /* background-color: #ff0; */
+}
+.control_img{
+ 
+    clear: both;
+    float: left;
+   
+}
+.name{
+line-height: 50px;
+  float: left;
+}
+
+
+.twofloorclass {
+    width: 160px;
+    height: 50px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 10px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.threefloorclass:hover, .twofloorclass:hover,.twoPipeclass:hover,.twoSprayclass:hover,.twoVentclass:hover,.threePipeclass:hover,.threeSprayclass:hover,
+.threeVentclass:hover,.exitclass:hover,.btn_roluClass:hover,.cameraclass:hover{
+
+transform: scale(1.3);
+
+}
+
+
+
+.threefloorclass, .twofloorclass,.twoPipeclass,.twoSprayclass,.twoVentclass,.threePipeclass,.threeSprayclass,
+.threeVentclass,.exitclass,.btn_roluClass,.cameraclass{
+font-family: 等线;
+font-weight: 800;
+ width: 150px;
+background-color: rgba(0, 0, 0, 0.384);
+}
+.threefloorclass {
+ 
+    height: 50px;
+
+    text-align: center;
+    line-height: 30px;
+    border-radius: 10px;
+ 
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn_roluClass {
+ 
+    height: 50px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 10px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    transition: all 0.3s;
+
+}
+
+.exitclass {
+   
+    height: 50px;
+    /* background-color: #1220e4; */
+    text-align: center;
+    line-height: 30px;
+    border-radius: 10px;
+    /* background-image:url(../img/退出.png); */
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    transition: all 0.3s;
+
+}
+
+.cameraclass {
+    /* padding-top: 80px; */
+   
+    height: 50px;
+    /* background-color: #e4129a; */
+    text-align: center;
+    line-height: 30px;
+    border-radius: 10px;
+    /* background-image:url(../img/摄像头.png); */
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.twoVentclass {
+    /* padding-top: 30px; */
+   
+    height: 50px;
+    /* background-color: #12e416; */
+    text-align: center;
+    line-height: 30px;
+    border-radius: 10px;
+    /* background-image:url(../img/2楼机组.png); */
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    transition: all 0.3s;
+
+}
+
+.threeVentclass {
+    /* padding-top: 30px; */
+   
+    height: 50px;
+    /* background-color: #12a1e4;
+           */
+    text-align: center;
+    line-height: 30px;
+    border-radius: 10px;
+    /* background-image:url(../img/3楼机组.png); */
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    transition: all 0.3s;
+
+}
+
+.threeSprayclass {
+    /* padding-top: 30px; */
+   
+    height: 50px;
+    /* background-color: #12e412; */
+    text-align: center;
+    line-height: 30px;
+    border-radius: 10px;
+    /* background-image:url(../img/3楼水管.png); */
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    transition: all 0.3s;
+
+}
+
+.twoSprayclass {
+    /* padding-top: 30px; */
+    height: 50px;
+    /* background-color: #0c5023; */
+    text-align: center;
+    line-height: 30px;
+    border-radius: 10px;
+    /* background-image:url(../img/2楼水管.png); */
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    transition: all 0.3s;
+
+}
+
+.twoPipeclass {
+    /* padding-top: 30px; */
+   
+    height: 50px;
+    /* background-color: #21b00b; */
+    text-align: center;
+    line-height: 30px;
+    border-radius: 10px;
+    /* background-image:url(../img/2楼管道.png); */
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    transition: all 0.3s;
+
+}
+
+.threePipeclass {
+    /* padding-top: 30px; */
+   
+    height: 50px;
+    /* background-color: #110c50; */
+    text-align: center;
+    line-height: 30px;
+    border-radius: 10px;
+    /* background-image:url(../img/3楼管道.png); */
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    transition: all 0.3s;
+
+}
+
+
+
+/* .labelclass {
+    visibility: hidden;
+    width: 100px;
+    height: 80px;
+    color: #00ffff;
+    font-family: 微软雅黑;
+    background-color: rgba(13, 10, 27, 0.3);
+    font-size: 10px;
+} */
+
+
+.img_name_three {
+  
+  font-family: 微软雅黑;
+ /* font-weight: 600; */
+  color: rgb(10, 232, 221);
+    padding-left: 30px;
+  padding-top: 10px;
+    width: 70px;
+    line-height: 15px;
+}
+
+.fenya_class{
+  padding-top: 6px;
+width: 40px;
+height: 40px;
+}
+
+.label_room_class{
+  visibility: hidden;
+  padding: 20px;
+    /* border: 1px solid #b6ccd0; */
+    /* background-color: rgba(14, 14, 15, 0.588); */
+    width: 280px;
+    height: 300px;
+    position: absolute;
+    left: 10px;
+    top: 300px;
+    
+}
+.label_room_class_hc{
+  visibility: hidden;
+  padding: 20px;
+  /* border: 1px solid #b6ccd0; */
+  /* background-color: rgba(13, 14, 10, 0.8); */
+  width: 280px;
+  height: 100px;
+  position: absolute;
+  left: 10px;
+  top: 0px;
+}
+  
+.out_class{
+border-radius: 10px;
+  border: 1px solid #b6ccd0;
+  margin-top: 10px;
+   width: 180px;
+   height: 50px;
+    background-color: rgba(13, 14, 10, 0.523);
+
+  /* line-height: 50px; */
+}	
+.img_pos{
+  float: left;
+  width: 50px;
+  line-height: 50px;
+  padding-left: 15px;
+  clear: both;
+}
+
+.font-class{
+  /* clear: both; */
+  float: left;
+  display: block;
+width: 160px;
+line-height: 50px;
+text-decoration: none;
+}
+.img_value{
+ text-align: right;
+  float: left;
+  width: 30px; 
+  line-height: 50px;
+
+}
+
+.out_class_CO2,.out_class_FengYa,.out_class_FenYaKaDu,.out_class_HcFenYa,.out_class_PM25,.out_class_VOC,.out_class_HcFenYaKaDu{
+  font-family: 微软雅黑;
+  font-weight: 600;
+  font-size: 25px;
+  border-radius: 10px;
+border: 1px solid #b6ccd0;
+margin-top: 10px;
+ width: 290px;
+ height: 50px;
+  background-color: rgba(13, 14, 10, 0.523);
+  display: inline-block;
+}
+  .out_class_CO2{
+
+   color:#3bf2e4 ;
+   
+  }
+  .out_class_PM25{
+ 
+   color:#fcb84f ;
+   
+  }  .out_class_VOC{
+
+   color:#01aaff;
+    
+  }  
+  .out_class_FengYa{
+  
+   color:#c94ed4 ;
+   
+  }  .out_class_FenYaKaDu{
+
+   color:#02cb94;
+   
+  }
+
+  .out_class_HcFenYa{
+
+  
+   color:#559ff0 ;
+   
+  }  .out_class_HcFenYaKaDu{
+   
+   color:#ff7755;
+   
+  }
+
+  
+
+
+
+.img_name_three_value {
+  font-family: 微软雅黑;
+font-weight: 600;
+font-size: 25px;
+
+  padding-top: 10px;
+    color: rgb(222, 236, 237);
+    padding-left: 43px;
+    width: 57px;
+    line-height: 15px;
+}
+
+.img_name_two {
+  float: left;
+  font-family: 微软雅黑;
+ /* font-weight: 600; */
+  color: rgb(10, 232, 221);
+    padding-left: 70px;
+  padding-top: 10px;
+    width: 50px;
+    line-height: 15px;
+}
+
+
+
+.img_name_two_value {
+  font-family: 微软雅黑;
+float: left;
+font-weight: 600;
+font-size: 25px;
+
+  padding-top: 10px;
+    color: rgb(222, 236, 237);
+    padding-left: 80px;
+    width: 50px;
+    line-height: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/**二楼Fy数据   */
+
+.classFy{
+		
+  /* visibility: hidden; */
+  width: 110px;
+  height: 120px;
+  background-size: 100% 100%;
+  color: #a1cdca;
+  font-family: 微软雅黑;
+  /* background-color: rgba(13, 10, 27, 0.3); */
+  font-size: 20px;
+
+}
+
+.labelFy{
+border-radius: 10px;
+
+  border: 2px solid #ffffff;
+  /* border-color: #29c9e9; */
+  background-color: rgba(13, 10, 27, 0.3);
+  /* overflow: scroll; */
+  width: 100px;
+  height: 50px;
+ 
+}
+
+
+
+.temFy{
+clear: both;
+  color: rgb(99, 227, 236);
+    /* background-color:bisque; */
+    padding-left: 5px;
+    width: 40px;
+  float: left;
+  text-align: center;
+}
+
+.humFy{
+  float: left;
+  /* background-color:lightblue; */
+  font-weight: 800;
+    color: rgb(222, 236, 237);
+    padding-left: 5px;
+    width: 50px;
+    height:50px;
+    line-height: 50px;
+    /* text-align: center; */
+}
+
+
+.labelclass_Fy_all{
+  border-radius: 8px;
+  visibility: hidden;
+  overflow: scroll;
+  width: 220px;
+  height: 155px;
+  border: 1px solid #ffffff;
+  background-size: 100% 100%;
+  background-color: rgba(44, 43, 46, 0.827);
+  /* font-family: 微软雅黑; */
+  /* background-color: rgba(13, 10, 27, 0.3); */
+  font-size: 15px;
+}
+.label_center_Fy_all{
+  padding-top: 10px;
+  width: 140px;
+  height: 20px;
+/* color: rgb(0,255,255); */
+}
+.temFy_all{
+  color: rgb(99, 227, 236);
+    /* background-color:bisque; */
+    padding-left: 10px;
+    width: 150px;
+  float: left;
+  /* text-align: center; */
+}
+
+.humFy_all{
+  /* background-color:lightblue; */
+  font-weight: 800;
+    color: rgb(222, 236, 237);
+    padding-left: 20px;
+    width: 180px;
+    /* text-align: center; */
+}
+
+
+
+
+
+
+
+
+
+/**3楼VAV数据   */
+
+.classVAV{
+		
+  visibility: hidden;
+  width: 140px;
+  height: 120px;
+
+  background-size: 100% 100%;
+  color: #a1cdca;
+  font-family: 微软雅黑;
+  /* background-color: rgba(13, 10, 27, 0.3); */
+  font-size: 20px;
+
+}
+
+.labelVAV{
+  border: 1px solid #ffffff;
+  /* border-color: #29c9e9; */
+  background-color: rgba(13, 10, 27, 0.3);
+  /* overflow: scroll; */
+  width: 140px;
+  height: 80px;
+ 
+}
+
+
+
+.temVAV{
+  color: rgb(99, 227, 236);
+    /* background-color:bisque; */
+    padding-left: 10px;
+    width: 60px;
+  float: left;
+  text-align: center;
+}
+
+.humVAV{
+  /* background-color:lightblue; */
+  font-weight: 800;
+    color: rgb(222, 236, 237);
+    padding-left: 20px;
+    width: 100px;
+    line-height: 80px;
+    text-align: center;
+}
+
+
+.labelclass_VAV_all{
+  border-radius: 8px;
+  visibility: hidden;
+  overflow: scroll;
+  width: 220px;
+  height: 155px;
+  border: 1px solid #ffffff;
+  background-size: 100% 100%;
+  background-color: rgba(44, 43, 46, 0.827);
+  /* font-family: 微软雅黑; */
+  /* background-color: rgba(13, 10, 27, 0.3); */
+  font-size: 15px;
+}
+.label_center_VAV_all{
+  padding-top: 10px;
+  width: 140px;
+  height: 20px;
+/* color: rgb(0,255,255); */
+}
+.temVAV_all{
+  color: rgb(99, 227, 236);
+    /* background-color:bisque; */
+    padding-left: 10px;
+    width: 150px;
+  float: left;
+  /* text-align: center; */
+}
+
+.humVAV_all{
+  /* background-color:lightblue; */
+  font-weight: 800;
+    color: rgb(222, 236, 237);
+    padding-left: 20px;
+    width: 180px;
+    /* text-align: center; */
+}
+
+
+
+
+
+
+.DoorClassgreen{
+    width: 200px;
+    height: 150px;
+    float: left;
+    /* background-color: rgba(0, 255, 34, 0.7); */
+    color: rgb(0, 255, 34);
+    /* text-align: center; */
+    padding: 30px 0px 0px 40px;
+    font-size: 80px;
+}
+
+.DoorClassred{
+  width: 200px;
+  height: 150px;
+  float: left;
+  /* background-color: rgba(0, 255, 34, 0.7); */
+  color: rgb(255, 8, 0);
+  /* text-align: center; */
+  padding: 30px 0px 0px 40px;
+  font-size: 80px;
+}
+
+/**3气体检测数据样式——氧气   */
+.classAir_O2{
+		
+  visibility: hidden;
+  width: 140px;
+  height: 100px;
+
+  background-size: 100% 100%;
+  color: #a1cdca;
+  font-family: 微软雅黑;
+  /* background-color: rgba(13, 10, 27, 0.3); */
+  font-size: 20px;
+
+}
+
+.labelAir_O2{
+  border: 1px solid #ffffff;
+  /* border-color: #29c9e9; */
+  background-color: rgba(13, 10, 27, 0.3);
+  /* overflow: scroll; */
+  width: 100px;
+  height: 80px;
+ 
+}
+
+
+
+.temAir_O2{
+  color: #44ffff;
+    /* background-color:bisque; */
+    padding-left: 10px;
+    width: 60px;
+  /* float: left; */
+  text-align: center;
+}
+
+.humAir_O2{
+  /* background-color:lightblue; */
+  font-weight: 800;
+    color: #ffffff ;
+    padding-left: 20px;
+    width: 60px;
+    line-height: 40px;
+    text-align: center;
+}
+
+
+/**3气体检测数据-氢气   */
+
+.classAir_H2{
+		
+  visibility: hidden;
+  width: 140px;
+  height: 120px;
+
+  background-size: 100% 100%;
+  color: #a1cdca;
+  font-family: 微软雅黑;
+  /* background-color: rgba(13, 10, 27, 0.3); */
+  font-size: 20px;
+
+}
+
+.labelAir_H2{
+  border: 1px solid #ffffff;
+  /* border-color: #29c9e9; */
+  background-color: rgba(13, 10, 27, 0.3);
+  /* overflow: scroll; */
+  width: 140px;
+  height: 80px;
+ 
+}
+
+
+
+.temAir_H2{
+  color: #f8ff3c;
+    /* background-color:bisque; */
+    padding-left: 10px;
+    width: 60px;
+  float: left;
+  text-align: center;
+}
+
+.humAir_H2{
+  /* background-color:lightblue; */
+  font-weight: 800;
+    color: rgb(222, 236, 237);
+    padding-left: 20px;
+    width: 100px;
+    line-height: 80px;
+    text-align: center;
+}
+/**3气体检测数据-甲烷   */
+
+.classAir_CH4{
+		
+  visibility: hidden;
+  width: 140px;
+  height: 120px;
+
+  background-size: 100% 100%;
+  color: #a1cdca;
+  font-family: 微软雅黑;
+  /* background-color: rgba(13, 10, 27, 0.3); */
+  font-size: 20px;
+
+}
+
+.labelAir_CH4{
+  border: 1px solid #ffffff;
+  /* border-color: #29c9e9; */
+  background-color: rgba(13, 10, 27, 0.3);
+  /* overflow: scroll; */
+  width: 140px;
+  height: 80px;
+ 
+}
+
+
+
+.temAir_CH4{
+  color: #cdfaff;
+    /* background-color:bisque; */
+    padding-left: 10px;
+    width: 60px;
+  float: left;
+  text-align: center;
+}
+
+.humAir_CH4{
+  /* background-color:lightblue; */
+  font-weight: 800;
+    color: rgb(222, 236, 237);
+    padding-left: 20px;
+    width: 100px;
+    line-height: 80px;
+    text-align: center;
+}
+
+/**3气体检测数据-乙炔   */
+
+.classAir_C2H2{
+		
+  visibility: hidden;
+  width: 140px;
+  height: 120px;
+
+  background-size: 100% 100%;
+  color: #a1cdca;
+  font-family: 微软雅黑;
+  /* background-color: rgba(13, 10, 27, 0.3); */
+  font-size: 20px;
+
+}
+
+.labelAir_C2H2{
+  border: 1px solid #ffffff;
+  /* border-color: #29c9e9; */
+  background-color: rgba(13, 10, 27, 0.3);
+  /* overflow: scroll; */
+  width: 140px;
+  height: 80px;
+ 
+}
+
+
+
+.temAir_C2H2{
+  color: #ffcbc7;
+    /* background-color:bisque; */
+    padding-left: 10px;
+    width: 60px;
+  float: left;
+  text-align: center;
+}
+
+.humAir_C2H2{
+  /* background-color:lightblue; */
+  font-weight: 800;
+    color: rgb(222, 236, 237);
+    padding-left: 20px;
+    width: 100px;
+    line-height: 80px;
+    text-align: center;
+}
+/**三层多联机空调数据 */
+.labelclass_KT_Air{
+		
+  /* visibility: hidden; */
+  width: 140px;
+  height: 80px;
+
+  background-size: 100% 100%;
+  color: #a1cdca;
+  font-family: 微软雅黑;
+  background-color: rgba(13, 10, 27, 0.3);
+  font-size: 10px;
+
+}
+
+.label_center_KT_Air{
+  border: 1px solid #ffffff;
+  /* border-color: #29c9e9; */
+  background-color: rgba(13, 10, 27, 0.3);
+  overflow: scroll;
+  width: 140px;
+  height: 80px;
+ 
+}
+
+
+
+.temKT_Air{
+  color: rgb(224, 236, 8);
+    /* background-color:bisque; */
+    padding-left: 10px;
+    width: 80px;
+  float: left;
+  text-align: center;
+  line-height: 15px;
+
+}
+
+.humKT_Air{
+  /* background-color:lightblue; */
+  font-weight: 800;
+    color: rgb(222, 236, 237);
+    padding-left: 20px;
+    width: 100px;
+    line-height: 15px;
+    text-align: center;
+}
+.waiJi_out{
+  border-radius: 10px;
+  visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.648);  width: 500px;height: 300px;
+}
+.waiJi_name{
+height: 50px;
+  width: 480px;
+  border-bottom: 2px solid #ffffff;
+  font-family: "微软雅黑";
+  padding-left: 20px;
+  font-size: 40px;
+  line-height: 50px; 
+   font-weight: 800;
+  color: aqua;
+
+}
+
+.data_name_class{
+  width: 200px;
+  font-family: "微软雅黑";
+  color: aquamarine;
+  font-size: 20px;
+  height: 25px;
+  padding-left:280px ;
+  padding-top: 20px;
+}
+.data_name_class_pos{
+clear: both;
+float: left;
+width: 130px;
+height: 30px;
+
+}
+.fenji_name{
+  clear: both;
+  float: left;
+}
+.data{
+  float: left;
+  color: #ffffff;
+  
+  /* font-size: 20px; */
+}
+
+
+
+.fengji_a{
+  float: left;
+  color: #ffffff;
+  padding-left: 10px; 
+}
+.dataNJZT{
+  color: #ffffff;
+  display: block;
+  /* position: absolute; */
+  /* top: 207px; */
+}
+
+.waiJi_NJZT_imgclass{
+   width: 200px;
+      height: 50px;
+      position: absolute;
+      top: 210px;
+      left: 10px;
+  
+}
+.data_NJZT_class{
+
+  font-family: "微软雅黑";
+  color: aquamarine;
+  font-size: 20px;
+  position: absolute;
+  top: 206px;
+  left: 25px;
+  line-height: 50px;
+  
+}
+
+.neiji_name{
+  clear: both;
+  float: left;
+}
+
+.stwich{
+
+float: left;
+padding-left: 5px;
+padding-top: 10px;
+}
+
+.waiJi_FJMS_imgclass{
+    position: absolute;
+      left: 10px;
+      top: 250px;
+      width: 220px;
+      height: 50px;
+}
+.data_FJMS_class{
+
+  font-family: "微软雅黑";
+  color: aquamarine;
+  font-size: 20px;
+  
+  position: absolute;
+   left: 25px;
+    top: 260px;
+  
+}
+
+
+.data_FL_class{
+
+
+  font-family: "微软雅黑";
+  color: aquamarine;
+  font-size: 20px;
+  
+  position: absolute;
+   left: 280px;
+    top: 260px;
+}
+
+
+
+
+
+.Waiji_imgclass{
+  width: 200px;
+  height: 200px;
+  opacity: 0.5;
+  position: absolute;
+  left: 50px;
+  top: 40px;
+  
+}
+.waiJi_loginout{
+    position: absolute;
+      top: 0px;
+      left: 450px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+}
+
+
+.SJGClass{
+  border: 1px  solid  white;
+height: 45px;
+width: 100px;
+background-color:rgba(0, 0, 0, 0.3);
+font-family: 微软雅黑;
+
+
+}
+
+
+
+.SJGtem{
+  color: rgb(224, 236, 8);
+    /* background-color:bisque; */
+    padding-left: 10px;
+    padding-top: 5px;
+    width: 50px;
+  float: left;
+  text-align: center;
+  line-height: 15px;
+
+}
+
+.SJGhum{
+  /* background-color:lightblue; */
+  font-weight: 800;
+    color: rgb(222, 236, 237);
+    padding-left: 20px;
+    width: 70px;
+    padding-top: 5px;
+    line-height: 15px;
+    text-align: center;
+}
+/**
+电表样式
+
+*/
+	
+.DianBiao_class{
+  visibility: hidden;
+  width: 600px;height: 400px;
+  background-color:rgba(29, 29, 177, 0.7);
+  border-radius:10px;
+}
+.DianBiao_name_class{
+  font-family: 微软雅黑;
+  font-size: 20px;
+  font-weight: 400;
+ width: 600px;
+ height: 50px;
+color: #ffffff;
+border-bottom: 2px solid #00ffff;
+text-align: center;
+line-height: 50px;
+}
+.Dianbiao_out_class{
+float: left;width: 300px;
+padding:10px   10px;
+
+}
+.DianBiao_line_out{
+padding-top: 5px;
+width: 250px;
+height: 30px;
+}
+
+.DianBiao_data_name{
+  
+  float: left;
+color: #cdfaff;  
+width: 170px;
+height: 30px;
+}
+.DianBiao_data_value{
+  float: left;
+  border-radius: 5px;
+color: #c3a633;
+border:1px   solid  #c3a633;
+width: 60px;
+height: 25px;
+text-align: center;
+line-height: 25px;
+}
+.img_dot{
+  /* width: 25px;
+  height: 25px; */
+  padding-top: 6px;
+  line-height: 30px;
+  float: left;clear: both;
+}
+.Dianbiao_loginout_class{
+  width: 30px;
+  height: 30px;
+  position: absolute;
+width: 40px;
+height: 40px;
+left: 550px;
+top: 0px;
+cursor: pointer;
+}
+/**
+试剂柜的样式
+*/
+.TFG_out{
+border: 2px  solid  #ffffff;
+  visibility: hidden;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.7); 
+   width: 500px;
+   height: 320px;
+
+}
+
+.TFG_q_name{
+  height: 60px;
+  width: 490px;
+  font-family: "微软雅黑";
+ line-height: 60px;
+  padding-left: 10px;
+  font-size: 30px; 
+  font-weight: 800;
+  color: aqua;
+  border-bottom: 3px solid   #00ff22;
+}
+.TFG_name{
+position: absolute;
+top: 0px;
+  font-family: "微软雅黑";
+  padding-left: 120px;
+ 
+
+}
+
+
+.TFG_data_out{
+  width: 450px;
+  height: 30px;
+  border-radius: 10px;
+
+line-height: 30px;
+/* background-color: #00ffff; */
+
+  
+}
+
+.TFGdata_name_class{
+  clear: both;
+float: left;
+  font-family: "微软雅黑";
+  color: aquamarine;
+  font-size: 30px;
+  padding-left:50px ;
+  padding-top: 10px;
+  width: 300px;
+}
+
+.TFG_data{
+  font-size: 25px;
+  width: 100px;
+  font-weight: 600;
+  float: left;
+  display: block;
+  color: rgb(234, 237, 11);
+  
+}
+.User{
+  color: aquamarine;
+}
+
+
+
+
+
+
+/*排风机数据样式*/
+.PF_data{
+  visibility: hidden;
+  border-radius: 10px;
+background-color: rgba(0, 0, 0, 0.659);
+width: 250px;
+height: 150px;
+font-size: 20px;
+}
+
+.PF_data_out{
+  padding: 15px;
+width: 230px;
+}
+
+
+.PF_data_name{
+clear: both;
+float: left;
+width: 180px;
+
+}
+.PF_data_value{
+float: left;
+}
+.PF_q_name{
+  height: 40px;
+  width: 240px;
+  font-family: "微软雅黑";
+ line-height: 60px;
+  padding-left: 10px;
+  font-size: 20px; 
+  font-weight: 800;
+  color: aqua;
+  border-bottom: 3px solid   #00ff22;
+}
+.PF_name{
+position: absolute;
+top: -8px;
+  font-family: "微软雅黑";
+  padding-left: 10px;
+ 
+
+}
+.PF_loginout{
+
+
+  position: absolute;
+  top: 6px;
+  left: 210px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+
+
+}
+
+/**
+消防报警样式
+*/
+.fireClass{
+position: absolute;
+
+width: 300px;
+height: 70px;
+font-size: 70px;
+color: tomato;
+
+}
+
+.blink{
+  color: #dd4814;
+  animation: blink 1s linear infinite;  
+  /* 其它浏览器兼容性前缀 */
+  -webkit-animation: blink 1s linear infinite;
+  -moz-animation: blink 1s linear infinite;
+  -ms-animation: blink 1s linear infinite;
+  -o-animation: blink 1s linear infinite;
+}
+
+@-webkit-keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 1; }
+  50.01% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+
+
+
+::-webkit-scrollbar {
+  width: 4px;
+  /*对垂直流动条有效*/
+  height: 10px;
+  /*对水平流动条有效*/
+}
+
+
+/*定义滚动条的轨道颜色、内阴影及圆角*/
+
+::-webkit-scrollbar-track {
+  border-radius: 3px;
+}
+
+
+/*定义滑块颜色、内阴影及圆角*/
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  border-width: 2px;
+  background-color: #0b6ea3
+}
+
+
+/*定义两端按钮的样式*/
+
+::-webkit-scrollbar-button {
+  border-radius: 7px;
+}
+
+
+/*定义右下角汇合处的样式*/
+
+::-webkit-scrollbar-corner {
+  /* background:#FFFF00; */
+  border-radius: 8px;
+}

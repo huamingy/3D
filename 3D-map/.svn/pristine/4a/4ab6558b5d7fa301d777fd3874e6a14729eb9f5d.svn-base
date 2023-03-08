@@ -1,0 +1,150 @@
+import * as THREE from '../../build/three.module.js'
+import { scene,camera } from './light.js'
+import { addlabel,AClabel } from './tempeture.js'
+      import { GLTFLoader } from '../jsm/loaders/GLTFLoader.js'
+      import {
+        CSS2DObject,
+      } from '../jsm/renderers/CSS2DRenderer.js'
+      import {
+        CSS3DRenderer,
+      } from '../jsm/renderers/CSS3DRenderer.js'
+      const params = {
+        twoFEquipment: false,
+        enableFoor2: true,
+        enableDevie: true,
+      }
+   
+
+      var granaryArr = []
+      var Arr = []
+      var label = null
+      var css3dlabel = null
+
+      var loader = new GLTFLoader()
+      loader.load(
+        '../models/NanJingNanBuilding/NanJingNanBuilding_1F.gltf',
+        function (obj) {
+          obj.scene.traverse(function (child) {
+            if (child.isMesh) {
+              child.castShadow = true
+              child.receiveShadow = true
+            }
+          })
+          obj.scene.scale.set(800,800,800)
+          obj.scene.position.x = +2*800
+          obj.scene.position.z = -1.5*800-100
+
+          scene.add(obj.scene)
+        
+          console.log('object.scene: ', obj.scene)
+
+          addlabel();
+          var Arr = scene.getObjectByName('1F_DTP')
+          console.log('Arr: ', Arr)
+          Arr.children.forEach(function (mesh) {
+            if (mesh.isMesh) {
+              granaryArr.push(mesh)
+            }
+          })
+        }
+      )
+//
+      var tag = document.getElementById('label')
+      label = new CSS2DObject(tag)
+      tag.style.pointerEvents = 'none' //避免HTML标签遮挡三维场景的鼠标事件
+      scene.add(label)
+
+
+      function showlabel(mesh) {
+        label.element.style.visibility = 'visible'
+      }
+      var chooseMesh = null
+
+      function choose(event) {
+        if (chooseMesh) {
+          AClabel.element.style.visibility = 'hidden' //显示标签
+          // label.element.style.visibility = 'hidden';
+        }
+
+        var Sx = event.clientX //鼠标单击位置横坐标
+        var Sy = event.clientY //鼠标单击位置纵坐标
+        //屏幕坐标转WebGL标准设备坐标
+        var x = (Sx / window.innerWidth) * 2 - 1 //WebGL标准设备横坐标
+        var y = -(Sy / window.innerHeight) * 2 + 1 //WebGL标准设备纵坐标
+        //创建一个射线投射器`Raycaster`
+        var raycaster = new THREE.Raycaster()
+        //通过鼠标单击位置标准设备坐标和相机参数计算射线投射器`Raycaster`的射线属性.ray
+        raycaster.setFromCamera(new THREE.Vector2(x, y), camera)
+        //返回.intersectObjects()参数中射线选中的网格模型对象
+        // 未选中对象返回空数组[],选中一个数组1个元素，选中两个数组两个元素
+        var intersects = raycaster.intersectObjects(granaryArr)
+        //console.log("射线投射器返回的对象 点point", intersects[0].point);
+        //   console.log("射线投射器的对象 几何体",intersects[0].object.geometry.vertices)
+        //   intersects.length大于0说明，说明选中了模型
+        if (intersects.length > 0) {
+          chooseMesh = intersects[0].object
+          //chooseMesh.material.color.set(0x000000);//选中改变颜色，这样材质颜色贴图.map和color颜色会相乘
+          AClabel.element.style.visibility = 'visible' //显示标签
+          AClabel.position.copy(chooseMesh.getWorldPosition())
+          AClabel.position.z =chooseMesh.getWorldPosition().z-130;
+          AClabel.position.y =50;
+          var AClabelname = document.getElementById('AClabelname')
+          if(chooseMesh.name=='1F_USP01'){  
+            AClabelname.innerHTML="UPS1"
+          }else if(chooseMesh.name=="1F_USP02"){
+            AClabelname.innerHTML="UPS2"
+          }else if(chooseMesh.name=="1F_Air-Conditioning01"){
+            AClabelname.innerHTML="一号空调"
+          }else if(chooseMesh.name=="1F_Air-Conditioning02"){
+            AClabelname.innerHTML="二号"
+          }
+        }
+      }
+
+      addEventListener('click', choose) // 监听窗口鼠标单击事件,鼠标单击选中某个国家Mesh
+
+      //坐标系
+      // var axesHelper = new THREE.AxesHelper(300)
+
+      // scene.add(axesHelper)
+
+      
+
+      // // 创建一个CSS3渲染器CSS2DRenderer
+      // var labelRenderer = new CSS3DRenderer()
+      // labelRenderer.setSize(window.innerWidth, window.innerHeight)
+      // labelRenderer.domElement.style.position = 'absolute'
+      // // 避免renderer.domElement影响HTMl标签定位，设置top为0px
+      // labelRenderer.domElement.style.top = '0px'
+      // labelRenderer.domElement.style.left = '0px'
+      // //设置.pointerEvents=none，以免模型标签HTML元素遮挡鼠标选择场景模型
+      // labelRenderer.domElement.style.pointerEvents = 'none'
+      // document.body.appendChild(labelRenderer.domElement)
+
+      
+
+      function addline(findmesh) {
+        var edges = new THREE.EdgesGeometry(findmesh.geometry, 1)
+        var edgesMaterial = new THREE.LineBasicMaterial({
+          color: 0x31deef,
+        })
+        var line = new THREE.LineSegments(edges, edgesMaterial)
+        line.name = 'line'
+        findmesh.add(line)
+      }
+      function deleline(findmesh) {
+        var line1 = scene.getObjectByName('line')
+
+        findmesh.remove(line1)
+      }
+      // 使外部透明化，以便于观看
+      function showopty() {
+        var a = scene.getObjectByName('2F_JG')
+
+        a.children.forEach(function (mesh) {
+          console.log('mesh: ', mesh)
+
+          mesh.material.transparent = true
+          mesh.material.opacity = 0.1
+        })
+      }

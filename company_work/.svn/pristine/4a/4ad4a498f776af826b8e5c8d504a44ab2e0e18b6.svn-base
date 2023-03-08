@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>温湿度</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <link rel="stylesheet" type="text/css" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/loading-bar.css" />
+    <link rel="stylesheet" type="text/css" href="./css/winbox.min.css" />
+    <script src="./jsm/tween.umd.js"></script>
+    <script type="text/javascript" src="./js/jquery.js"></script>
+    <script type="module" src="./js/winbox.min.js"></script>
+    <script src="./js/pace.min.js"></script>
+  </head>
+
+  <body>
+    <div id="th_label"></div>
+    <script type="module" src="./js/Internal_LayoutofCKL.js"></script>
+  </body>
+</html>

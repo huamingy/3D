@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../js/tool/jquery.js"></script>
+    <script src="../js/tool/jquery.params.js"></script>
+
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn2">地铁大厦</button
+    ><input id="name" value="DTDS-C03-SWNJDTH3C-S12508X-AF" type="text" /><br />
+
+    <button id="btn">南京南</button>
+    <input id="name2" value="NZ-C03-SWNJDTH3C-S12508G-AF" type="text" /><br />
+
+    <button id="btn3">灵山</button>
+    <input id="name3" value="LS-A05-BMC-SWNJDTH3C-S5560S" type="text" />
+    LS-A05-BMC-SWNJDTH3C-S5560S LS-F07-2-WZNJDTSXF-GAP1000
+
+    <script>
+      $(function () {
+        $('#btn').on('click', function () {
+          jump1('NanJingNanBuilding_2F.html', '#name2')
+        })
+        $('#btn2').on('click', function () {
+          jump1('NanJingMetroBuilding_5F.html', '#name')
+        })
+        $('#btn3').on('click', function () {
+          jump1('LingShanBuilding_9F.html', '#name3')
+        })
+      })
+      function jump1(html, id) {
+        name = $(id).attr('value')
+        url = html + '?name=' + name //此处拼接内容
+        window.location.href = url
+      }
+    </script>
+  </body>
+</html>

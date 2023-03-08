@@ -1,0 +1,181 @@
+import { scene } from './light.js'
+
+/**添加进入数组 */
+function addArry(name, Arry) {
+  var dept = scene.getObjectByName(name)
+  dept.traverse(function (mesh) {
+    if (mesh.isMesh) {
+      Arry.push(mesh)
+    }
+  })
+}
+
+function MoveOpacityMesh(JGname) {
+  const JGMesh = scene.getObjectByName(JGname)
+  JGMesh.material.opacity = 0.1
+  JGMesh.material.transparent = true
+  moveup(JGMesh, -80)
+}
+
+var dept, deptNameUrl
+
+var URl = 'http://192.168.108.130:9090/njdt_yw_server/3d-view/get-wsd?type=1'
+var URlTEST =
+  'http://192.168.108.130:9090/njdt_yw_server/3d-view/get-device-info?deviceNo=S0E31&type=1'
+var deptURL =
+  'http://221.6.30.202:15009/njdt_yw_server/network-equipment/get-zb-info?deviceNo=JiaoHuanJiS5130'
+
+// 温湿度获取数据
+var message
+$.ajax({
+  type: 'post',
+  url: URl,
+  data: message,
+  dataType: 'json',
+  async: false, //默认为true 异步
+  success: function (data) {
+    message = data
+  },
+})
+$().ready(function () {
+  $('#Tvalue1').text(message.data[0].data)
+
+  $('#Hvalue1').text(message.data[1].data)
+
+  $('#Tvalue2').text(message.data[2].data)
+
+  $('#Hvalue2').text(message.data[3].data)
+  $('#Tvalue3').text(message.data[4].data)
+
+  $('#Hvalue3').text(message.data[5].data)
+  $('#Tvalue4').text(message.data[6].data)
+
+  $('#Hvalue4').text(message.data[7].data)
+})
+
+// 空调等设备弹出标签数据
+var SE031msg
+$.extend({
+  SE031taglabel: function () {
+    $('#tagName').text(SE031msg.data[0].tagName)
+    $('#latestValue').text(SE031msg.data[0].latestValue)
+    // $("#tname").text(SE031msg.data[1].tagName)
+    // $("#tvalue").text(SE031msg.data[1].latestValue)
+  },
+  chURL: function (num) {
+    URlSE = URlTEST.replace(/31/, num)
+  },
+  Change: function (name) {
+    dept = deptURL.replace(/JiaoHuanJiS5130/, name)
+  },
+  Changename: function (name) {
+    deptNameUrl = deptURL.replace(/JiaoHuanJiS5130/, name)
+  },
+})
+
+function changeURL(num) {
+  $.chURL(num)
+  $.ajax({
+    type: 'post',
+    url: URlSE,
+    data: SE031msg,
+    dataType: 'json',
+    async: false,
+    success: function (data) {
+      SE031msg = data
+    },
+  })
+  $('#nr').html('')
+  SE031msg.data.sort().reverse()
+
+  $.each(SE031msg.data, function (iteam, index) {
+    if (index.latestValue == 0) {
+    } else {
+      if (iteam % 2 == 0) {
+        $('#nr').prepend(
+          '<div class="TH_tagname_out">' +
+            '<div class="TH_tagname" >' +
+            index.tagName +
+            '</div><div  class="TH_name_value">' +
+            index.latestValue +
+            '</div></div>'
+        )
+      } else if (iteam % 2 == 1) {
+        $('#nr').prepend(
+          '<div  class="TH_name_out2">' +
+            '<div class="TH_tagname"  >' +
+            index.tagName +
+            '</div>' +
+            '<div  class="TH_name_value">' +
+            index.latestValue +
+            '</div></div>'
+        )
+      }
+    }
+  })
+}
+
+// 独立设备
+
+var deptdata
+function exchageURL(name) {
+  // console.log('dept: ', dept);
+  $.Change(name)
+
+  $.ajax({
+    type: 'post',
+    url: dept,
+
+    data: deptdata,
+    dataType: 'json',
+    async: false,
+    success: function (data) {
+      deptdata = data
+    },
+  })
+  if (deptdata.data == null) {
+    $('#2Dname').text(0)
+    $('#cpuPjLyl').text(0)
+    $('#fsDbl').text(0)
+    $('#xySj').text(0)
+    $('#ttl').text(0)
+    $('#ncLyl').text(0)
+    $('#gbBl').text(0)
+    $('#dbl').text(0)
+    $('#fsGbBl').text(0)
+    $('#ncLyl').text(0)
+  } else {
+    $('#2Dname').text(deptdata.data.deviceName)
+    $('#cpuPjLyl').text(deptdata.data.cpuPjLyl)
+    $('#fsDbl').text(deptdata.data.fsDbl)
+    $('#xySj').text(deptdata.data.xySj)
+    $('#ttl').text(deptdata.data.ttl)
+    $('#ncLyl').text(deptdata.data.ncLyl)
+    $('#gbBl').text(deptdata.data.gbBl)
+    $('#dbl').text(deptdata.data.dbl)
+    $('#fsGbBl').text(deptdata.data.fsGbBl)
+    $('#ncLyl').text(deptdata.data.ncLyl)
+  }
+}
+
+var deptName
+function changenameURL(name) {
+  $.Changename(name)
+
+  $.ajax({
+    type: 'post',
+    url: deptNameUrl,
+
+    data: deptdata,
+    dataType: 'json',
+    async: false,
+    success: function (data) {
+      deptName = data
+    },
+  })
+  console.log(deptName)
+
+  $('#DeptName').text(deptName.data.deviceName)
+}
+
+export { changeURL, changenameURL, exchageURL, MoveOpacityMesh, addArry }

@@ -1,0 +1,72 @@
+{
+  "infoWindowField": {
+    "waterPumpStatus1": {
+      "label": "1#水泵开停状态",
+      "value": ""
+    },
+    "waterPumpStatus2": {
+      "label": "2#水泵开停状态",
+      "value": ""
+    },
+    "onePumpStatus": {
+      "label": "一次泵运行状态",
+      "value": ""
+    },
+    
+    "waterplaneStatus": {
+      "label": "水机开关机状态",
+      "value": ""
+    },
+    
+    "sysRetWaterTemp": {
+      "label": "系统回水温度",
+      "value": "℃"
+    },
+    "sysOutWaterTemp": {
+      "label": "系统出水温度",
+      "value": ""
+    },
+    "outEnvironmentTemp": {
+      "label": "外环境温度",
+      "value": ""
+    },
+  
+    "outputLoad": {
+      "label": "输出载荷",
+      "value": "%"
+    },
+    "onePumpFaultProtect1": {
+      "label": "1#一次泵故障自保",
+      "value": ""
+    },
+    "onePumpFaultProtect2": {
+      "label": "2#一次泵故障自保",
+      "value": ""
+    },
+    "waterplaneFaultStatus": {
+      "label": "水机故障状态",
+      "value": ""
+    },
+    "ehFlow": {
+      "label": "EH水流量",
+      "value": ""
+    },
+    "ehInWaterTemp": {
+      "label": "EH进水温度",
+      "value": "℃"
+    },
+    "ehOutWaterTemp": {
+      "label": "EH出水温度",
+      "value": "℃"
+    },
+    "ehRtEnergyCon": {
+      "label": "EH实时能耗",
+      "value": ""
+    },
+    "ehTotalEnergy": {
+      "label": "EH总能耗",
+      "value": ""
+    }
+  }
+    
+}

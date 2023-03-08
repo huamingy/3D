@@ -1,0 +1,91 @@
+{
+  "infoWindowField": {
+    
+    "systemStatus": {
+      "label": "系统运行状态",
+      "value": ""
+    },
+    "systemStartStopStatus": {
+      "label": "系统启停状态",
+      "value": ""
+    },
+    "fanStatus": {
+      "label": "风机运行状态",
+      "value": ""
+    },
+    "initializationStatus": {
+      "label": "初始化状态",
+      "value": ""
+    },
+    "systemStandbyStatus": {
+      "label": "系统待机状态",
+      "value": ""
+    },
+    "fanRemotelyStatus": {
+      "label": "风机远程状态",
+      "value": ""
+    },
+    "heatingStatus": {
+      "label": "制热状态",
+      "value": ""
+    },
+    "refrigerationStatus": {
+      "label": "制冷状态",
+      "value": ""
+    },
+    "dehumidificationStatus": {
+      "label": "除湿状态",
+      "value": ""
+    },
+    "humidificationStatus": {
+      "label": "加湿状态",
+      "value": ""
+    },
+    "blowerFrequency": {
+      "label": "送风机运行频率HZ",
+      "value": ""
+    },
+
+    "airSupplyTemp": {
+      "label": "送风温度",
+      "value": "℃"
+    },
+    "airSupplyHumidity": {
+      "label": "送风湿度",
+      "value": "%"
+    },
+    "airSupplyAmount": {
+      "label": "送风量",
+      "value": ""
+    },
+    "airNewAmount": {
+      "label": "新风量",
+      "value": ""
+    },
+    "secReturnAirValveOpen": {
+      "label": "二次回风阀开度",
+      "value": ""
+    },
+    
+    "humidity1": {
+      "label": "湿度_1",
+      "value": " %"
+    },
+    "humidity2": {
+      "label": "湿度_2",
+      "value": " %"
+    },
+    "humidity3": {
+      "label": "湿度_3",
+      "value": "%"
+    },
+    "tempAvg": {
+      "label": "温度_平均",
+      "value": ""
+    },
+    "humidityAvg": {
+      "label": "湿度_平均",
+      "value": ""
+    }
+  }
+}

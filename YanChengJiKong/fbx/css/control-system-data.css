@@ -1,0 +1,87 @@
+
+.MAU_temptrue{
+  background-color: #2f302ebf;
+height: 30px;
+width: 70px;
+font-size: 20px;
+font-weight: 600;
+color: #3dec12;
+cursor: pointer;
+}
+.MAU_temptrue_value{
+  padding-left: 8px;
+width: 30px;
+  clear: both;
+  float: left;
+}
+.MAU_temptrue_unit{
+ float: left;
+}
+
+.MAU_hum{
+  background-color: #2f302ebf;
+height: 30px;
+width: 70px;
+font-size: 20px;
+font-weight: 600;
+color: #ecdd12;
+cursor: pointer;
+}
+.MAU_hum_value{
+  padding-left: 8px;
+width: 40px;
+  clear: both;
+  float: left;
+}
+.MAU_hum_unit{
+ float: left;
+}
+
+/*房间数据样式*/
+
+.data_class{
+width: 45px;height: 38px;
+border: 1px solid #a3a7cb;
+border-radius: 8px;
+background-color: #2f302ebf;
+}
+
+
+
+.data-fengya{
+
+height: 20px;
+width: 45px;
+font-size: 15px;
+font-weight: 600;
+color: #3dec12;
+line-height: 20px;
+}
+.data-fengya_value{
+  padding-left: 8px;
+
+  clear: both;
+  float: left;
+}
+.data-fengya_unit{
+ float: left;
+}
+
+.data-kaidu{
+ 
+height: 20px;
+width: 45px;
+line-height: 15px;
+font-size: 15px;
+font-weight: 600;
+color: #ecdd12;
+
+}
+.data-kaidu_value{
+  padding-left: 8px;
+  clear: both;
+  float: left;
+}
+.data-kaidu_unit{
+ float: left;
+}

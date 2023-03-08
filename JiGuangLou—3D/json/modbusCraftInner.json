@@ -1,0 +1,60 @@
+{
+  "infoWindowField": {
+   
+    "secPumpRunStatus": {
+      "label": "二次泵运行状态",
+      "value": ""
+    },
+    "secPumpStartStopStatus1": {
+      "label": "二次泵开停状态_1",
+      "value": ""
+    },
+    "waterPumpStatus2": {
+      "label": "2#水泵开停状态",
+      "value": ""
+    },
+    "secPumpStartStopStatus2": {
+      "label": "二次泵开停状态_2",
+      "value": ""
+    },
+    
+    "craftSupWaterTemp": {
+      "label": "工艺供水温度",
+      "value": "℃"
+    },
+    "craftRetWaterTemp": {
+      "label": "工艺回水温度",
+      "value": "℃"
+    },
+    "coolSideSupWaterTemp": {
+      "label": "冷冻侧供水温度",
+      "value": "℃"
+    },
+  
+    "coolSideRetWaterTemp": {
+      "label": "冷冻侧回水温度",
+      "value": "℃"
+    },
+    "craftDownSupPress": {
+      "label": "工艺冷却供水压力",
+      "value": "P"
+    },
+    "craftDownRetPress": {
+      "label": "工艺冷却回水压力",
+      "value": "P"
+    },
+    "waterplaneFaultStatus": {
+      "label": "水机故障状态",
+      "value": ""
+    },
+    "tempValveOpen": {
+      "label": "温控旁通阀开度",
+      "value": "P"
+    },
+    "pressValveOpen": {
+      "label": "压控旁通阀开度",
+      "value": "P"
+    }
+  }
+    
+}

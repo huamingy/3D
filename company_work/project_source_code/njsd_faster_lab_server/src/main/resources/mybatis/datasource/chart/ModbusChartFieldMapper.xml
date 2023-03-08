@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.project.datasource.chart.mapper.ModbusChartFieldMapper">
+    <resultMap id="ModbusChartField" type="com.ruoyi.project.datasource.chart.domain.ModbusChartField">
+        <id property="rowId" column="row_id"/>
+        <result property="parentTableName" column="parent_table_name"/>
+        <result property="fieldName" column="field_name"/>
+        <result property="fieldType" column="field_type"/>
+        <result property="fieldComment" column="field_comment"/>
+        <result property="fieldStatus" column="field_status"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="orderNum" column="order_num"/>
+    </resultMap>
+
+    <select id="selectDatabaseField" resultMap="ModbusChartField">
+        SELECT column_name    AS field_name,
+               column_comment AS field_comment,
+               data_type      AS field_type,
+               ordinal_position AS order_num
+        FROM information_schema.COLUMNS
+        WHERE table_name = #{tableName}
+        ORDER BY ordinal_position
+    </select>
+
+    <select id="selectDatabaseFieldWithTemp" resultMap="ModbusChartField">
+        SELECT column_name    AS field_name,
+               column_comment AS field_comment,
+               data_type      AS field_type,
+               ordinal_position AS order_num
+        FROM information_schema.COLUMNS
+        WHERE table_name = #{tableName} AND column_name LIKE CONCAT('%', 'temp', '%')
+        ORDER BY ordinal_position
+    </select>
+
+    <delete id="deleteDifferent">
+        DELETE FROM modbus_chart_field
+        WHERE parent_table_name = #{tableName}
+        AND field_name IN
+        <foreach collection="different" item="fieldName" open="(" separator="," close=")">
+            #{fieldName}
+        </foreach>
+    </delete>
+
+    <select id="selectLineChartData" resultType="java.util.Map">
+        SELECT
+            date_format( create_time, '%Y-%m-%d %H:%i' ) AS timeline
+            <foreach collection="fieldNames" item="field" open="," separator=",">
+                ${field}
+            </foreach>
+        FROM
+            ${tableName}
+        <where>
+            EXTRACT(MINUTE from create_time) % 30 = 0
+            <if test="startDate != null and startDate != ''">
+                AND date_format(create_time,'%Y-%m-%d %H:%i')  &gt;= date_format(#{startDate},'%Y-%m-%d %H:%i')
+            </if>
+            <if test="endDate != null and endDate != ''">
+                AND date_format(create_time,'%Y-%m-%d %H:%i') &lt;= date_format(#{endDate},'%Y-%m-%d %H:%i')
+            </if>
+        </where>
+        ORDER BY timeline
+    </select>
+</mapper>

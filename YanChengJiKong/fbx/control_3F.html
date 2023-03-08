@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ch">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="./css/control.css" />
+    <link rel="stylesheet" href="./css/spin.css" />
+    <link href="./css/video-js.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="./jsm/jquery/jquery.js"></script>
+    <script type="text/javascript" src="./jsm/video/video.min.js"></script>
+    <script type="text/javascript" src="./jsm/tween.umd.js"></script>
+
+    <script src="./js/mian/pace.min.js"></script>
+    <link rel="stylesheet" href="./css/loading-bar.css" />
+    <title>三层控制系统</title>
+    <style></style>
+  </head>
+
+  <body>
+    <div id="BF_controllabel" class="BFcontrollabelclass">
+      <div id="BF" class="BFclass">
+        <img class="imgclass" src="./img/ControlImg/补风机.png" />
+      </div>
+      <div class="imgclass_value">补风机</div>
+    </div>
+
+    <div id="KT_controllabel" class="KTcontrollabelclass">
+      <div id="KT" class="KTclass">
+        <img class="imgclass" src="./img/ControlImg/AHU.png" />
+      </div>
+      <div class="imgclass_value">AHU</div>
+    </div>
+
+    <div id="PF_controllabel" class="PFcontrollabelclass">
+      <div id="PF" class="PFclass">
+        <img class="imgclass" src="./img/ControlImg/排风扇.png" />
+      </div>
+      <div class="imgclass_value">排风机</div>
+    </div>
+    <div id="PAU_4fcontrollabel" class="PAUcontrollabelclass">
+      <div id="PAU" class="PAUclass">
+        <img class="imgclass" src="./img/ControlImg/PAU.png" />
+      </div>
+      <div class="imgclass_value">四层PAU</div>
+    </div>
+    <div id="foo" class="controllabelclass"></div>
+    <div id="table" class="table_class"></div>
+    <script type="module" src="./js/control-model/Control_3F.js"></script>
+  </body>
+</html>

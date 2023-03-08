@@ -1,0 +1,84 @@
+{
+  "msg": "操作成功",
+  "code": 200,
+  "data": [
+    {"KTName":"空调一号",
+      "rowId": 1333427,
+      "deviceNo": "S0E1",
+      "deviceName": "温度（℃）",
+      "tagNo": 25.2,
+      "tagName": " 湿度 (%)",
+      "data": 23
+  
+    },
+    {
+      "KTName":"空调二号",
+      "rowId": 1333428,
+      "deviceNo": "S0E1",
+      "deviceName": "温度（℃）",
+      "tagNo": 25.1,
+      "tagName": "湿度 (%)",
+      "data": 39.4
+     
+    },
+    {
+      "KTName":"空调三号",
+      "rowId": 1333579,
+      "deviceNo": "S0E35",
+      "deviceName": "温度（℃）",
+      "tagNo": 26.3,
+      "tagName": "湿度 (%)",
+      "data": 23
+      
+    },
+    {
+      "KTName":"空调四号",
+      "rowId": 1333580,
+      "deviceNo": "S0E35",
+      "deviceName": "温度（℃）",
+      "tagNo": 24.9,
+      "tagName": "湿度（RH％）",
+      "data": 39.4
+   
+    },
+    {
+      "KTName":"空调五号",
+      "rowId": 1333581,
+      "deviceNo": 26.5,
+      "deviceName": "温度（℃）",
+      "tagNo": "S0E36A1",
+      "tagName": "湿度 (%)",
+      "data": 23.6
+      
+    },
+    {"KTName":"空调六号",
+      "rowId": 1333582,
+      "deviceNo": "S0E36",
+      "deviceName": "温度（℃）",
+      "tagNo": 26.2,
+      "tagName": "湿度（RH％）",
+      "data": 38.5
+    
+    },
+    {
+      "KTName":"空调七号",
+      "rowId": 1333583,
+      "deviceNo": "S0E37",
+      "deviceName": "温度（℃）",
+      "tagNo": 25.3,
+      "tagName": "湿度 (%)",
+      "data": 23.3
+      
+    },
+    {
+      "KTName":"空调八号",
+      "rowId": 1333584,
+      "deviceNo": "S0E37",
+      "deviceName": "温度（℃）",
+      "tagNo": 26,
+      "tagName": "湿度（RH％）",
+      "data": 39.7
+      
+    }
+  ]
+}

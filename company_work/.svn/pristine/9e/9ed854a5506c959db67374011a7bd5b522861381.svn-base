@@ -1,0 +1,997 @@
+
+body {
+  overflow: hidden;
+  margin: 0;}
+
+
+
+
+
+
+.ktname{
+  color: #ffffff;	text-align: center; line-height: 10px;	
+  }
+  
+  .value_color_yellow{
+    line-height: 60px;
+    display:block;
+    color:#f4dc15;
+    float: left;
+    width: 250px;
+  }
+  
+  .outline1{
+    visibility: hidden;
+    overflow: scroll;
+    width: 450px;height: 600px; 
+    /* background-color: #42A4F6; */
+    border-radius: 10px; font: 30px 微软雅黑;
+    font-weight: 500;
+    background-color:rgba(5, 5, 5, 0.5);
+  }
+  
+  .font{
+    text-align: justify; 
+   text-justify: inter-ideograph;
+    border-bottom:1px solid rgba(181, 202, 207,0.5);
+          width: 440px;
+          height: 60px;
+  
+    /* background-color: #5599FF; */
+  }
+  .r_name{
+    float: left;
+    width: 315px;
+    display:block;
+   
+    color: #FFFFFF; 
+    padding-left:15px;
+    line-height: 60px;
+  }
+  .valuecolor{
+    line-height: 60px;
+  
+  color:#06dd3f;
+  }
+  
+  
+  .closeclass{
+    background-color: rgba(245, 248, 249, 0.1);
+    font-size: 30px;
+    color: #dd1f06;
+    line-height: 40px;
+    width: 40px;
+    float: right;
+    height: 40px;
+    opacity: 0.6;
+    
+  }
+  .outImg{
+    /* background-color: #06dd3f; */
+  width: 440px;
+  height: 20px;
+  }
+  .backimg{
+    /* background-image: url(../img/img_titlebg.png); */
+    background-repeat:no-repeat;
+    background-size:contain ;
+    margin: auto;
+    height: 70px;
+    /* width: 310px; */
+    background-position-x: 50%;
+    /* background-position-y: 10%; */
+  }
+  .namesyle{ 
+    color: rgb(34, 223, 237);
+    font-family: '等线';
+    font-size: 45px;
+    line-height: 40px;
+    font-weight: 700;
+    text-align: center; 
+    padding-top: 10px;
+    /* padding-bottom: 20px; */
+      
+     }
+  
+  .controllabelclass {
+    position: absolute;
+    left: 350px;
+    top: 150px;
+    width: 30px;
+    height: 500px;
+    /* background-color: #ff0; */
+  }
+  
+
+  .all{
+ color: #fff;
+    clear: both;
+    float: left;
+   width: 40px;
+   height: 40px;
+}
+.name{
+  padding-left: 10px;
+line-height: 50px;
+  float: left;
+  color: #fff;
+}
+
+
+.twofloorclass {
+    width: 160px;
+    height: 50px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 10px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.threefloorclass:hover, .twofloorclass:hover,.twoPipeclass:hover,.twoSprayclass:hover,.twoVentclass:hover,.threePipeclass:hover,.threeSprayclass:hover,
+.threeVentclass:hover,.exitclass:hover,.btn_roluClass:hover,.cameraclass:hover{
+
+transform: scale(1.3);
+
+}
+
+
+
+.threefloorclass, .twofloorclass,.twoPipeclass,.twoSprayclass,.twoVentclass,.threePipeclass,.threeSprayclass,
+.threeVentclass,.exitclass,.btn_roluClass,.cameraclass{
+font-family: 等线;
+font-weight: 800;
+ width: 170px;
+background-color: rgba(0, 0, 0, 0.384);
+}
+.threefloorclass {
+ 
+    height: 50px;
+
+    text-align: center;
+    line-height: 30px;
+    border-radius: 10px;
+ 
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn_roluClass {
+ 
+    height: 50px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 10px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    transition: all 0.3s;
+
+}
+
+.exitclass {
+   
+    height: 50px;
+    /* background-color: #1220e4; */
+    text-align: center;
+    line-height: 30px;
+    border-radius: 10px;
+    /* background-image:url(../img/退出.png); */
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    transition: all 0.3s;
+
+}
+
+.cameraclass {
+    /* padding-top: 80px; */
+   
+    height: 50px;
+    /* background-color: #e4129a; */
+    text-align: center;
+    line-height: 30px;
+    border-radius: 10px;
+    /* background-image:url(../img/摄像头.png); */
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+
+.twoVentclass {
+    /* padding-top: 30px; */
+   
+    height: 50px;
+    /* background-color: #12e416; */
+    text-align: center;
+    line-height: 30px;
+    border-radius: 10px;
+    /* background-image:url(../img/2楼机组.png); */
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    transition: all 0.3s;
+
+}
+
+.threeVentclass {
+    /* padding-top: 30px; */
+   
+    height: 50px;
+    /* background-color: #12a1e4;
+           */
+    text-align: center;
+    line-height: 30px;
+    border-radius: 10px;
+    /* background-image:url(../img/3楼机组.png); */
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    transition: all 0.3s;
+
+}
+
+.threeSprayclass {
+    /* padding-top: 30px; */
+   
+    height: 50px;
+    /* background-color: #12e412; */
+    text-align: center;
+    line-height: 30px;
+    border-radius: 10px;
+    /* background-image:url(../img/3楼水管.png); */
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    transition: all 0.3s;
+
+}
+
+.twoSprayclass {
+    /* padding-top: 30px; */
+    height: 50px;
+    /* background-color: #0c5023; */
+    text-align: center;
+    line-height: 30px;
+    border-radius: 10px;
+    /* background-image:url(../img/2楼水管.png); */
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    transition: all 0.3s;
+
+}
+
+.twoPipeclass {
+    /* padding-top: 30px; */
+   
+    height: 50px;
+    /* background-color: #21b00b; */
+    text-align: center;
+    line-height: 30px;
+    border-radius: 10px;
+    /* background-image:url(../img/2楼管道.png); */
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    transition: all 0.3s;
+
+}
+
+.threePipeclass {
+    /* padding-top: 30px; */
+   
+    height: 50px;
+    /* background-color: #110c50; */
+    text-align: center;
+    line-height: 30px;
+    border-radius: 10px;
+    /* background-image:url(../img/3楼管道.png); */
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    transition: all 0.3s;
+
+}
+
+  ::-webkit-scrollbar {
+    width: 10px; /*对垂直流动条有效*/
+    height: 10px; /*对水平流动条有效*/
+    }
+    
+    /*定义滚动条的轨道颜色、内阴影及圆角*/
+    ::-webkit-scrollbar-track{
+    
+    border-radius: 3px;
+    }
+    
+    
+    /*定义滑块颜色、内阴影及圆角*/
+    ::-webkit-scrollbar-thumb{
+    border-radius: 7px;
+    background-color: #64645b;
+    }
+    
+    /*定义两端按钮的样式*/
+    ::-webkit-scrollbar-button {
+      border-radius: 7px;
+  
+    }
+    
+    /*定义右下角汇合处的样式*/
+    ::-webkit-scrollbar-corner {
+    /* background:#FFFF00; */
+    border-radius: 8px;
+    }
+  
+    /*控制界面样式 */
+    .btn-switch {
+      cursor: pointer;
+      width: 50px;
+      height: 31px;
+      position: relative;
+      border: 1px solid #dfdfdf;
+      background-color: #fdfdfd;
+      box-shadow: #dfdfdf 0 0 0 0 inset;
+      border-radius: 20px;
+      background-clip: content-box;
+      display: inline-block;
+      -webkit-appearance: none;
+      user-select: none;
+      outline: none !important;
+      }
+      
+      .btn-switch.large {
+      width: 50px;
+      height: 20px;
+      border-radius: 20px;
+      }
+      
+      .btn-switch.large:before {
+      content: '';
+      width: 22px;
+      height: 20px;
+      border-radius: 10px;
+      }
+      
+      .btn-switch.large:after {
+      content: '关闭';
+      color: #999;
+      left: 19px;
+      position: absolute;
+      line-height: 20px;
+      font-size: 14px;
+      }
+      
+      .btn-switch.large:checked:after {
+      content: '开启';
+      color: #fff;
+      left: 5px;
+      position: absolute;
+      line-height: 20px;
+      font-size: 12px;
+      }
+      
+      .btn-switch.large:checked:before {
+      left: 30px;
+      }
+      
+      .btn-switch:before {
+      content: '';
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 0px;
+      left: 0;
+      border-radius: 20px;
+      background-color: #fff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+      }
+      
+      .btn-switch:checked {
+      border-color: #55aaff;
+      box-shadow: #5555ff 0 0 0 16px inset;
+      background-color: #ffaaff;
+      }
+      
+      .btn-switch:checked:before {
+      left: 15px;
+      }
+      
+      .btn-switch.btn-switch-animbg {
+      transition: background-color ease 0.4s;
+      }
+      
+      .btn-switch.btn-switch-animbg:before {
+      transition: left 0.3s;
+      }
+      
+      .btn-switch.btn-switch-animbg:checked {
+      box-shadow: #dfdfdf 0 0 0 0 inset;
+      background-color: #5555ff;
+      transition: border-color 0.4s, background-color ease 0.4s;
+      }
+      
+      .btn-switch.btn-switch-animbg:checked:before {
+      transition: left 0.3s;
+      }
+      
+      .btn-switch.btn-switch-anim {
+      transition: border cubic-bezier(0, 0, 0, 1) 0.4s, box-shadow cubic-bezier(0, 0, 0, 1) 0.4s;
+      }
+      
+      .btn-switch.btn-switch-anim:before {
+      transition: left 0.3s;
+      }
+      
+      .btn-switch.btn-switch-anim:checked {
+      box-shadow: #5555ff 0 0 0 16px inset;
+      background-color: #55aaff;
+      transition: border ease 0.4s, box-shadow ease 0.4s, background-color ease 1.2s;
+      }
+      
+      .btn-switch.btn-switch-anim:checked:before {
+      transition: left 0.3s;
+      }
+      
+      input[type=checkbox]:checked::before {
+      font: normal normal normal 14px/2 FontAwesome;
+      }
+      
+      
+      .out_all{
+        padding-left: 10px;padding-top:10px;width: 290px;height: 30px;
+        border-bottom:1px solid rgba(236, 240, 241, 0.5);
+      }
+      .label_name{
+        float:left;color: white; font-size: 15px;width: 100px;line-height: 30px;
+      }
+      .label_style{
+        width: 130px;float:right;
+      }
+      .btn_rolution{
+        border-radius: 10px;background-color: blue;color:white ;
+      }
+  
+  
+  
+  
+  
+  
+      /*螺杆机机组样式**/
+      .luoganji_outClass{
+        /* visibility: hidden; */
+        width: 600px;
+        height:  487px;
+  
+        top: 20px;
+        left: 400px;
+      }
+  
+      .luoganji_name_class{
+  
+      
+        font-size: 30px;
+        color: #55aaff;
+        position: relative;
+        right:-400px;
+        top: 10px;
+        display: block;
+  
+  }
+  
+  .luoganji-close{
+    position: absolute;  left: 10px;top:350px ; opacity: 0.6;
+  }
+  
+  
+  
+      .Luoganji_dataClass{
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background-color: rgba(40, 31, 168, 0.2);
+        color: aliceblue;
+        width: 310px;
+        height: 80px;
+        padding: 0px 0px 0px 10px ;
+        left: 10px;
+        top: -60px;
+        font-size: 15px;
+        position: relative;
+      }
+      .dept01Class{
+        background-image: url(../img/luoganji/3.png);
+        width: 220px;
+        height: 500px;
+        top: -100px;
+        left: 190px;
+      }
+      
+      .dept02Class{
+        background-image: url(../img/luoganji/4.png);
+        top: -50px;
+        left: 330px;
+      
+      }
+      .dept03Class{
+        background-image: url(../img/luoganji/2.png);
+        top: -70px;
+        left: 410px;
+      
+      }
+      .dept01Class,.dept02Class,.dept03Class{
+        padding-top: 5px;
+          /* background-repeat:no-repeat; */
+          background-size:cover;
+        width: 80px;
+        height: 90px;
+        position: relative;
+        font-size: 10px;
+        text-align: center;
+        color: aliceblue;
+        display: block;
+      }
+      .LD_in_deptdataClass,.LD_out_deptdataClass,.LQ_in_deptdataClass,.LQ_out_deptdataClass{
+        font-size: 10px;
+        color: aliceblue;
+        position: relative;
+      }
+      
+      .LQ_in_deptdataClass{
+        left: 100px;
+        top: -300px;
+      }
+      .LQ_out_deptdataClass{
+        top:-290px;
+        left: 130px;
+      }
+      
+      
+      .LD_in_deptdataClass{
+        left: 355px;
+        top: -119px;
+      }
+      .LD_out_deptdataClass{
+        left: 385px;
+        top: -117px;
+      }
+  
+  /* 风机标签样式 */
+  
+  .AHU_outerClass{
+    font-family: "等线";
+    color: aliceblue;
+    width: 700px;
+    height:  500px;
+  background-color:rgba(5, 5, 5, 0.5);
+  }
+  .miandeptClass{
+  position: relative;
+  top: 200px;
+  left: 100px;
+  width: 50px ;
+  height: 70px;
+  background-color:#0000ff;
+  }
+  .dataclass{
+    /* padding-top: 1px; */
+  font-size: 25px;
+  float: right;
+  position: relative;
+  left: -370px;
+  top: 30px;
+  width: 240px;
+  height: 150px;
+  /* background-color: rgba(9, 32, 54, 0.5); */
+  /* padding: 10px; */
+  margin-right: 10px;
+  
+  }
+  .dataclass_value{
+    padding-top: 15px;
+  }
+  /* .AHU_dataclass_value{
+    color: #FFFF00;
+  } */
+  
+  /* .imgclass{
+  opacity: 0.5;
+  display:block;
+  width: 250px;
+  height: 330px;
+  position: relative;
+  top: -40px;		
+  left: 320px;
+  } */
+
+
+  .imgclass_png {
+    opacity: 0.5;
+    display: block;
+    width: 250px;
+    height: 260px;
+    position: relative;
+    top: 50px;
+    left: 310px;
+  }
+
+  .imgclass_gif {
+    opacity: 0.5;
+    display: block;
+    width: 250px;
+    height: 260px;
+    position: relative;
+    top: -210px;
+    left: 310px;
+  }
+  
+  .AHU_name{
+   padding-left: 10px;
+  font-size: 40px;
+  line-height: 60px;
+  font-weight: 800;
+  width: 100%;
+  border-bottom: 1px solid   #a0a0ac;
+  color: aqua;
+  }
+  .AHU_PL{
+  font-size: 30px;position: absolute;left: 600px;top: 120px;
+  }
+  .AHU_CMH{
+  font-size: 30px;position: absolute;left: 535px;top: 95px;
+  }
+  
+  .AHU_SD{
+    font-size: 30px; position: absolute;left: 590px;top: 290px;
+    }
+    .AHU_WD{
+    font-size: 30px;position: absolute;left: 580px;top: 250px;
+    }
+  .AHU_SFJ{
+  position: absolute;left: 580px;top: 400px; font-size: 30px;
+  }
+  .AHU_STAUS_imgclass{
+    width: 180px;
+    height: 60px;
+    position: absolute; top: 300px; left: 80px;
+  }
+  .AHU_wjzT{
+  font-size: 26px; position: absolute;
+  top: 315px;
+  left: 100px;
+  font-family: "等线";
+  }
+  .AHU_module_imgclass{
+   position: absolute;left: 80px;
+   top: 370px;
+   width: 300px;
+   height: 60px;
+  }
+  .AHU_WJMS{
+    font-family: "等线";
+  font-size: 26px; position: absolute;
+  top: 385px;
+  left: 100px;
+  }
+  .AHU_Time{
+  position: relative;left: 410px; top: -150px; height:40px;font-size: 20px;line-height:40px;
+  }
+  /* .AHU_value{
+    color: #33FF33;
+  } */
+  .AHU_unit{
+    font-size: 20px;
+  }
+  .AHU_satus{
+    font-size:30px ;
+  }
+  .AHU_loginout{
+    position:absolute;
+    top: 6px;
+    left: 630px;
+  width: 50px;
+  height: 50px;
+  
+  
+  }
+  
+  
+  /* 冷却塔样式 */
+  
+  .LQT_out{
+    font-family: "等线";
+    color: hsl(0, 0%, 100%);
+    
+    background-color: rgba(9, 32, 54, 0.5);
+    width: 700px;height: 430px;  
+    background-repeat:no-repeat;
+    background-size:contain ;
+  }
+  
+  
+  .LQT_img{
+    
+    opacity: 0.5;
+    width: 600px;height: 400px;  
+    position: absolute;left: 130px;top: 0px;
+  }
+  
+  .LQT_Name{
+    font-weight: 800;
+    font-size: 40px;
+    line-height: 80px;
+    height: 80px;
+  width: 100%;
+  float: left;
+  color: aqua;
+  border-bottom: 2px solid  beige;
+  }
+  .LQT_data{
+  font-size: 18px;
+    width: 200px;
+    height: 80px;
+    position: absolute;
+    /* background-color: rgba(0, 0, 0, 0.4); */
+    left: 40px; 
+    top: 105px;
+  }
+  
+  .LQT_data_base{
+  padding-top: 40px;
+  padding-left: 5px;
+  
+  }
+  .LQT_data_base_1{
+    padding-top: 10px;
+  }
+  
+  .LQT_FS{
+    position: absolute;left: 320px;top: 100px;
+  }
+  
+  
+  .LQT_PL{
+    text-align: center;
+    font-size: 12px;
+    position: absolute;
+    top: 110px;
+    left: 510px;
+    
+  }	
+  .LQT_PL_img{
+    position: absolute;
+    top: 100px;
+    left: 500px;
+    
+  }
+  
+  .LQT_SLL{
+    text-align: center;
+    position: absolute;
+    font-size: 12px;
+    top: 355px;
+    left: 480px;
+  }
+  .LQT_SLL_img{
+    position: absolute;
+    top: 320px;
+    left: 460px;
+  }
+  
+  
+  .LQT_ZHL{
+    text-align: center;
+    position: absolute;
+    font-size: 12px;
+    font-size: 12px;
+    top: 240px;
+    left: 620px;
+    
+  }
+  .LQT_ZHL_img{
+    position: absolute;
+    top: 220px;
+    left: 570px;
+  }
+  .LQT_loginout{
+    position:absolute;
+    top: 10px;
+    left: 630px;
+    width: 60px;
+    height: 60px;
+  }
+  
+  /*
+  工艺水外机样式
+  
+  */
+  
+  .GYSWJ_outerClass{
+    font-family: "等线";
+    color: aliceblue;
+        width: 650px;
+        height:  300px;
+     background-color:rgba(5, 5, 5, 0.5);
+  }
+  
+  .GYSWJ_dataclass{
+    
+  float: right;
+  position: absolute;
+    left: 60px;
+    top: 65px;
+    width: 260px;
+    height: 90px;
+    /* background-color: aliceblue; */
+    padding: 10px;
+    margin-right: 10px;
+    
+  }
+  .GYSWJ_dataclass_class{
+    padding-top: 15px;
+  }
+  .GYSWJ_imgclass{
+    opacity: 0.5;
+    display:block;
+    width: 120px;
+    height: 180px;
+    position: absolute;
+    top: 90px;		
+    left: 300px;
+  }
+  
+  .GYSWJ_name{
+    font-size: 40px;
+    line-height: 60px;
+    font-weight: 800;
+    padding-left: 30px;
+    width: 100%;
+    border-bottom: 1px solid   #a0a0ac;
+  
+    color: aqua;}
+  
+  .GYSWJ_SFJ{
+    position: absolute;left: 130px;top: 100px; font-size: 30px;
+  }
+  .GYSWJ_SjzT_imgclass{
+    position: absolute;left: 480px;top: 100px; font-size: 30px;
+  
+  }
+  .GYSWJ_SjzT{
+    top: 115px;
+    font-size: 20px; position: absolute;left: 490px;
+  }
+  .GYSWJ_YCB_imgclass{
+  
+    position: absolute;left: 450px;top: 170px; font-size: 30px;
+  
+  }
+  .GYSWJ_YCB{
+    top: 185px;
+    font-size: 20px; position: absolute;
+    left: 470px;
+  }
+  .GYSWJ_Time{
+    position: absolute;left: 430px; top: 240px; height:40px;font-size: 20px;line-height:40px;
+  }
+  .GYSWJ_loginout{
+    position: absolute;
+  left: 570px;
+  top: 6px;
+  width: 50px;
+  height: 50px;
+  
+  }
+  /*温度数据样式*/
+.out_label{
+  padding-top: 20px;
+  width: 250px;
+  height: 130px;
+  line-height: 40px;
+  /* background-color: #2370e3; */
+}
+
+  .labelname_class{
+    color: black;
+    width: 60px;
+    height: 50px;
+    padding-top: 10px;
+    padding-left: 10px;
+font-size: 40px;
+float: left;
+
+  }
+  .labelvalue_class{
+    
+    padding-left: 10px;
+    color: chartreuse;
+    width: 50px;
+    height: 80px;
+    line-height:90px;
+    padding-top: 10px;
+    font-size: 40px;
+    float: left;
+
+  }
+  .AHU01{
+    border-radius:8px;
+   
+    /* background-color:rgba(193, 210, 215, 0.5); */
+    border: 3px  solid  #23dfe3 ;
+  }
+
+  .AHU02{
+    border-radius:8px;
+    
+    /* background-color:rgba(166, 162, 240, 0.5); */
+    
+    border: 3px  solid  #2370e3 ;
+  }
+
+  .AHU03{
+    border-radius:8px;
+    
+    /* background-color:rgba(236, 231, 133, 0.5); */
+
+    border: 3px  solid  #2370e3 ;
+  }
+  .AHU04{
+    border-radius:8px;
+/*  */
+    /* background-color:rgba(173, 236, 133, 0.5); */
+  
+    border: 3px  solid  #2370e3 ;
+  }
+  .AHU05{
+    border-radius:8px;
+    
+    /* background-color:rgba(145, 241, 187, 0.5); */
+    
+    border: 3px  solid  #2370e3 ;
+  }
+  .AHU06{
+    border-radius:8px;
+    /* background-color:rgba(128, 200, 233, 0.5); */
+    border: 3px  solid  #2370e3 ;
+  }
+
+  .AHU07{
+    border-radius:8px;
+    /* background-color:rgba(166, 155, 232, 0.5); */
+    border: 3px  solid  #2370e3 ;
+  }
+
+  .tempture{
+width: 80px;
+height: 100px;
+  }
+
+  .humidity{
+    width: 80px;
+    height: 100px;
+      }
+
+      .humidityname_class{
+        color: black;
+        width: 60px;
+        height: 50px;
+        padding-top: 10px;
+        padding-left: 10px;
+    font-size: 40px;
+    float: left;
+    
+      }
+      .humidityvalue_class{
+        
+        padding-left: 10px;
+        color: rgba(255, 217, 0, 0.902);
+        width: 50px;
+        height: 80px;
+        line-height:90px;
+        padding-top: 10px;
+        font-size: 40px;
+        float: left;
+    
+      }

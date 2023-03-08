@@ -1,0 +1,112 @@
+{
+  "infoWindowField": {
+    "openCoolTowerHint": {
+      "label": "开启冷却塔提示",
+      "value": ""
+      
+    },
+    "coolTowerRefrigerationStatus": {
+      "label": "冷却塔制冷状态提示",
+      "value": ""
+    },
+    "systemStartStopStatus": {
+      "label": "系统启停状态",
+      "value": ""
+    },
+  
+    "screwStatus2": {
+      "label": "2#螺杆机运行状态",
+      "value": ""
+    },
+  
+    "coolWaterPumpStatus2": {
+      "label": "2#冷冻水泵运行状态",
+      "value": ""
+    },
+    
+    "coolWaterPumpRemoteStatus2": {
+      "label": "2#冷冻水泵远程状态",
+      "value": ""
+    },
+   
+    "screwCoolStatus2": {
+      "label": "2#螺杆机冷冻/却阀开状态",
+      "value": ""
+    },
+    
+    "coolPipelineStatus": {
+      "label": "冷冻管道状态",
+      "value": ""
+    },
+    "coolSystemReturn": {
+      "label": "冷冻系统供回水压差",
+      "value": ""
+    },
+
+    "coolSystemReturnPress": {
+      "label": "冷冻系统回水压力",
+      "value": "P"
+    },
+    "difPressValveOpen": {
+      "label": "压差旁通阀开度",
+      "value": "P"
+    },
+    "coolSystemOutPress": {
+      "label": "冷冻系统出水压力",
+      "value": "P"
+    },
+   
+    "coolPumpHzFeedback2": {
+      "label": "2#冷冻泵频率反馈",
+      "value": ""
+    },
+   
+   
+   
+    "screwOpen2": {
+      "label": "2#螺杆机开度P",
+      "value": ""
+    },
+ 
+    "readSetCoolWaterTemp2": {
+      "label": "2读设置冷冻出水温度",
+      "value": "℃"
+    },
+    "freezingOutTemp2": {
+      "label": "2冷冻出水温度",
+      "value": "℃"
+    },
+    "freezingRetTemp2": {
+      "label": "2冷冻回水温度",
+      "value": "℃"
+    },
+    "coolDownOutTemp2": {
+      "label": "2冷却出水温度",
+      "value": "℃"
+    },
+    "coolDownRetTemp2": {
+      "label": "2冷却回水温度",
+      "value": "℃"
+    },
+    "compressorCurrent2": {
+      "label": "2压缩机电流",
+      "value": ""
+    },
+    "flowSwitchStatus2": {
+      "label": "2水流开关_状态",
+      "value": ""
+    },
+   
+    "coolPumpFaultProtectionStatus2": {
+      "label": "2#冷冻泵故障保护状态",
+      "value": ""
+    },
+    "screwFaultStatus2": {
+      "label": "2#螺杆机故障状态",
+      "value": ""
+    }
+ 
+   
+    
+  }
+}

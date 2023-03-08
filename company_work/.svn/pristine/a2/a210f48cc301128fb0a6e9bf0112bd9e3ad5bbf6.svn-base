@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.project.datasource.modbus.base.mapper.ModbusBaseEntityMapper">
+
+    <resultMap id="TableVo" type="com.ruoyi.project.datasource.modbus.vo.TableVo">
+        <result property="tableName" column="TABLE_NAME"/>
+        <result property="tableComment" column="TABLE_COMMENT"/>
+    </resultMap>
+
+    <resultMap id="TableFieldVo" type="com.ruoyi.project.datasource.modbus.vo.TableFieldVo">
+        <result property="fieldName" column="field_name"/>
+        <result property="fieldComment" column="field_comment"/>
+        <result property="fieldType" column="field_type"/>
+        <result property="orderNum" column="order_num"/>
+    </resultMap>
+
+    <resultMap id="DeviceStatusVo" type="com.ruoyi.project.datasource.modbus.base.vo.DeviceStatusVo">
+        <result property="deviceName" column="device_name"/>
+        <result property="openStatus" column="open_status"/>
+        <result property="deviceStatus" column="device_status"/>
+        <result property="modbusType" column="modbus_type"/>
+        <result property="latestTime" column="latest_time"/>
+        <result property="modbusIpHost" column="modbus_ip_host"/>
+    </resultMap>
+
+    <select id="selectModbusTable" resultMap="TableVo">
+        SELECT TABLE_NAME, TABLE_COMMENT
+        FROM information_schema.tables
+        WHERE TABLE_SCHEMA = 'njsd_faster_lab'
+            AND TABLE_NAME LIKE CONCAT('modbus', '%')
+            AND TABLE_NAME != 'modbus_base_entity'
+            AND TABLE_NAME != 'modbus_newest_data'
+            AND TABLE_NAME != 'modbus_chart_field'
+            AND TABLE_NAME != 'modbus_export'
+            AND TABLE_NAME != 'modbus_timer_field'
+        ORDER BY TABLE_NAME;
+    </select>
+    <select id="selectDataTopFromTable" resultType="java.util.Date">
+        SELECT create_time
+        FROM ${tableName}
+        ORDER BY create_time DESC
+        LIMIT 1
+    </select>
+
+    <select id="selectTopData" resultType="java.math.BigDecimal" parameterType="map">
+        SELECT ${fieldName}
+        FROM ${tableName}
+        ORDER BY create_time DESC
+        LIMIT 1
+    </select>
+    <select id="selectCountByTable" resultType="integer">
+        select count(*) FROM ${tableName}
+        <where>
+            <if test="startTime != null and startTime != ''"> create_time &gt;= #{startTime}</if>
+            <if test="endTime != null and endTime != ''">AND create_time &lt;= #{endTime}</if>
+        </where>
+    </select>
+
+    <select id="selectDeviceWithStatus" resultMap="DeviceStatusVo">
+        SELECT
+            t1.system_name AS device_name,
+            t1.`status` AS open_status,
+            IF(t2.create_time >= #{startTime}, 1, 0) AS device_status,
+            t2.modbus_type,
+            t2.create_time AS latest_time,
+            t1.system_ip_host AS modbus_ip_host
+        FROM
+            modbus_base_entity t1
+                JOIN modbus_newest_data t2 ON t1.class_name = t2.modbus_type
+        ORDER BY t1.create_time
+    </select>
+
+    <select id="selectValueByTableDetails" resultType="string">
+        SELECT ${fieldName}
+        FROM ${tableName}
+        ORDER BY create_time DESC
+        LIMIT 1
+    </select>
+
+    <select id="selectTempList" resultType="java.util.LinkedHashMap">
+        SELECT
+            <foreach collection="fieldNames" item="fieldName" separator=",">
+                ${fieldName}
+            </foreach>
+        FROM ${tableName}
+        ORDER BY create_time DESC
+        LIMIT 1
+    </select>
+
+    <select id="selectTableFaultField" resultMap="TableFieldVo">
+        SELECT
+            column_name AS field_name,
+            column_comment AS field_comment,
+            data_type AS field_type,
+            ordinal_position AS order_num
+        FROM
+            information_schema.COLUMNS
+        WHERE
+            table_name = #{tableName}
+          AND (column_comment LIKE '%故障%' OR column_name = 'create_time')
+          AND column_name != 'fault_reset'
+
+        ORDER BY
+            ordinal_position
+    </select>
+
+</mapper>

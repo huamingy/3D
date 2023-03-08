@@ -1,0 +1,504 @@
+import * as THREE from '../build/three.module.js'
+import { LineSegments2 } from '../jsm/lines/LineSegments2.js'
+import { LineMaterial } from '../jsm/lines/LineMaterial.js'
+import { LineGeometry } from '../jsm/lines/LineGeometry.js'
+import { rotate, flyPipe } from './BTN.js'
+import { finalComposer, bloomComposer } from './3D-map-ocpity.js'
+import {
+  scene,
+  camera,
+  controls,
+  renderer,
+  labelRender,
+  mixer,
+  clock,
+  uniforms,
+} from './scene.js'
+
+import Stats from '../jsm/libs/stats.module.js'
+//2.0、性能插件  监听fps
+var stats = new Stats()
+document.body.appendChild(stats.dom)
+
+var pos = null
+var Light = false
+
+var nextPos = new THREE.Vector3() //射线点击建筑对应XOZ平面坐标
+var dir = new THREE.Vector3() //飞行漫游方向，起始点构成的方向 默认值0，0，0
+var flyBool = false //作为视角移动的条件
+const bloomLayer = new THREE.Layers()
+bloomLayer.set(1)
+const materials = {}
+const darkMaterial = new THREE.MeshBasicMaterial({ color: 'black' })
+var granaryArr = [],
+  choosearry = [] //被点击的模型对象数组
+function setTime(callback) {
+  setTime.prototype.init(callback)
+}
+setTime.prototype = {
+  canclick: true,
+  init: function (callback) {
+    if (this.canclick) {
+      this.canclick = false
+      callback()
+      setTimeout(
+        function () {
+          this.canclick = true
+        }.bind(this),
+        3000
+      )
+    } else {
+      console.log('未到三秒，重复点击')
+    }
+  },
+}
+function setTextrueMove() {
+  var cwurl = './models/JiGuangLou_Opacity/liquid_cw.jpg'
+  var hwurl = './models/JiGuangLou_Opacity/liquid_hw.jpg'
+  var szwurl = './models/JiGuangLou_Opacity/liquid_szw.jpg'
+  var iwurl = './models/JiGuangLou_Opacity/liquid_Iw.jpg'
+  var alphaurl = './models/JiGuangLou_Opacity/liquid_alpha.jpg'
+  var Pipe = scene.getObjectByName('LQL_Pipe')
+
+  changematerial('LQL_CW', 0x3eede7, 0x33ccff, cwurl, alphaurl)
+  changematerial('LQL_HW', 0x110000, 0xff0000, hwurl, alphaurl)
+  changematerial(
+    'LQL_SZW',
+    'rgb(199,108,5)',
+    'rgb(199,108,5)',
+    szwurl,
+    alphaurl
+  )
+  changematerial('LQL_IW', 0x00ff00, 0x00ff00, iwurl, alphaurl)
+}
+
+function changematerial(mesh, emissivecolor, color, url, alphaurl) {
+  var textureload = new THREE.TextureLoader()
+  var texture = textureload.load(url)
+  var alphatexture = textureload.load(alphaurl)
+
+  texture.wrapS = texture.wrapT = THREE.RepeatWrapping
+  alphatexture.wrapS = alphatexture.wrapT = THREE.RepeatWrapping
+  texture.repeat.x = 1
+  texture.repeat.y = 1
+  scene.getObjectByName(mesh).material = new THREE.MeshPhongMaterial({
+    map: texture,
+    alphaMap: alphatexture,
+    emissive: emissivecolor,
+    transparent: true,
+    opacity: 0.9,
+    emissiveMap: texture,
+    color: color,
+    // specular: 0x000000,
+  })
+  console.log('scene.getObjectByName(mesh): ', scene.getObjectByName(mesh))
+  setInterval(() => {
+    alphatexture.x -= 0.005
+    texture.offset.x -= 0.005
+  })
+}
+var moveboolen = true
+function addOtherLAbel(meshName) {
+  var havingmesh = scene.getObjectByName(meshName)
+
+  havingmesh.traverse(function (mesh) {
+    if (mesh.isMesh) {
+      // addline1(mesh)
+    }
+  })
+
+  var FloorPosition = havingmesh.children[0].getWorldPosition()
+
+  var p1 = {
+    x: 11000,
+    y: 15000,
+    z: 0,
+  }
+  // 相机目标位置点
+  // const p2 = { x: -1000, y: 1020, z: 4060 }
+
+  var a = FloorPosition.x - 400,
+    b = FloorPosition.y + 800,
+    c = FloorPosition.z
+
+  // if (moveboolen == false) {
+  //   moveboolen = true
+  //   a = FloorPosition.x + 300
+  // } else {
+  //   moveboolen = false
+  //   a = FloorPosition.x - 300
+  // }
+  const p2 = {
+    x: a,
+    y: b,
+    z: c,
+  }
+
+  // 使用tween动画
+  var tween = new TWEEN.Tween(p1)
+    .to(p2, 6000)
+    .easing(TWEEN.Easing.Quadratic.InOut)
+  tween.onUpdate(() => {
+    // 修改相机位置
+    camera.position.set(p1.x, p1.y, p1.z)
+    camera.lookAt(FloorPosition.x, FloorPosition.y, FloorPosition.z)
+    controls.target.set(
+      FloorPosition.x /*- 20*/,
+      FloorPosition.y,
+      FloorPosition.z
+    ) // 确保镜头移动后，视觉中心还在圆点处
+    controls.update()
+  })
+  // 开始动画
+  tween.start()
+}
+
+function addline1(findmesh) {
+  var edges = new THREE.EdgesGeometry(findmesh.geometry)
+
+  // var edgesMaterial = new THREE.LineBasicMaterial({
+  //   color: 0x31deef,
+  // })
+  // var line = new THREE.LineSegments(edges, edgesMaterial)
+  // findmesh.add(line)
+
+  var geometry = new LineGeometry()
+  geometry.fromEdgesGeometry(edges)
+  // 3. 创建 LineMaterial，设置颜色和线宽
+  var material = new LineMaterial({
+    color: 0x00dd00,
+    linewidth: 2,
+  })
+  // 4. 设置材质分辨率
+  material.resolution.set(window.innerWidth, window.innerHeight)
+  // 5. 创建 Line2
+  var line = new LineSegments2(geometry, material)
+  // line.scale.set(810,810,810)
+  line.rotation.x = Math.PI / 2
+  line.name = 'line1'
+  line.position.copy(findmesh.getWorldPosition())
+  scene.add(line)
+}
+function deleteline(findmesh) {
+  var havingmesh = scene.getObjectByName(meshName)
+
+  havingmesh.traverse(function (mesh) {
+    if (mesh.isMesh) {
+      mesh.remove(line)
+    }
+  })
+}
+function plane(e) {
+  var Dev = scene.getObjectByName('JiGuangLou')
+  console.log('Dev : ', Dev)
+  if (e == true) {
+    Light = true
+    console.log(e)
+    // outletopcity = false
+    var PlaneArr = [new THREE.Plane(new THREE.Vector3(0, -1, 0), 450)]
+    // 设置渲染器的剪裁平面属性
+
+    Dev.traverse(function (obj) {
+      if (obj.type == 'Mesh') {
+        obj.material.clippingPlanes = PlaneArr
+      }
+    })
+  } else {
+    Light = false
+    var PlaneArr = [
+      // 垂直y轴的平面
+      new THREE.Plane(new THREE.Vector3(0, -1, 0), 20000),
+    ]
+    // 设置渲染器的剪裁平面属性
+
+    // renderer.clippingPlanes = PlaneArr
+
+    Dev.traverse(function (obj) {
+      if (obj.type == 'Mesh') {
+        obj.material.clippingPlanes = PlaneArr
+      }
+    })
+  }
+}
+
+function deletetag() {
+  label = scene.getObjectByName('label')
+  if (label) label.parent.remove(label)
+}
+
+/**移动动画 */
+function moveFloor(floor, distance) {
+  var twofloorposition = scene.getObjectByName(floor)
+  twofloorposition.traverse(function (mesh) {
+    if (mesh.isMesh) {
+      var pos = mesh.position
+      var tween = new TWEEN.Tween(pos)
+      tween.to(
+        {
+          z: pos.z + distance,
+        },
+        3000
+      )
+      tween.onUpdate(function () {
+        mesh.position.z = pos.z
+      })
+      tween.start()
+    }
+  })
+}
+
+function changeMaterial(name) {
+  var textrue = scene.getObjectByName(name).material.map
+  var alphatextrue = scene.getObjectByName(name).material.alphaMap
+
+  scene.getObjectByName(name).material = new THREE.MeshBasicMaterial({
+    alphaMap: alphatextrue,
+    map: textrue,
+    transparent: true,
+    opacity: 1,
+    // emissiveMap: textrue,
+    // emissiveIntensity: 5,
+    // emissive: 0x0000ff,
+  })
+
+  console.log(scene.getObjectByName(name))
+}
+
+function restartpipe() {
+  flyBool = false
+  pipe = 0
+}
+function run(run) {
+  if (run) {
+    flyPipe = false
+  } else {
+    flyPipe = true
+  }
+}
+
+function AddMeshIntoArr(meshname) {
+  var device = scene.getObjectByName(meshname)
+  device.traverse(function (obj) {
+    if (obj.isMesh) {
+      granaryArr.push(obj)
+    }
+  })
+}
+
+var pipe = 0
+function render() {
+  stats.update()
+  const delta = 5 * clock.getDelta()
+
+  uniforms['time'].value += 2 * delta
+
+  if (Light == true) {
+    scene.traverse(darkenNonBloomed)
+    bloomComposer.render()
+    scene.traverse(restoreMaterial)
+    renderer.render(scene, camera)
+    finalComposer.render()
+  } else {
+    renderer.render(scene, camera)
+  }
+
+  TWEEN.update()
+  if (rotate) {
+    scene.rotation.y += 0.002
+  }
+
+  requestAnimationFrame(render)
+  labelRender.render(scene, camera)
+
+  if (mixer !== null) {
+    mixer.update(clock.getDelta()) //更新混合器相关的时间
+  }
+
+  if (flyBool) {
+    var dis = camera.position.clone().sub(pos).length()
+    // console.log('dis', dis)
+    if (dis > 2500) {
+      // 接近nextPos位置，相机停止飞行
+      //每次渲染相机沿着视线移动距离递增(xyz每个分量乘以4)
+      camera.position.add(dir.clone().multiplyScalar(80))
+    } else {
+      flyBool = false //停止飞行飞行
+    }
+  } else if (flyPipe) {
+    if (pipe < points.length - 100) {
+      var i = Math.floor(pipe)
+      // 相机位置设置在当前点位置
+      camera.position.set(points[i].x, points[i].y, points[i].z)
+      // 设置相机观察点为当前点的下一个点，两点可以构成一个视线方向
+      // 你可以简单理解为：要始终保持视线为曲线的切线方向
+      camera.lookAt(
+        new THREE.Vector3(points[i + 1].x, points[i + 1].y, points[i + 1].z)
+      )
+      pipe += 5 //调节速度
+    } else {
+      pipe = 0
+    }
+  }
+}
+
+function darkenNonBloomed(obj) {
+  if (obj.isMesh && bloomLayer.test(obj.layers) === false) {
+    materials[obj.uuid] = obj.material
+    obj.material = darkMaterial
+  }
+}
+
+function restoreMaterial(obj) {
+  if (materials[obj.uuid]) {
+    obj.material = materials[obj.uuid]
+    delete materials[obj.uuid]
+  }
+}
+var curve2 = new THREE.CurvePath()
+var arr2 = [
+  new THREE.Vector3(3136, 320, 2673), //入口
+  new THREE.Vector3(2700, 320, 2673),
+  new THREE.Vector3(2700, 320, 2030),
+  new THREE.Vector3(2915, 320, 2033), //三入
+  new THREE.Vector3(2915, 40, 2033), //三入
+  new THREE.Vector3(2915, 40, 2000), //三入
+]
+// // 从曲线上获得501个顶点，数量根据需要自己设置
+var points2 = curve2.getSpacedPoints(3000)
+
+//三号通风管道视线曲线
+// 三维样条曲线CatmullRomCurve3创建一个曲线路径
+var curve3 = new THREE.CurvePath()
+var arr3 = [
+  new THREE.Vector3(3100, 320, -575), //入口
+  new THREE.Vector3(2670, 320, -575),
+  new THREE.Vector3(2670, 320, 1200),
+  new THREE.Vector3(2980, 300, 1195),
+  new THREE.Vector3(2980, 30, 1195),
+  new THREE.Vector3(2980, 30, 1170),
+]
+
+// // 从曲线上获得501个顶点，数量根据需要自己设置
+var points3 = curve3.getSpacedPoints(5000)
+
+// 三维样条曲线CatmullRomCurve3创建一个曲线路径
+var curve4 = new THREE.CurvePath()
+var arr4 = [
+  new THREE.Vector3(3120, 320, -504),
+  new THREE.Vector3(2750, 320, -504),
+  new THREE.Vector3(2750, 320, 418),
+  new THREE.Vector3(3000, 320, 418),
+  new THREE.Vector3(3000, 38, 400),
+  new THREE.Vector3(3000, 38, 340),
+]
+
+// 从曲线上获得501个顶点，数量根据需要自己设置
+var points4 = curve4.getSpacedPoints(2500)
+
+var curve5 = new THREE.CurvePath()
+var arr5 = [
+  new THREE.Vector3(3118, 320, -1041), //入口
+  new THREE.Vector3(2700, 320, -1041),
+  new THREE.Vector3(2700, 320, -2008),
+  new THREE.Vector3(2950, 320, -2008), //三入
+  new THREE.Vector3(2950, 50, -2008), //三入
+  new THREE.Vector3(2950, 50, -2064), //三入
+]
+
+// 从曲线上获得501个顶点，数量根据需要自己设置
+var points5 = curve5.getSpacedPoints(2500)
+
+var curve7 = new THREE.CurvePath()
+var arr7 = [
+  new THREE.Vector3(3123, 320, -3450), //入口
+  new THREE.Vector3(2800, 320, -3450), //一中
+  new THREE.Vector3(2800, 320, -2780), //入口
+  new THREE.Vector3(3000, 320, -2780), //入口
+  new THREE.Vector3(3000, 38, -2810), //
+  new THREE.Vector3(3000, 38, -2879), //出口
+]
+
+// 从曲线上获得501个顶点，数量根据需要自己设置
+var points7 = curve7.getSpacedPoints(2500)
+
+var curve8 = new THREE.CurvePath()
+
+var arr8 = [
+  new THREE.Vector3(3123, 320, -3492), //入口
+  new THREE.Vector3(2746, 320, -3492),
+  new THREE.Vector3(2746, 320, -2850),
+  new THREE.Vector3(2550, 320, -2850), //三入
+  new THREE.Vector3(2550, 30, -2850), //三入
+  new THREE.Vector3(2550, 30, -2966), //三入
+]
+// 从曲线上获得501个顶点，数量根据需要自己设置
+var points8 = curve8.getSpacedPoints(2500)
+
+var R = 90 //圆弧半径
+
+//直线轨迹坐标
+var arr = [
+  new THREE.Vector3(-2700, 150, 600), //入口
+  new THREE.Vector3(-2300, 150, 500), //
+  new THREE.Vector3(-2300, 150, -2200), //
+  new THREE.Vector3(2300, 150, -2200), //
+  new THREE.Vector3(2300, 150, 3750), //
+  new THREE.Vector3(-2300, 150, 3750), //
+  new THREE.Vector3(-2300, 150, 500), //
+  new THREE.Vector3(-2700, 150, 400), //入口
+]
+var points = []
+
+function createcurve(arr, num) {
+  var curve = new THREE.CurvePath()
+  // 从曲线上获得501个顶点，数量根据需要自己设置
+  // var points = curve.getPoints(6000);
+  for (var i = 0; i < arr.length - 1; i++) {
+    if (i == 0) {
+      var dir = arr[0].clone().sub(arr[1])
+      dir.normalize()
+      var p2 = arr[1].clone()
+      p2.add(dir.clone().multiplyScalar(R))
+      var line = new THREE.LineCurve3(arr[0], p2)
+      curve.curves.push(line)
+    } else {
+      // 计算三个点构成的两条线的方向
+      var dir1 = arr[i - 1].clone().sub(arr[i])
+      dir1.normalize()
+      var dir2 = arr[i + 1].clone().sub(arr[i])
+      dir2.normalize()
+      var p12_ = arr[i].clone()
+      p12_.add(dir1.clone().multiplyScalar(R))
+      var p1 = arr[i].clone().add(dir1.clone().multiplyScalar(R))
+      var p2 = arr[i].clone()
+      var p3 = arr[i].clone().add(dir2.clone().multiplyScalar(R))
+      var beziercurve = new THREE.QuadraticBezierCurve3(p1, p2, p3)
+      var line1 = arr[i].clone()
+      line1.add(dir2.clone().multiplyScalar(R))
+      var line2 = arr[i + 1].clone()
+      if (i < arr.length - 2) {
+        //最后一段不用减掉半径尺寸
+        line2.add(dir2.clone().multiplyScalar(-R))
+      }
+      var line = new THREE.LineCurve3(line1, line2)
+      // 把转换曲线和直线插入曲线中
+      curve.curves.push(beziercurve, line)
+    }
+  }
+  points = curve.getSpacedPoints(num)
+}
+export {
+  render,
+  setTime,
+  deletetag,
+  plane,
+  addOtherLAbel,
+  setTextrueMove,
+  changeMaterial,
+  AddMeshIntoArr,
+  granaryArr,
+  moveFloor,
+  createcurve,
+  arr,
+  restartpipe,
+}

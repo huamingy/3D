@@ -1,0 +1,94 @@
+{
+  "1":{
+    "warnInfo":"1#电量仪",
+    "deviceNo":"S0E51",
+    "data":"2F"
+  
+  },
+  
+  "2":{
+    "warnInfo":"2#电量仪",
+  
+    "deviceNo":"S0E52",
+    "data":"2F"
+  },
+  "3":{
+    "warnInfo":"2#UPS",
+  
+    "deviceNo":"S0E111",
+    "data":"2F"
+  },
+  "6":{
+    "warnInfo":"1#佳力图",
+    "deviceNo":"S0E61",
+    "data":"2F"
+  
+  },
+  
+  "7":{
+    "warnInfo":"1#UPS",
+  
+    "deviceNo":"S0E11",
+    "data":"2F"
+  },
+ 
+  "9":{
+    "deviceNo":"S0E121",
+    "warnInfo":"1#蓄电池组",
+    "data":"1F"
+    
+  },
+  "10":{
+    "deviceNo":"S0E122",
+    "warnInfo":"2#蓄电池组",
+    "data":"1F"
+    
+  },
+  "5":{
+    "deviceNo":"S0E123",
+    "warnInfo":"3#蓄电池组",
+    "data":"1F"
+    
+  },
+  "4":{
+    "deviceNo":"S0E124",
+    "warnInfo":"4#蓄电池组",
+    "data":"1F"
+    
+  },
+  "11":{
+    "deviceNo":"S0E62",
+    "warnInfo":"2#佳力图",
+    "data":"2F"
+    
+  },
+  
+  "12":{
+    "deviceNo":"S0E63",
+    "warnInfo":"3#佳力图空调",
+    "data":"2F"
+    
+  },
+  "13":{
+    "deviceNo":"S0E71",
+    "warnInfo":"4#世图兹空调",
+    "data":"2F"
+    
+  },
+  "14":{
+    "deviceNo":"S0E72",
+    "warnInfo":"5#世图兹空调",
+    "data":"2F"
+    
+  },
+  "15":{
+    "deviceNo":"S0E101",
+    "warnInfo":"6#佳力图空调",
+    "data":"1F"
+    
+  }
+
+  
+  
+
+}

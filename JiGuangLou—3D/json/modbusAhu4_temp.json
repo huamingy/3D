@@ -1,0 +1,41 @@
+{
+  "infoWindowField": {
+    "temp1": {
+      "id":"modbusAhu4_temp1",
+      "label": "温度_1",
+      "value": "℃"
+    },
+    "temp2": {
+      "id":"modbusAhu4_temp2",
+      "label": "温度_2",
+      "value": "℃"
+    },
+    "temp3": {
+      "id":"modbusAhu4_temp3",
+      "label": "温度_3",
+      "value": "℃"
+    },
+    "temp4": {
+      "id":"modbusAhu4_temp4",
+      "label": "温度_4",
+      "value": "℃"
+    },
+    "temp5": {
+      "id":"modbusAhu4_temp5",
+      "label": "温度_5",
+      "value": "℃"
+    },
+    "temp6": {
+      "id":"modbusAhu4_temp6",
+      "label": "温度_6",
+      "value": "℃"
+    },
+    "temp7": {
+      "id":"modbusAhu4_temp7",
+      "label": "温度_7",
+      "value": "℃"
+    }
+    
+   
+  }
+}

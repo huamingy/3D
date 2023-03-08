@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ch">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="./css/main.css" />
+    <link href="./css/video-js.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/tinyselect.css" />
+    <link rel="stylesheet" href="./css/spin.css" />
+    <script
+      type="text/javascript"
+      src="./jsm/jquery/jquery-1.12.4.min.js"
+    ></script>
+    <script src="./jsm/jquery/jsencrypt.min.js"></script>
+    <!-- 用于RSA加密 -->
+    <script src="./jsm/jquery/jsWebControl-1.0.0.min.js"></script>
+    <script type="text/javascript" src="./jsm/video/video.min.js"></script>
+
+    <script type="text/javascript" src="./jsm/tween.umd.js"></script>
+    <title>盐城疾控二层模型</title>
+
+    <script src="./js/mian/pace.min.js"></script>
+    <link rel="stylesheet" href="./css/loading-bar.css" />
+    <style></style>
+  </head>
+
+  <body>
+    <div id="foo"></div>
+    <!-- 监控预览窗口 -->
+    <div id="video" style="visibility: hidden"></div>
+    <!-- <div id="controllabel" class="controllabelclass">
+      <div id="twofloor" class="twofloorclass">
+        <img src="./img/2楼.png" title="各科室风压及空气含量" />
+      </div>
+
+      <div id="btn_rolu" class="btn_roluClass">
+        <img src="./img/旋转控制.png" title="画面锁定/解锁" />
+      </div>
+      <div id="TwoSJGTH" class="threePipeclass">
+        <img
+          style="width: 40px; height: 40px"
+          src="./img/温湿度.png"
+          title="试剂柜温湿度数据"
+        />
+      </div> 
+      <div id="TwoDianBiao" class="threePipeclass">
+        <img src="./img/VAV.png" title="电表箱位置" />
+      </div>
+      <div id="exit" class="exitclass">
+        <img src="./img/退出.png" title="恢复初始视角" />
+      </div>
+
+      <div id="camera" class="cameraclass">
+        <img src="./img/摄像头.png" title="打开摄像头" alt="" />
+      </div>
+      <div id="hidden" class="twoPipeclass">
+        <img src="./img/jiankong.png" title="关闭画面" />
+      </div>
+
+      <div id="twoVent" class="twoVentclass">
+        <img src="./img/2楼机组.png" title="二层空调机组" alt="" />
+      </div>
+
+      <div id="twoPipe" class="twoPipeclass">
+        <img src="./img/2楼管道.png" title="二楼多联机" />
+      </div>
+
+     <div id="twoSpray" class="twoSprayclass">
+        <img src="./img/2楼水管.png" title="二楼水管" />
+      </div>
+      <div id="twoDoor" class="twoSprayclass">
+        <img src="./img/2楼门禁.png" title="二楼门禁" />
+      </div>
+      <div id="fire_test" class="twoSprayclass">
+        <img
+          style="width: 40px; height: 40px"
+          src="./img/alarm.png"
+          title="报警"
+        />
+      </div>
+    </div> -->
+
+    <div id="threeVAV"></div>
+
+    <div id="label">
+      <!-- <div id="test" class="namestyle">nbnvhn</div> -->
+      <!-- <div id="labelone"></div> -->
+    </div>
+
+    <div id="room"></div>
+
+    <div id="KT_Air_label" class="waiJi_out">
+      <div id="KT_Air_name" class="waiJi_name">2-3-2</div>
+      <div id="KT_Air"></div>
+    </div>
+
+    <div id="DianBiao" class="DianBiao_class">
+      <div id="Dianbiao_name" class="DianBiao_name_class">cc</div>
+      <div id="DianBiao_data"></div>
+
+      <img
+        id="Dianbiao_out"
+        class="Dianbiao_loginout_class"
+        src="./img/img_close.png"
+      />
+    </div>
+    <script type="module" src="./js/mian/YanChengJikong_2F.js"></script>
+    <script type="module" src="./js/mian/YanChengJikong_Btn.js"></script>
+    <script type="text/javascript" src="./js/index-preview.js"></script>
+    <script src="./js/tinyselect.js"></script>
+
+    <div id="controllabel" class="controllabelclass">
+      <img id="TemHum" class="all" title="设备 " src="./img/设备.png" />
+
+      <div id="allLabel" style="display: none">
+        <div id="twofloor" class="twofloorclass">
+          <img class="control_img" src="./img/2楼.png" />
+          <div class="name">各科室空气含量</div>
+        </div>
+
+        <div id="Twofengya" class="threePipeclass">
+          <img class="control_img" src="./img/风压.png" />
+          <div class="name">各科室风压</div>
+        </div>
+        <div id="btn_rolu" class="btn_roluClass">
+          <img class="control_img" src="./img/旋转控制.png" title="" />
+          <div class="name">模型锁定/解锁</div>
+        </div>
+
+        <div id="exit" class="exitclass">
+          <img class="control_img" src="./img/退出.png" title="" />
+          <div class="name">恢复初始视角</div>
+        </div>
+        <div id="camera" class="cameraclass">
+          <img class="control_img" src="./img/摄像头.png" title="" alt="" />
+          <div class="name">打开摄像头图标</div>
+        </div>
+
+        <div id="TwoDianBiao" class="threePipeclass">
+          <img class="control_img" src="./img/VAV.png" title="" />
+          <div class="name">电表箱位置</div>
+        </div>
+
+        <div id="twoVent" class="twoVentclass">
+          <img class="control_img" src="./img/2楼机组.png" alt="" />
+          <div class="name">新风空调机组</div>
+        </div>
+
+        <div id="twoPipe" class="twoPipeclass">
+          <img class="control_img" src="./img/2楼管道.png" title="" />
+          <div class="name">多联机</div>
+        </div>
+
+        <!-- <div id="twoSpray" class="twoSprayclass">
+        <img src="./img/2楼水管.png" title="二楼水管" />
+      </div> -->
+        <div id="twoDoor" class="twoSprayclass">
+          <img class="control_img" src="./img/2楼门禁.png" />
+          <div class="name">门禁</div>
+        </div>
+        <div id="fire_test" class="twoSprayclass">
+          <img
+            class="control_img"
+            style="width: 40px; height: 40px"
+            src="./img/alarm.png"
+          />
+          <div class="name">警报</div>
+        </div>
+      </div>
+    </div>
+    <div id="fault-out"></div>
+    <script></script>
+  </body>
+</html>

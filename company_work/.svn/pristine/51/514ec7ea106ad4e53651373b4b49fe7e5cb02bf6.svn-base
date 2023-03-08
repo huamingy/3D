@@ -1,0 +1,62 @@
+{
+  "infoWindowField": {
+    "temp1": {
+      "label": "温度_1",
+      "value": "℃"
+    },
+    "temp2": {
+      "label": "温度_2",
+      "value": "℃"
+    },
+    "temp3": {
+      "label": "温度_3",
+      "value": "℃"
+    },
+    "temp4": {
+      "label": "温度_4",
+      "value": "℃"
+    },
+    "temp5": {
+      "label": "温度_5",
+      "value": "℃"
+    },
+    "temp6": {
+      "label": "温度_6",
+      "value": "℃"
+    },
+    "temp7": {
+      "label": "温度_7",
+      "value": "℃"
+    },
+    "temp8": {
+      "label": "温度_8",
+      "value": "℃"
+    },
+    "humidity1": {
+      "label": "湿度_1",
+      "value": " %"
+    },
+    "humidity2": {
+      "label": "湿度_2",
+      "value": " %"
+    },
+    "humidity3": {
+      "label": "湿度_3",
+      "value": "%"
+    },
+    "humidity4": {
+      "label": "湿度_4",
+      "value": "%"
+    },
+    "humidity5NoProbe": {
+      "label": "湿度_5(无探头)",
+      "value": "%"
+    },
+    "humidity6NoProbe": {
+      "label": "湿度_6(无探头)",
+      "value": "%"
+    }
+    
+   
+  }
+}

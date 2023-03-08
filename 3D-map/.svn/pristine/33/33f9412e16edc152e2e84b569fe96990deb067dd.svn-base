@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ch">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script type="module" src="../js/Map.js"></script>
+    <script src="../js/tool/jquery.js"></script>
+    <script src="../js/tool/pace.min.js"></script>
+    <link rel="stylesheet" href="../css/loading-bar.css" />
+    <title>大楼模型</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- <div id="label" style="visibility: hidden; width: 50px; height: 40px">
+      <div style="position: relative">
+        <div style="position: absolute; left: 0px; top: 0px">
+          <img
+            src="../img/background.jpg"
+            alt=""
+            style="width: 300px; opacity: 0.5"
+          />
+        </div>
+        <div
+          id="label1"
+          style="
+            position: absolute;
+            color: #00ffff;
+            left: 15px;
+            top: 40px;
+            font-size: 16px;
+            width: 15px;
+          "
+        >
+          南京南站
+        </div>
+        <div
+          id="grain"
+          style="position: absolute; left: 10px; top: 15px; width: 80px"
+        >
+          <span id="grain" name="allequipment">设备详情</span>
+        </div>
+        <div style="position: absolute; left: 100px; top: 10px; width: 60px">
+          <span id=" equipment1">设备1</span>
+        </div>
+        <div
+          style="
+            position: absolute;
+            left: 100px;
+            top: 50px;
+            vertical-align: middle;
+            width: 60px;
+          "
+        >
+          <span id=" equipment2">设备2</span>
+        </div>
+        <div
+          style="
+            position: absolute;
+            left: 80px;
+            top: 100px;
+            padding: 8px 25px;
+            border-radius: 10px;
+            border: 1px solid #00ffff;
+            width: 100px;
+          "
+        >
+          <span id=" equipment3">设备3</span>
+        </div>
+        <div
+          style="
+            position: absolute;
+            left: 150px;
+            top: 10px;
+            padding: 8px 25px;
+            width: 100px;
+          "
+        >
+          <span id=" equipment4">设备4</span>
+        </div>
+      </div>
+    </div> -->
+
+    <script type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,1046 @@
+import * as THREE from '../../build/three.module.js'
+import {scene, renderer,camera } from './light.js'
+import{controls} from './render.js'
+import {  addlabel  ,AClabel,labelRenderer } from './tempeture.js'
+
+import { GUI } from '../jsm/libs/dat.gui.module.js'
+import { GLTFLoader } from '../jsm/loaders/GLTFLoader.js'
+import {   CSS2DObject} from '../jsm/renderers/CSS2DRenderer.js'
+
+import { LineSegments2 } from '../jsm/lines/LineSegments2.js';
+import { LineMaterial } from '../jsm/lines/LineMaterial.js';
+import{LineGeometry}from '../jsm/lines/LineGeometry.js'  
+      const params = {
+        HuaWei: false,
+        enableFoor2: true,
+        enableDevie: true,
+      }
+      
+     
+
+
+      var granaryArr = [],JIGUI=[],points=[]
+    
+      var label, URlSE,dept, IGarr,flyPipe
+      var R=20
+      // var curve = new THREE.CurvePath()
+var arr =[
+  new THREE.Vector3(-143, 140, 390),
+  new THREE.Vector3(-143, 140, 190),
+  new THREE.Vector3(10, 140, 190),
+  new THREE.Vector3(10,140,0),
+  new THREE.Vector3(-10,140,18),
+]
+
+      
+        
+      var loader = new GLTFLoader()
+      loader.load(
+        '../models/NanJingMetroBuilding/NanJingMetroBuilding_5F.gltf',
+        function (object) {
+         
+          object.scene.traverse(function (child) {
+            if (child.isMesh) {
+              child.castShadow = true
+              child.receiveShadow = true
+            }
+          })
+          object.scene.position.y = +160
+          scene.add(object.scene)
+          console.log('object.scene: ', object.scene)
+          addlabel();
+           IGarr = scene.getObjectByName('5F_Opacity_JG')
+          IGarr.traverse(function (mesh) {
+            if (mesh.isMesh) {
+              JIGUI.push(mesh)
+              granaryArr.push(mesh)
+            }
+          })
+          var Arr = scene.getObjectByName('5F_Click')
+          Arr.traverse(function (mesh) {
+            if (mesh.isMesh) {
+              granaryArr.push(mesh)
+              
+            }
+          })
+         
+         
+        }
+      )
+     
+      var tag = document.getElementById('label')
+
+      label = new CSS2DObject(tag)
+
+      tag.style.pointerEvents = 'none' //避免HTML标签遮挡三维场景的鼠标事件
+      scene.add(label)
+
+      var chooseMesh = null
+      var timeout = null //引入定时器
+
+      function choose(event) {
+
+        clearTimeout(timeout) //单击事件，清理定时器
+        //设置定时器
+        timeout = setTimeout(function () {
+
+          
+        if (chooseMesh) {
+          deleline(chooseMesh)
+          AClabel.element.style.visibility = 'hidden' //显示标签
+        }
+
+        var Sx = event.clientX //鼠标单击位置横坐标
+        var Sy = event.clientY //鼠标单击位置纵坐标
+        //屏幕坐标转WebGL标准设备坐标
+        var x = (Sx / window.innerWidth) * 2 - 1 //WebGL标准设备横坐标
+        var y = -(Sy / window.innerHeight) * 2 + 1 //WebGL标准设备纵坐标
+        //创建一个射线投射器`Raycaster`
+        var raycaster = new THREE.Raycaster()
+        //通过鼠标单击位置标准设备坐标和相机参数计算射线投射器`Raycaster`的射线属性.ray
+        raycaster.setFromCamera(new THREE.Vector2(x, y), camera)
+        //返回.intersectObjects()参数中射线选中的网格模型对象
+        // 未选中对象返回空数组[],选中一个数组1个元素，选中两个数组两个元素
+        var intersects = raycaster.intersectObjects(granaryArr)
+      
+        //   intersects.length大于0说明，说明选中了模型
+        if (intersects.length > 0) {
+          chooseMesh = intersects[0].object
+          // console.log('chooseMesh:单击事件 ', chooseMesh);
+          var AClabelname = document.getElementById('AClabelname')
+          
+         if(chooseMesh.name == 'JiGui02'){
+
+          
+          chooseMesh.material.transparent = true
+          chooseMesh.material.opacity = 0.1
+          
+         }else if(chooseMesh.name == 'JiGui03'){
+          chooseMesh.material.transparent = true
+          chooseMesh.material.opacity = 0.1
+         
+        
+         }else if(chooseMesh.name == 'JiGui04'){
+          
+          chooseMesh.material.transparent = true
+          chooseMesh.material.opacity = 0.1
+      
+         }else if(chooseMesh.name=='5F_UPS01'){  
+              AClabelname.innerHTML="1#UPS"
+              changeURL("11")
+              showktlabel(chooseMesh)
+            }else if(chooseMesh.name=="5F_UPS02"){
+              AClabelname.innerHTML="2#UPS"
+              changeURL("12")
+              showktlabel(chooseMesh)
+            }else if(chooseMesh.name=="5F_Air-Conditioning01"){
+              AClabelname.innerHTML="艾默生空调"
+              changeURL("31")
+              showktlabel(chooseMesh)
+            
+           
+            }else if(chooseMesh.name=="5F_Air-Conditioning"){
+              AClabelname.innerHTML="佳力图空调"
+              changeURL("61")
+              showktlabel(chooseMesh)
+          }else{
+
+        
+            if(chooseMesh.name == '5F_Air-Conditioning01'){
+                 showlabel()
+                 addline(chooseMesh)
+                 exchageURL(chooseMesh.name)
+             }else if(chooseMesh.name == '5F_Air-Conditioning'){
+                showlabel()  
+                addline(chooseMesh)
+                exchageURL(chooseMesh.name)  
+             }else if(chooseMesh.name == 'ZaiNanFuWuQi_00'){
+              showlabel()    
+              addline(chooseMesh)
+              exchageURL(chooseMesh.name)
+
+             }else if(chooseMesh.name == 'ZaiNanFuWuQi_01'){
+              addline(chooseMesh)
+              showlabel() 
+              exchageURL(chooseMesh.name)   
+             }else if(chooseMesh.name == 'ZaiNanFuWuQi_02'){
+              showlabel()   
+              addline(chooseMesh) 
+              exchageURL(chooseMesh.name)
+             }else if(chooseMesh.name == 'ZaiNanFuWuQi_03'){
+               showlabel()    
+               addline(chooseMesh)
+               exchageURL(chooseMesh.name)
+             }else if(chooseMesh.name == 'ZaiNanFuWuQi_04'){
+               showlabel()    
+               addline(chooseMesh)
+               exchageURL(chooseMesh.name)
+              }else if(chooseMesh.name == 'ZaiNanFuWuQi_05'){
+                 showlabel()    
+                 addline(chooseMesh)
+                 exchageURL(chooseMesh.name)
+              }else if(chooseMesh.name == 'ZaiNanFuWuQi_06'){
+                 showlabel()    
+                 addline(chooseMesh)
+                 exchageURL(chooseMesh.name)
+              }else if(chooseMesh.name == 'HeXinJiaoHuanJi12508G-AF01'){
+                  showlabel()    
+                  addline(chooseMesh)
+                  exchageURL(chooseMesh.name)
+              }else if(chooseMesh.name == 'H3C_WX3540H'){
+                  showlabel()    
+                  addline(chooseMesh)
+                  exchageURL(chooseMesh.name)
+              }else if(chooseMesh.name == 'EMC_DD6300'){
+                  showlabel()    
+                  addline(chooseMesh)
+                  exchageURL(chooseMesh.name)
+              }else if(chooseMesh.name == 'JiaoHuanJiS5130'){
+                  showlabel()    
+                  addline(chooseMesh)
+                  exchageURL(chooseMesh.name)
+              }else if(chooseMesh.name == 'JiaoHuanJiS5130_01'){
+                  showlabel()    
+                  addline(chooseMesh)
+                  exchageURL(chooseMesh.name)
+              }else if(chooseMesh.name == 'AF-1000_01'){
+                showlabel()    
+                addline(chooseMesh)
+                 exchageURL(chooseMesh.name)
+              }else  if(chooseMesh.name == 'AC-1000_01'){
+                showlabel()    
+                addline(chooseMesh)
+                 exchageURL(chooseMesh.name)
+              }else  if(chooseMesh.name == 'AC-1000'){
+                showlabel()    
+                addline(chooseMesh)
+                 exchageURL(chooseMesh.name)
+              }else  if(chooseMesh.name == 'AF-1000'){
+                showlabel()    
+                addline(chooseMesh)
+                 exchageURL(chooseMesh.name)
+              }else  if(chooseMesh.name == 'H3C_WX3540H002'){
+                showlabel()    
+                addline(chooseMesh)
+                 exchageURL(chooseMesh.name)
+              }else  if(chooseMesh.name == 'HeXinJiaoHuanJi12508G-AF002'){
+                showlabel()    
+                addline(chooseMesh)
+                 exchageURL(chooseMesh.name)
+          
+              }else  if(chooseMesh.name == 'JiaoHuanJiS5130_02'){
+                showlabel()    
+                addline(chooseMesh)
+                 exchageURL(chooseMesh.name)
+              }
+          }
+        }
+      }, 200)
+      }
+var   DoublechooseMesh= null
+//双击事件
+      function ChangeView(){
+        clearTimeout(timeout) 
+        if (DoublechooseMesh) {
+          moveup(DoublechooseMesh,-150)
+        }
+
+        var Sx = event.clientX //鼠标单击位置横坐标
+        var Sy = event.clientY //鼠标单击位置纵坐标
+        //屏幕坐标转WebGL标准设备坐标
+        var x = (Sx / window.innerWidth) * 2 - 1 //WebGL标准设备横坐标
+        var y = -(Sy / window.innerHeight) * 2 + 1 //WebGL标准设备纵坐标
+        //创建一个射线投射器`Raycaster`
+        var raycaster = new THREE.Raycaster()
+        //通过鼠标单击位置标准设备坐标和相机参数计算射线投射器`Raycaster`的射线属性.ray
+        raycaster.setFromCamera(new THREE.Vector2(x, y), camera)
+        //返回.intersectObjects()参数中射线选中的网格模型对象
+        // 未选中对象返回空数组[],选中一个数组1个元素，选中两个数组两个元素
+        var intersects = raycaster.intersectObjects(JIGUI)
+    
+      
+        //   intersects.length大于0说明，说明选中了模型
+        if (intersects.length > 0) {
+          DoublechooseMesh = intersects[0].object
+        
+         
+          if(DoublechooseMesh.name == 'JiGui02'){
+            createcurve(arr)
+            flyPipe=true
+            // camera.position.set(30,120,10)
+            controls.target.set(-200,140,3)
+            controls.update();
+         
+            moveup(DoublechooseMesh,-200)
+           }else if(DoublechooseMesh.name == 'JiGui03'){
+            camera.position.set(30,120,-50)
+            controls.target.set(-200,120,-50)
+            controls.update();
+            moveup(DoublechooseMesh,-230)
+            
+           }else if(DoublechooseMesh.name == 'JiGui04'){
+           
+            camera.position.set(30,120,-100)
+            controls.target.set(-200,120,-100)
+            controls.update();
+            moveup(DoublechooseMesh,-230)
+           }
+         
+        }
+
+      }
+
+
+      addEventListener('click', choose) // 监听窗口鼠标
+    
+      addEventListener('dblclick',ChangeView);
+     
+
+
+
+      addEventListener('pointermove',changecolor);
+     
+   var   changecolorMesh
+      function changecolor(){
+
+        if (changecolorMesh) {
+          changecolorMesh.material.emissive.set(0x000000)
+     
+          
+          }
+      
+  
+          var Sx = event.clientX //鼠标单击位置横坐标
+          var Sy = event.clientY //鼠标单击位置纵坐标
+          //屏幕坐标转WebGL标准设备坐标
+          var x = (Sx / window.innerWidth) * 2 - 1 //WebGL标准设备横坐标
+          var y = -(Sy / window.innerHeight) * 2 + 1 //WebGL标准设备纵坐标
+          //创建一个射线投射器`Raycaster`
+          var raycaster = new THREE.Raycaster()
+          //通过鼠标单击位置标准设备坐标和相机参数计算射线投射器`Raycaster`的射线属性.ray
+          raycaster.setFromCamera(new THREE.Vector2(x, y), camera)
+          //返回.intersectObjects()参数中射线选中的网格模型对象
+          // 未选中对象返回空数组[],选中一个数组1个元素，选中两个数组两个元素
+          var intersects = raycaster.intersectObjects(JIGUI)
+        
+          //   intersects.length大于0说明，说明选中了模型
+          if (intersects.length > 0) {
+            changecolorMesh = intersects[0].object
+            changecolorMesh.material.emissive.set(0x33FFFF)
+            // addline1(changecolorMesh)
+          }
+
+      }
+
+
+
+    
+       var findmesh = null
+       
+      //界面
+      const gui = new GUI()
+      var name = {
+        lingshan: function () {
+          window.location.href = './webgl_loader_gltf_njMetro.html'
+        },
+        Map: function () {
+          window.location.href = './Map.html'
+        },
+        EMC_DD6300: function () {
+           // 同步透明
+        // opacity()
+          //展示标签
+          // showlabel()
+          if (findmesh != null) {
+           
+            deleline1()
+            findmesh = scene.getObjectByName('EMC_DD6300')
+            addline1(findmesh)
+              exchageURL(findmesh.name)
+          } else {
+           
+            findmesh = scene.getObjectByName('EMC_DD6300')
+            addline1(findmesh)
+              exchageURL(findmesh.name)
+          }
+        },
+        关闭设备详情: function () {
+          label.element.style.visibility = 'hidden'
+        },
+        鸟瞰图:function(){
+          camera.position.set(400, 1200, 0)
+          camera.lookAt(0,0,0)
+        }
+      }
+      gui.add(name, 'Map').name('首页')
+      gui.add(name, 'lingshan').name('返回')
+      gui.add(name, '关闭设备详情')
+      gui.add(name, 'EMC_DD6300')
+      gui.add(name, '鸟瞰图').name('退出')
+
+
+      gui
+        .add(params, 'HuaWei')
+        .name('内部')
+        .onChange((e) => {
+          var inside = scene.getObjectByName('5F_Opacity_JG')
+
+          if (e == true) {
+            
+            inside.children.forEach(function (mesh) {
+              mesh.material.transparent = true
+              mesh.material.opacity = 0.1
+            })
+          } else {
+            inside.children.forEach(function (mesh) {
+              mesh.material.transparent = true
+              mesh.material.opacity = 1
+            })
+          }
+        })
+
+      var dropdown = { 管理交换机S5130: '未选' }
+      //选项
+      var states = ['001', '002', '003', '未选']
+      // 添加
+      var clipCtrl = gui.add(dropdown, '管理交换机S5130').options(states)
+      // 设置点击事件
+      clipCtrl.onChange((mesh) => {
+        // 同步透明
+        opacity()
+        //展示标签
+        showlabel()
+
+        switch (mesh) {
+          case '001':
+            if (findmesh != null) {
+              deleline1()
+              findmesh = scene.getObjectByName('JiaoHuanJiS5130')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            } else {
+              findmesh = scene.getObjectByName('JiaoHuanJiS5130')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            }
+            break
+          case '002':
+            if (findmesh != null) {
+              deleline1()
+              findmesh = scene.getObjectByName('JiaoHuanJiS5130_01')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            } else {
+              findmesh = scene.getObjectByName('JiaoHuanJiS5130_01')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            }
+            break
+          case '003':
+            if (findmesh != null) {
+              deleline1()
+              findmesh = scene.getObjectByName('JiaoHuanJiS5130_02')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            } else {
+              findmesh = scene.getObjectByName('JiaoHuanJiS5130_02')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            }
+            break
+        }
+      })
+
+      var dropdown = { H3C_WX3540H: '未选' }
+      //选项
+      var states = ['001', '002', '未选']
+      // 添加
+      var clipCtrl = gui.add(dropdown, 'H3C_WX3540H').options(states)
+      // 设置点击事件
+      clipCtrl.onChange((mesh) => {
+        // 同步透明
+        opacity()
+        //展示标签
+        showlabel()
+        switch (mesh) {
+          case '001':
+            if (findmesh != null) {
+              deleline1()
+              findmesh = scene.getObjectByName('H3C_WX3540H')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            } else {
+              findmesh = scene.getObjectByName('H3C_WX3540H')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            }
+            break
+          case '002':
+            if (findmesh != null) {
+              deleline1()
+              findmesh = scene.getObjectByName('H3C_WX3540H002')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            } else {
+              findmesh = scene.getObjectByName('H3C_WX3540H002')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            }
+            break
+        }
+      })
+
+      var dropdown = { AF_1000: '未选' }
+      //选项
+      var states = ['001', '002', '未选']
+      // 添加
+      var clipCtrl = gui.add(dropdown, 'AF_1000').options(states)
+      // 设置点击事件
+      clipCtrl.onChange((mesh) => {
+        // 同步透明
+        opacity()
+        //展示标签
+        showlabel()
+        switch (mesh) {
+          case '001':
+            if (findmesh != null) {
+              deleline1()
+              findmesh = scene.getObjectByName('AF-1000')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            } else {
+              findmesh = scene.getObjectByName('AF-1000')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            }
+            break
+          case '002':
+            if (findmesh != null) {
+              deleline1(findmesh)
+              findmesh = scene.getObjectByName('AF-1000_01')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            } else {
+              findmesh = scene.getObjectByName('AF-1000_01')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            }
+            break
+        }
+      })
+
+
+      var dropdown = { AC_1000: '未选' }
+      //选项
+      var states = ['001', '002', '未选']
+      // 添加
+      var clipCtrl = gui.add(dropdown, 'AC_1000').options(states)
+      // 设置点击事件
+      clipCtrl.onChange((mesh) => {
+        // 同步透明
+        opacity()
+        //展示标签
+        showlabel()
+        switch (mesh) {
+          case '001':
+            if (findmesh != null) {
+              deleline1()
+              findmesh = scene.getObjectByName('AC-1000')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            } else {
+              findmesh = scene.getObjectByName('AC-1000')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            }
+            break
+          case '002':
+            if (findmesh != null) {
+              deleline1(findmesh)
+              findmesh = scene.getObjectByName('AC-1000_01')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            } else {
+              findmesh = scene.getObjectByName('AC-1000_01')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            }
+            break
+        }
+      })
+
+      var dropdown = { 灾备服务器: '未选' }
+      //选项
+      var states = ['001', '002', '003', '004', '005', '006', '007', '未选']
+      // 添加
+      var clipCtrl = gui.add(dropdown, '灾备服务器').options(states)
+      // 设置点击事件
+      clipCtrl.onChange((mesh) => {
+        // 同步透明
+        opacity()
+        // 同步透明
+        opacity()
+        //展示标签
+        showlabel()
+
+        switch (mesh) {
+          case '001':
+            if (findmesh != null) {
+              deleline1(findmesh)
+              findmesh = scene.getObjectByName('ZaiNanFuWuQi_00')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            } else {
+              findmesh = scene.getObjectByName('ZaiNanFuWuQi_00')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            }
+            break
+          case '002':
+            if (findmesh != null) {
+              deleline1(findmesh)
+              findmesh = scene.getObjectByName('ZaiNanFuWuQi_01')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            } else {
+              findmesh = scene.getObjectByName('ZaiNanFuWuQi_01')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            }
+            break
+          case '003':
+            if (findmesh != null) {
+              deleline1(findmesh)
+              findmesh = scene.getObjectByName('ZaiNanFuWuQi_02')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            } else {
+              findmesh = scene.getObjectByName('ZaiNanFuWuQi_02')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            }
+            break
+          case '004':
+            if (findmesh != null) {
+              deleline1(findmesh)
+              findmesh = scene.getObjectByName('ZaiNanFuWuQi_03')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            } else {
+              findmesh = scene.getObjectByName('ZaiNanFuWuQi_03')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            }
+            break
+          case '005':
+            if (findmesh != null) {
+              deleline1(findmesh)
+              findmesh = scene.getObjectByName('ZaiNanFuWuQi_04')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            } else {
+              findmesh = scene.getObjectByName('ZaiNanFuWuQi_04')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            }
+            break
+          case '006':
+            if (findmesh != null) {
+              deleline1(findmesh)
+              findmesh = scene.getObjectByName('ZaiNanFuWuQi_05')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            } else {
+              findmesh = scene.getObjectByName('ZaiNanFuWuQi_05')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+              exchageURL(findmesh.name)
+            }
+            break
+          case '007':
+            if (findmesh != null) {
+              deleline1(findmesh)
+              findmesh = scene.getObjectByName('ZaiNanFuWuQi_06')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            } else {
+              findmesh = scene.getObjectByName('ZaiNanFuWuQi_06')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            }
+            break
+        }
+      })
+
+      var dropdown = { 核心交换机12508G_AF: '未选' }
+      //选项
+      var states = ['001', '002', '未选']
+      // 添加
+      var clipCtrl = gui.add(dropdown, '核心交换机12508G_AF').options(states)
+      // 设置点击事件
+      clipCtrl.onChange((mesh) => {
+        // 同步透明
+        opacity()
+        //展示标签
+        showlabel()
+
+        switch (mesh) {
+          case '001':
+            if (findmesh != null) {
+              deleline1(findmesh)
+              findmesh = scene.getObjectByName('HeXinJiaoHuanJi12508G-AF01')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            } else {
+              findmesh = scene.getObjectByName('HeXinJiaoHuanJi12508G-AF01')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            }
+            break
+          case '002':
+            if (findmesh != null) {
+              deleline1(findmesh)
+              findmesh = scene.getObjectByName('HeXinJiaoHuanJi12508G-AF002')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            } else {
+              findmesh = scene.getObjectByName('HeXinJiaoHuanJi12508G-AF002')
+              addline1(findmesh)
+              exchageURL(findmesh.name)
+            }
+            break
+        }
+      })
+
+
+//  添加单独设备线框
+      function addline(findmesh) {
+        console.log("进入线框添加");
+        var edges = new THREE.EdgesGeometry(findmesh.geometry)
+        var geometry = new LineGeometry();
+        geometry.fromEdgesGeometry(edges)
+        // 3. 创建 LineMaterial，设置颜色和线宽
+        var material = new LineMaterial({
+            color: 0x31deef,
+            linewidth: 4
+        })
+        // 4. 设置材质分辨率
+        material.resolution.set(window.innerWidth, window.innerHeight);
+        // 5. 创建 Line2
+        var line = new LineSegments2(geometry, material);
+        // line.scale.set(810,810,810)
+        line.name = 'line'
+        line.position.copy(findmesh.getWorldPosition())  
+        scene.add(line) 
+      }
+      // 添加线框
+      function addline1(findmesh) {
+        var edges = new THREE.EdgesGeometry(findmesh.geometry)
+        var geometry = new LineGeometry();
+        geometry.fromEdgesGeometry(edges)
+        // 3. 创建 LineMaterial，设置颜色和线宽
+        var material = new LineMaterial({
+            color: 0x31deef,
+            linewidth: 4
+        })
+        // 4. 设置材质分辨率
+        material.resolution.set(window.innerWidth, window.innerHeight);
+        // 5. 创建 Line2
+        var line = new LineSegments2(geometry, material);
+        // line.scale.set(810,810,810)
+        line.name = 'line1'
+        line.position.copy(findmesh.getWorldPosition())
+        scene.add(line)
+      }
+      // 删除线框方法
+      function deleline(findmesh) {
+        var line = scene.getObjectByName('line')
+        // console.log('line: ', line);
+        scene.remove(line)
+      }
+
+      function deleline1() {
+        var line1 = scene.getObjectByName('line1')
+        console.log('line1: ', line1);
+
+        scene.remove(line1)
+      }
+      // 展示标签--后期传数据调佣数据库填充
+      function showlabel(mesh) {
+        label.element.style.visibility = 'visible'
+      }
+
+      function showktlabel(chooseMesh){
+        AClabel.element.style.visibility = 'visible' //显示标签
+        AClabel.position.copy(chooseMesh.getWorldPosition())
+        AClabel.position.z =chooseMesh.getWorldPosition().z-130;
+        AClabel.position.y =50;
+      }
+      // 使外部透明化，以便于观看
+      function opacity() {
+        var inside = scene.getObjectByName('5F_Opacity_JG')
+        inside.children.forEach(function (mesh) {
+          mesh.material.transparent = true
+          mesh.material.opacity = 0.1
+        })
+      }
+
+  
+
+      function createcurve(arr, num) {
+        var curve = new THREE.CurvePath()
+        // 从曲线上获得501个顶点，数量根据需要自己设置
+        // var points = curve.getPoints(6000);
+        for (var i = 0; i < arr.length - 1; i++) {
+          if (i == 0) {
+            var dir = arr[0].clone().sub(arr[1])
+            dir.normalize()
+            var p2 = arr[1].clone()
+            p2.add(dir.clone().multiplyScalar(R))
+            var line = new THREE.LineCurve3(arr[0], p2)
+            curve.curves.push(line)
+          } else {
+            // 计算三个点构成的两条线的方向
+            var dir1 = arr[i - 1].clone().sub(arr[i])
+            dir1.normalize()
+            var dir2 = arr[i + 1].clone().sub(arr[i])
+            dir2.normalize()
+            var p12_ = arr[i].clone()
+            p12_.add(dir1.clone().multiplyScalar(R))
+            var p1 = arr[i].clone().add(dir1.clone().multiplyScalar(R))
+            var p2 = arr[i].clone()
+            var p3 = arr[i].clone().add(dir2.clone().multiplyScalar(R))
+            var beziercurve = new THREE.QuadraticBezierCurve3(p1, p2, p3)
+            var line1 = arr[i].clone()
+            line1.add(dir2.clone().multiplyScalar(R))
+            var line2 = arr[i + 1].clone()
+            if (i < arr.length - 2) {
+              //最后一段不用减掉半径尺寸
+              line2.add(dir2.clone().multiplyScalar(-R))
+            }
+            var line = new THREE.LineCurve3(line1, line2)
+            // 把转换曲线和直线插入曲线中
+            curve.curves.push(beziercurve, line)
+          }
+        }
+        points = curve.getSpacedPoints(3000)
+      }
+
+
+// var curve = new THREE.CurvePath(arr)
+// var points = curve.getPoints(1000);
+var geometry = new THREE.BufferGeometry() //声明一个几何体对象Geometry
+geometry.setFromPoints(points)
+// 材质对象
+var material = new THREE.LineBasicMaterial({
+  color: 0xffff00,
+  opacity: 0.5,
+})
+//线条模型对象
+var line = new THREE.Line(geometry, material)
+scene.add(line)
+
+
+
+      function moveup(mesh,num) {
+        var pos = mesh.getWorldPosition()
+        var tween = new TWEEN.Tween(pos)
+        tween.to(
+          {
+            x: pos.x=num,
+          },
+          3000
+        )
+        tween.onUpdate(function () {
+          mesh.position.x = pos.x
+        })
+        tween.start()
+      }
+      var num = 0
+      function render() {
+        // console.log(camera.position);
+        TWEEN.update()
+        renderer.render(scene, camera) //执行渲染操作
+         labelRenderer.render(scene, camera) //CSS3D渲染
+        
+        // composer1.render()
+        requestAnimationFrame(render) //请求再次执行渲染函数render，渲染下一帧
+      if(flyPipe){
+
+        if (num < points.length - 100) {
+          var i = Math.floor(num)
+          // 相机位置设置在当前点位置
+          camera.position.set(points[i].x, points[i].y, points[i].z)
+          
+          // 设置相机观察点为当前点的下一个点，两点可以构成一个视线方向
+          // 你可以简单理解为：要始终保持视线为曲线的切线方向
+          camera.lookAt(
+            new THREE.Vector3(
+              points[i + 1].x,
+              points[i].y - 0.01,
+              points[i + 1].z
+            )
+          )
+         
+          num += 4 //调节速度
+        } else {
+          flyPipe = false
+          num = 0
+        }
+      }
+      
+      
+       
+      }
+      render()
+
+
+
+      var URl = "http://192.168.108.130:9090/njdt_yw_server/3d-view/get-wsd?type=1"
+      var URlTEST ="http://192.168.108.130:9090/njdt_yw_server/3d-view/get-device-info?deviceNo=S0E31&type=1"
+      var    deptURL ='http://192.168.108.130:9090/njdt_yw_server/network-equipment/get-zb-info?deviceNo=JiaoHuanJiS5130'
+
+      // 温湿度获取数据
+      var message;
+      $.ajax({
+        type:'post',
+            url: URl,
+            data:message,
+            dataType : 'json',
+            async : false, //默认为true 异步
+            success:function(data){
+               
+              message=data;
+
+            },   
+        });    
+        $().ready(function(){
+      $("#Tvalue1").text(message.data[0].data)
+      
+      $("#Hvalue1").text(message.data[1].data)
+      
+      $("#Tvalue2").text(message.data[2].data)
+      
+      $("#Hvalue2").text(message.data[3].data)
+      $("#Tvalue3").text(message.data[4].data)
+      
+      $("#Hvalue3").text(message.data[5].data)
+      $("#Tvalue4").text(message.data[6].data)
+      
+      $("#Hvalue4").text(message.data[7].data)
+        })
+
+            // 空调等设备弹出标签数据
+          var SE031msg
+         $.extend({'SE031taglabel':function(){
+          $("#tagName").text(SE031msg.data[0].tagName)
+          $("#latestValue").text(SE031msg.data[0].latestValue)
+          // $("#tname").text(SE031msg.data[1].tagName)
+          // $("#tvalue").text(SE031msg.data[1].latestValue)
+         },
+         'chURL':function(num){
+            URlSE= URlTEST.replace(/31/,num)
+         },
+        'Change':function(name){
+          dept = deptURL.replace(/JiaoHuanJiS5130/,name) 
+
+        }
+        })
+
+        function changeURL(num){
+        $.chURL(num)   
+        $.ajax({
+          type:'post',
+              url: URlSE,
+              data:SE031msg,
+              dataType : 'json',
+              async : false, 
+              success:function(data){
+                 
+                SE031msg=data;
+                
+  
+              },
+             
+          });
+          $("#nr").html('')
+          SE031msg.data.sort().reverse();
+          $.each(SE031msg.data,function(iteam,index){
+            
+           if(index.latestValue == 0){
+
+           }else{
+           
+            if(iteam%2==0){
+					
+              $("#nr").prepend(
+              '<div class="TH_tagname_out">'+'<div class="TH_tagname" >'+index.tagName+
+              '</div><div  class="TH_name_value">'+index.latestValue+'</div></div>')
+              
+            }else if(iteam%2==1){
+              
+              
+              $("#nr").prepend(
+              '<div  class="TH_name_out2">'+
+                '<div class="TH_tagname"  >'+index.tagName+'</div>'+
+                '<div  class="TH_name_value">'+index.latestValue+'</div></div>')
+            }
+
+
+
+           }
+           
+          })
+
+         }
+
+
+// 独立设备
+        
+       
+var deptdata
+function exchageURL(name){
+  // console.log('dept: ', dept);
+  $.Change(name)
+  
+  $.ajax({
+    type:'post',
+        url: dept,
+        
+        data:deptdata,
+        dataType : 'json',
+        async : false, 
+        success:function(data){
+          deptdata=data;
+          
+        },
+       
+    });
+if(deptdata.data == null){
+
+  $("#2Dname").text(0)
+  $("#cpuPjLyl").text(0)
+  $("#fsDbl").text(0)
+  $("#xySj").text(0)
+  $("#ttl").text(0)
+  $("#ncLyl").text(0)
+  $("#gbBl").text(0)
+  $("#dbl").text(0)
+  $("#fsGbBl").text(0)
+  $("#ncLyl").text(0)
+
+
+}else{
+    $("#2Dname").text(deptdata.data.deviceName)
+    $("#cpuPjLyl").text(deptdata.data.cpuPjLyl)
+    $("#fsDbl").text(deptdata.data.fsDbl)
+    $("#xySj").text(deptdata.data.xySj)
+    $("#ttl").text(deptdata.data.ttl)
+    $("#ncLyl").text(deptdata.data.ncLyl)
+    $("#gbBl").text(deptdata.data.gbBl)
+    $("#dbl").text(deptdata.data.dbl)
+    $("#fsGbBl").text(deptdata.data.fsGbBl)
+    $("#ncLyl").text(deptdata.data.ncLyl)
+}
+
+}

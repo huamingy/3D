@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="./css/main.css" />
+  <link rel="stylesheet" type="text/css" href="./css/winbox.min.css" />
+  <script type="text/javascript" src="./js/jquery.js"></script>
+  <script type="module" src="./js/JiGuangLou-3D.js"></script>
+  <script type="module" src="./js/winbox.min.js"></script>
+  <script src="js/pace.min.js"></script>
+  <script src="./jsm/tween.umd.js"></script>
+  <link rel="stylesheet" href="css/loading-bar.css">
+  <title>激光楼(实景)</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <nav  class="ControlClass" id="Control">
+    <ul >
+           <li>
+            <img id="enableFoor"  class="all"  title="内部" src="./img/内部.png">     
+       </li>
+       <li>
+           <img id="outletopcity"  class="all"  title="隐藏通风管道 " src="./img/管道.png">
+       </li>
+       <li>
+        <img id="hiddenBox"  class="all"  title="隐藏box " src="./img/隐藏box.png">
+    </li>
+       <li >
+          <img  class="all"  title="分离动画  " src="./img/分离动画.png"id="btn" >
+       </li>
+       <li >
+          <img id="TemHum"  class="all"  title="温度数据 " src="./img/温度数据.png">
+       </li>
+       <li >
+          <img id="TemHum"  class="all"  title="设备 " src="./img/设备.png">
+       <ul>
+         <img id="LengQueLouPipe"  class="all"  title="冷却楼管道" src="./img/冷却楼管.png" > 
+             <!-- <img id="OutLet"  class="all"  title="" src="./img">出风口  -->
+             <img id="LengDongShuiXunHuanPump"  class="all"  title="冷冻水循环水泵 " src="./img/冷冻水循环水泵.png"  >
+             <img id="LengQueShuiXunHuanPump"  class="all"  title="冷却水循环水泵" src="./img/冷却水循环水泵.png"> 
+             <img id="ReShuiXunHuanPump"  class="all"  title= "热水循环水泵" src="./img/热水循环水泵.png">
+             <img id="GongYiLengQueShuiPump"  class="all"  title="工艺冷却水泵" src="./img/工艺冷却水泵.png"> 
+             <img id="ShuiLengLuoGanJiZu"  class="all"  title="水冷螺杆机组 " src="./img/水冷螺杆机组.png">
+             <img id="LengShuiTa"  class="all"  title="冷水塔 " src="./img/冷却塔.png">
+             <img id="ShuiGuanDianJiaRe"  class="all"  title="水管电加热" src="./img/水管电加热.png"> 
+             <img id="BanReHuanReQi"  class="all"  title="板式换热器" src="./img/板式换热器.png"> 
+             <img id="ZLBianPingLengQueShuiJiZu"  class="all"  title="直变频工艺冷冻水机组" src="./img/工艺冷冻水机.png">
+             <img id="ChunShuiZhungZhi"  class="all"  title="纯水装置 " src="./img/纯水装置.png">
+             <img id="DingYa"  class="all"  title="定压补水装置" src="./img/定压补水.png"> 
+             <img id="JiaYao"  class="all"  title="加药装置" src="./img/加药装置.png"> 
+         
+       </ul>
+       </li>
+       <li style="margin-top: 150px;" >
+        <img id="start"  class="all"  title="开始巡检" src="./img/开始巡检.png"> 
+    </li>
+    <li >
+       <img id="kongtiaoxunjian"  class="all"  title="巡检-空调" src="./img/巡检空调.png">  
+    </li>
+    <li >
+       <img id="lengquelouxunjian"  class="all"  title="巡检-冷却楼" src="./img/巡检冷却楼.png"> 
+    </li>
+    <li >
+       <img id="exit"  class="all"  title="退出" src="./img/退出.png"> 
+    <ul>
+       
+        
+    </ul>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+  <div id="backstore" style="display: none">
+    <div id="content">
+      <div class="backimg">
+        <h2 id="ktname" class="namesyle">AHU1</h3>
+      </div>
+      <div id="labelone"></div>
+    </div>
+    <div id="controls">
+      <button onclick="window.buttons['minimize']()">Minimize (Toggle)</button>
+      <button onclick="window.buttons['maximize']()">Maximize (Toggle)</button>
+      <button onclick="window.buttons['fullscreen']()">Fullscreen (Toggle)</button>
+      <button onclick="window.buttons['modal']()">Modal (Toggle)</button>
+      <button onclick="window.buttons['center']()">Move (Center, Center)</button>
+      <button onclick="window.buttons['move']()">Move (Right, Bottom)</button>
+      <button onclick="window.buttons['resize']()">Resize (50%, 50%)</button>
+      <button onclick="window.buttons['title']()">https://www.ishuquge.com/txt/75245/14153706.htmlSet Title</button>
+      <button onclick="window.buttons['color']()">Set Color</button>
+      <button onclick="window.buttons['add']()">Add Class (my-theme)</button>
+      <button onclick="window.buttons['remove']()">Remove Class (my-theme)</button>
+      <button onclick="window.buttons['close']()">Close</button>
+      <button onclick="window.buttons['force_close']()">Force Close</button>
+    </div>
+  </div>
+<div id ="th_label"></div>
+
+  <script type="module"></script>
+</body>
+
+</html>

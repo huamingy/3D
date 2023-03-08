@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>性能监视器 Stats</title>
+    <style>
+      body {
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <script type="module">
+      import * as THREE from '../build/three.module.js'
+
+      import Stats from './jsm/libs/stats.module.js'
+
+      // 创建场景
+      const scene = new THREE.Scene()
+
+      // 创建相机（类似人的眼睛，可以看到东西）
+      // 创建透视相机
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      )
+
+      // 设置相机对象的位置
+      // 分别传入 x y z 轴的坐标
+      camera.position.set(10, 10, 10)
+      camera.lookAt(scene.position)
+
+      // 将相机添加到场景中
+      scene.add(camera)
+
+      // 创建几何体
+      const cubeGeometry = new THREE.BoxGeometry(1, 1, 1)
+      // 设置几何体材质
+      const cubeMaterial = new THREE.MeshBasicMaterial({ color: 0xffff00 })
+      // 根据几何体和材质创建物体
+      const cube = new THREE.Mesh(cubeGeometry, cubeMaterial)
+
+      // 将几何体添加到场景中
+      scene.add(cube)
+
+      // 初始化渲染器
+      const renderer = new THREE.WebGLRenderer()
+
+      // 设置渲染的尺寸大小
+      renderer.setSize(window.innerWidth, window.innerHeight)
+
+      // 把渲染器添加到body里
+      // 将 webgl 渲染的 canvas 内容添加到 body
+      document.body.appendChild(renderer.domElement)
+
+      // 创建性能监视器
+      let stats = new Stats()
+
+      // 设置监视器面板，传入面板id（0: fps, 1: ms, 2: mb）
+      stats.setMode(0)
+
+      // 设置监视器位置
+      stats.domElement.style.position = 'absolute'
+      stats.domElement.style.left = '0px'
+      stats.domElement.style.top = '0px'
+
+      // 将监视器添加到页面中
+      document.body.appendChild(stats.domElement)
+
+      function render() {
+        // 更新帧率
+        stats.update()
+
+        cube.rotation.x += 0.01
+        cube.rotation.y += 0.01
+        cube.rotation.z += 0.01
+
+        renderer.render(scene, camera)
+        requestAnimationFrame(render)
+      }
+
+      render()
+    </script>
+  </body>
+</html>

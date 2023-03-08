@@ -1,0 +1,156 @@
+.label_name{
+				
+				
+  font-family:微软雅黑; 
+  width: 200px;
+  height: 100px;
+  background-color: rgba(25, 20, 20, 0.3);
+  border-radius: 10px;
+}
+.label_name_one{
+  line-height: 50px;
+  color: #dbad08;font-size: 28px;padding-left: 15px;border-bottom: 2px  solid #ffffff ;
+}
+.label_name_floor{
+  color: #ffffff;
+  font-size: 20px;
+  padding-left: 15px;
+  line-height: 50px;
+}
+
+.labelclass_shui_all{
+  visibility: hidden;
+  overflow: scroll;
+  width: 210px;
+  height: 90px;
+  border: 1px solid #ffffff;
+  background-size: 100% 100%;
+  background-color: rgba(44, 43, 46, 0.3);
+  font-family: 微软雅黑;
+  /* background-color: rgba(13, 10, 27, 0.3); */
+  font-size: 15px;
+}
+.label_center_shui_all{
+  width: 140px;
+  height: 20px;
+color: rgb(0,255,255);
+}
+.temshui_all{
+  color: rgb(99, 227, 236);
+    /* background-color:bisque; */
+    padding-left: 10px;
+    width: 150px;
+  float: left;
+  /* text-align: center; */
+}
+
+.humshui_all{
+  /* background-color:lightblue; */
+  font-weight: 800;
+    color: rgb(222, 236, 237);
+    padding-left: 20px;
+    width: 180px;
+    /* text-align: center; */
+}
+
+
+
+
+.labelclass_shuibeng_all{
+  
+  width: 40px;
+  height: 20px;
+
+  background-size: 100% 100%;
+  color: #00ffff;
+  font-family: 微软雅黑;
+  /* background-color: rgba(13, 10, 27, 0.3); */
+  font-size: 20px;
+}
+.label_center_shuibeng_all{
+  border: 1px solid #29c9e9;
+  background-color: rgba(13, 10, 27, 0.3);
+  width: 30px;
+  height: 40px;
+}
+/* .temshuibeng_all{
+  color: rgb(8, 226, 242);
+		   
+		    padding-left: 5px;
+		    width: 30px;
+		  float: left;
+      text-align: center;
+      line-height: 12px;
+} */
+
+.humshuibeng_all{
+ 
+  font-weight: 800;
+    color: rgb(222, 236, 237);
+    padding-left: 0px;
+    width: 0px;
+    line-height: 30px;
+    text-align: center;
+}
+/* 新版空调数据页面样式*/
+
+.AHU_outerClass {
+  visibility: hidden;
+  font-family: '微软雅黑';
+  color: aliceblue;
+  width: 700px;
+  height: 540px;
+  background-color: rgba(5, 5, 5, 0.689);
+}
+.AHU_name {
+  padding-left: 10px;
+  font-size: 40px;
+  line-height: 50px;
+  font-weight: 800;
+  width: 100%;
+  border-bottom: 1px solid #a0a0ac;
+  color: aqua;
+}
+
+.dataclass_left{
+  float: left;width: 300px;
+padding:10px 10px;
+
+}
+.dataclass_right{
+  padding:10px 10px;
+  float: left;width: 300px;
+}
+
+.dataclass_out {
+  /* padding-top: 1px; */
+  padding-top: 5px;
+  font-size: 20px;
+  line-height: 24px;
+  width: 300px;
+  height: 24px;
+
+ 
+}
+.dataclass_out_name{
+clear: both;
+float: left;
+width: 180px;
+font-weight: 600;
+color: rgb(10, 192, 47);
+}
+.dataclass_value {
+  float: left;
+  color: #eee309;
+}
+/* .AHU_dataclass_value{
+  color: #FFFF00;
+} */
+.AHU_loginout {
+  position: absolute;
+  top: 6px;
+  left: 630px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}

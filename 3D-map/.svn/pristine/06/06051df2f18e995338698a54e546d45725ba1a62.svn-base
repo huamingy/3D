@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ch">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="../css/Alllabel.css" />
+    <script type="module" src="../js/nanjingnanBuilding_2F.js"></script>
+
+    <title>南京南大楼二层</title>
+  </head>
+  <body>
+    <div id="label" class="backg">
+      <div class="namesyle">同步交换机001</div>
+      <div class="label">
+        <div class="zbname">指标名称</div>
+        <div class="zbvalue">指标值</div>
+      </div>
+
+      <div id="label1" class="font">
+        <div class="style1">丢包率</div>
+        <div class="style2">555</div>
+      </div>
+
+      <div id="label1" class="nofont">
+        <div class="style1">cpu平均利用率</div>
+        <div class="style2">555</div>
+      </div>
+
+      <div id="label1" class="font">
+        <div class="style1">接收广播包率</div>
+        <div class="style2">555</div>
+      </div>
+
+      <div id="label1" class="nofont">
+        <div class="style1">发送广包率播</div>
+        <div class="style2">555</div>
+      </div>
+      <div id="label1" class="font">
+        <div class="style1">广播包率</div>
+        <div class="style2">555</div>
+      </div>
+
+      <div id="label1" class="nofont">
+        <div class="style1">发送丢包率</div>
+        <div class="style2">555</div>
+      </div>
+      <div id="label1" class="font">
+        <div class="style1">接收丢包率</div>
+        <div class="style2">555</div>
+      </div>
+
+      <div id="label1" class="nofont">
+        <div class="style1">响应时间</div>
+        <div class="style2">555</div>
+      </div>
+      <div id="label1" class="font">
+        <div class="style1">吞吐量</div>
+        <div class="style2">555</div>
+      </div>
+
+      <div id="label1" class="nofont">
+        <div class="style1">内存利用率</div>
+        <div class="style2">555</div>
+      </div>
+      <div id="label1" class="font">
+        <div class="style1">内存总容量</div>
+        <div class="style2">555</div>
+      </div>
+      <div id="label1" class="nofont">
+        <div class="style1">内存已使用容量</div>
+        <div class="style2">555</div>
+      </div>
+    </div>
+
+    <div id="OneName" class="THnamediv">
+      <div class="THname">1#温湿度</div>
+      <div class="THname_t">温度:</div>
+      <div class="THname_t_value">26℃</div>
+      <div class="THname_h">湿度:</div>
+      <div class="THname_h_value">40%</div>
+    </div>
+
+    <div id="TwoName" class="THnamediv">
+      <div class="THname">2#温湿度</div>
+      <div class="THname_t">温度:</div>
+      <div class="THname_t_value">26℃</div>
+      <div class="THname_h">湿度:</div>
+      <div class="THname_h_value">40%</div>
+    </div>
+
+    <div id="ThreeName" class="THnamediv">
+      <div class="THname">3#温湿度</div>
+      <div class="THname_t">温度:</div>
+      <div class="THname_t_value">26℃</div>
+      <div class="THname_h">湿度:</div>
+      <div class="THname_h_value">40%</div>
+    </div>
+
+    <div id="FourName" class="THnamediv">
+      <div class="THname">4#温湿度</div>
+      <div class="THname_t">温度:</div>
+      <div class="THname_t_value">26℃</div>
+      <div class="THname_h">湿度:</div>
+      <div class="THname_h_value">40%</div>
+    </div>
+    
+    
+    <div id="AClabel" style="visibility: hidden;width:200px;height: 400px;background-color: #2F4F4F;">
+			<h3 id = "AClabelname" style="color: #FFFFFF; text-align: center;">空调</h2>
+			<div></div>
+		</div>
+
+
+    <script type="module">
+      import { renderer, controls } from '../js/render.js'
+    </script>
+  </body>
+</html>

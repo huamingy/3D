@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.project.datasource.modbus.equipment.mapper.ModbusCoolTowerMapper">
+
+    <select id="selectEnergyLineData" resultType="java.math.BigDecimal">
+        SELECT
+            AVG( eh_rt_energy_con1 ) AS rt_value
+        FROM
+            modbus_cool_tower
+        WHERE
+            create_time &gt;= #{startTime}
+            AND create_time &lt;= #{endTime}
+        GROUP BY
+            date_format( create_time, '%Y-%m-%d' )
+        ORDER BY
+            create_time
+    </select>
+
+</mapper>

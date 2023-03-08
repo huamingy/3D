@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- 自动扫描且只扫描@Controller -->
+	<context:component-scan base-package="com.gx" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+    <mvc:interceptors>
+		<mvc:interceptor>
+		<!-- 需拦截的地址 -->
+		<!-- 一级目录 -->
+		<mvc:mapping path="/*.do" />
+		<!-- 二级目录 -->
+		<mvc:mapping path="/*/*.do" />
+		<!-- 需排除拦截的地址 -->
+		<mvc:exclude-mapping path="/login/go-login.do"/>
+		<mvc:exclude-mapping path="/login/init-login.do"/>
+		<mvc:exclude-mapping path="/login/to-changepwd-beforeLogin.do"/>
+		<mvc:exclude-mapping path="/login/changepwd-save-beforeLogin.do"/>
+		<mvc:exclude-mapping path="/login/form-validate.do"/>
+		<mvc:exclude-mapping path="/login/loginValidate.do"/>
+		<mvc:exclude-mapping path="/login/loginToFileSystem.do"/>
+		<mvc:exclude-mapping path="/intray/sw-report.do"/>
+		<mvc:exclude-mapping path="/fileupload/notice-file-download.do"/>
+		<mvc:exclude-mapping path="/eas_flow/pushOaTask.do"/>
+		<mvc:exclude-mapping path="/eas_flow/changeStatus.do"/>
+		<mvc:exclude-mapping path="/eas_flow/delStatus.do"/>
+		<mvc:exclude-mapping path="/fileupload/ueditor-image-get.do"/>
+			<mvc:exclude-mapping path="/mobile-*/*.do" />
+		<bean class="com.gx.soft.common.interceptor.SessionInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+	<mvc:annotation-driven conversion-service="conversionService" >
+		<mvc:message-converters register-defaults="true">
+			<!-- 将StringHttpMessageConverter的默认编码设为UTF-8 -->
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+		    	<constructor-arg value="UTF-8" />
+			</bean>
+  		</mvc:message-converters>
+	</mvc:annotation-driven>
+	<!-- 定义JSP文件的位置 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/gx/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+
+
+	<!-- 容器默认的DefaultServletHandler处理 所有静态内容与无RequestMapping处理的URL-->
+	<mvc:default-servlet-handler/>
+
+	<!-- 定义无需Controller的url<->view直接映射 -->
+	<mvc:view-controller path="/" view-name="relogin.jsp"/>
+
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="utf-8"/>
+<!--		<property name="maxUploadSize" value="52940800"/>&lt;!&ndash; 50MB &ndash;&gt;-->
+<!--		<property name="maxUploadSize" value="158822400"/>&lt;!&ndash; 50MB &ndash;&gt;-->
+		<property name="maxUploadSize" value="157286400"/><!-- 150MB -->
+	</bean>
+
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="converters">
+			<list>
+				<bean class="com.gx.core.spring.DateConverter" />
+			</list>
+		</property>
+	</bean>
+
+</beans>

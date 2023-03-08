@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ch">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="./css/main.css" />
+    <link href="./css/video-js.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/tinyselect.css" />
+    <link rel="stylesheet" href="./css/spin.css" />
+    <script
+      type="text/javascript"
+      src="./jsm/jquery/jquery-1.12.4.min.js"
+    ></script>
+    <script type="text/javascript" src="./jsm/video/video.min.js"></script>
+    <script type="text/javascript" src="./jsm/tween.umd.js"></script>
+    <script src="./jsm/jquery/jsencrypt.min.js"></script>
+
+    <!-- 用于RSA加密 -->
+    <script src="./jsm/jquery/jsWebControl-1.0.0.min.js"></script>
+    <script src="./js/tinyselect.js"></script>
+
+    <script src="./js/mian/pace.min.js"></script>
+    <link rel="stylesheet" href="./css/loading-bar.css" />
+    <title>盐城疾控三层模型</title>
+    <style></style>
+  </head>
+
+  <body>
+    <div id="foo"></div>
+    <!-- 监控预览窗口 -->
+    <div id="video" style="visibility: hidden"></div>
+
+    <div id="controllabel" class="controllabelclass">
+      <img id="TemHum" class="all" title="设备 " src="./img/设备.png" />
+      <div id="allLabel" style="display: none">
+        <div id="threefloor" class="threefloorclass">
+          <img class="control_img" src="./img/3楼.png" title="" />
+          <div class="name">室内风压</div>
+        </div>
+
+        <div id="btn_rolu" class="btn_roluClass">
+          <img class="control_img" src="./img/旋转控制.png" title="" />
+          <div class="name">画面锁定/解锁</div>
+        </div>
+        <div id="exit" class="exitclass">
+          <img class="control_img" src="./img/退出.png" title="" />
+          <div class="name">恢复初始视角</div>
+        </div>
+        <div id="threefloordata" class="btn_roluClass">
+          <img class="control_img" src="./img/数据.png" title="" />
+          <div class="name">三楼室数据</div>
+        </div>
+        <div id="threeTFG" class="btn_roluClass">
+          <img class="control_img" src="./img/通风柜.png" title="" />
+          <div class="name">通风柜</div>
+        </div>
+
+        <div id="ThreeDianBiao" class="threePipeclass">
+          <img class="control_img" src="./img/VAV.png" title="" />
+          <div class="name">电表箱</div>
+        </div>
+        <div id="ThreeSJGTH" class="threePipeclass">
+          <img class="control_img" src="./img/排风管道.png" title="" />
+          <div class="name">排风管道</div>
+        </div>
+        <div id="ThreeBF" class="threePipeclass">
+          <img class="control_img" src="./img/补风管道.png" title="" />
+          <div class="name">补风管道</div>
+        </div>
+        <div id="3F_camera" class="cameraclass">
+          <img class="control_img" src="./img/摄像头.png" title="" alt="" />
+          <div class="name">打开摄像头</div>
+        </div>
+
+        <div id="threeVent" class="threeVentclass">
+          <img class="control_img" src="./img/3楼机组.png" title="" alt="" />
+          <div class="name">空调机组</div>
+        </div>
+
+        <div id="threePipe" class="threePipeclass">
+          <img class="control_img" src="./img/3楼管道.png" title="" />
+          <div class="name">多联机</div>
+        </div>
+
+        <div id="threeSpray" class="threeSprayclass">
+          <img class="control_img" src="./img/气体探测.png" title="" />
+          <div class="name">气路检测</div>
+        </div>
+
+        <div id="threeDoor" class="threeSprayclass">
+          <img class="control_img" src="./img/3楼门禁.png" title="" />
+          <div class="name">门禁</div>
+        </div>
+
+        <div id="fire_test" class="threeSprayclass">
+          <img
+            class="control_img"
+            style="width: 40px; height: 40px"
+            src="./img/alarm.png"
+            title=""
+          />
+          <div class="name">警报</div>
+        </div>
+      </div>
+    </div>
+    <!-- <div id="controllabel" class="controllabelclass"></div> -->
+
+    <div id="threeVAV"></div>
+
+    <div id="label">
+      <!-- <div id="Name" class="namestyle"></div> -->
+      <!-- <div id="labelone"></div> -->
+    </div>
+
+    <div id="All_data" class="labelclass_VAV_all">
+      <div id="All_data_inside" class="label_center_VAV_all"></div>
+    </div>
+
+    <div id="KT_Air_label" class="waiJi_out">
+      <div id="KT_Air_name" class="waiJi_name">2-3-2</div>
+      <div id="KT_Air"></div>
+    </div>
+
+    <div id="DianBiao" class="DianBiao_class">
+      <div id="Dianbiao_name" class="DianBiao_name_class">cc</div>
+      <div id="DianBiao_data"></div>
+
+      <img
+        id="Dianbiao_out"
+        class="Dianbiao_loginout_class"
+        src="./img/img_close.png"
+      />
+    </div>
+    <div id="TFG_label" class="TFG_out">
+      <div class="TFG_q_name">
+        通风柜
+        <div id="TFG_name" class="TFG_name"></div>
+      </div>
+      <div id="TFG"></div>
+    </div>
+
+    <div id="PF" class="PF_data">
+      <div class="PF_q_name">
+        <div id="PF_name" class="PF_name"></div>
+        <div>
+          <img id="PF_out" class="PF_loginout" src="././img/8.181.png" />
+        </div>
+      </div>
+
+      <div id="PF_data"></div>
+    </div>
+    <div id="fault-out"></div>
+    <script type="module" src="./js/mian/YanChengJikong_3F.js"></script>
+    <script type="text/javascript" src="./js/index-preview.js"></script>
+
+    <script>
+      /* This parser let's the component to handle selection */
+      function dataParserB(data, selected) {
+        retval = [{ val: '-1', text: '---' }]
+        data.forEach(function (v) {
+          retval.push(v)
+        })
+        return retval
+      }
+    </script>
+  </body>
+</html>

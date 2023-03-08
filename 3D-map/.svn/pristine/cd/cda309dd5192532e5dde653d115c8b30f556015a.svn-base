@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ch">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>南京地铁大厦五层</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+
+      .namesyle {
+        color: aqua;
+        font-family: '等线';
+        font-size: 30px;
+        font-weight: 700;
+        text-align: center;
+        top: 10px;
+        padding-top: 10px;
+      }
+      .backg {
+        visibility: hidden;
+        width: 350px;
+        height: 440px;
+        background-color: #102d56;
+      }
+      .label {
+        width: 350px;
+        height: 40px;
+        font-family: '等线';
+      }
+      .font {
+        width: 350px;
+        height: 30px;
+        background-color: #12398d;
+      }
+      .nofont {
+        width: 350px;
+        height: 30px;
+      }
+      .style1 {
+        width: 165px;
+        height: 25px;
+        float: left;
+        padding-left: 10px;
+        font-size: 15px;
+        line-height: 25px;
+        color: #ffffff;
+      }
+      .style2 {
+        width: 165px;
+        height: 25px;
+        padding-left: 10px;
+        float: left;
+        font-size: 15px;
+        line-height: 25px;
+        color: #ffffff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="label" class="backg">
+      <div class="namesyle">核心交换机002</div>
+      <div class="label">
+        <div
+          style="
+            width: 175px;
+            height: 30px;
+            padding-top: 10px;
+            float: left;
+            font-weight: 600;
+            font-size: 25px;
+            color: #458ae6;
+          "
+        >
+          指标名称
+        </div>
+        <div
+          style="
+            width: 175px;
+            height: 30px;
+            padding-top: 10px;
+            float: left;
+            font-weight: 600;
+            font-size: 25px;
+            color: #458ae6; ;
+          "
+        >
+          指标值
+        </div>
+      </div>
+
+      <div id="label1" class="font">
+        <div class="style1">丢包率</div>
+        <div class="style2">555</div>
+      </div>
+
+      <div id="label1" class="nofont">
+        <div class="style1">cpu平均利用率</div>
+        <div class="style2">555</div>
+      </div>
+
+      <div id="label1" class="font">
+        <div class="style1">接收广播包率</div>
+        <div class="style2">555</div>
+      </div>
+
+      <div id="label1" class="nofont">
+        <div class="style1">发送广包率播</div>
+        <div class="style2">555</div>
+      </div>
+      <div id="label1" class="font">
+        <div class="style1">广播包率</div>
+        <div class="style2">555</div>
+      </div>
+
+      <div id="label1" class="nofont">
+        <div class="style1">发送丢包率</div>
+        <div class="style2">555</div>
+      </div>
+      <div id="label1" class="font">
+        <div class="style1">接收丢包率</div>
+        <div class="style2">555</div>
+      </div>
+
+      <div id="label1" class="nofont">
+        <div class="style1">响应时间</div>
+        <div class="style2">555</div>
+      </div>
+      <div id="label1" class="font">
+        <div class="style1">吞吐量</div>
+        <div class="style2">555</div>
+      </div>
+
+      <div id="label1" class="nofont">
+        <div class="style1">内存利用率</div>
+        <div class="style2">555</div>
+      </div>
+      <div id="label1" class="font">
+        <div class="style1">内存总容量</div>
+        <div class="style2">555</div>
+      </div>
+      <div id="label1" class="nofont">
+        <div class="style1">内存已使用容量</div>
+        <div class="style2">555</div>
+      </div>
+    </div>
+
+    <script type="module">
+      import * as THREE from '../../build/three.module.js'
+      import { GUI } from '../jsm/libs/dat.gui.module.js'
+      import { GLTFLoader } from '../jsm/loaders/GLTFLoader.js'
+      import { OrbitControls } from '../jsm/controls/OrbitControls.js'
+      import {
+        CSS2DRenderer,
+        CSS2DObject,
+      } from '../jsm/renderers/CSS2DRenderer.js'
+      import { EffectComposer } from '../jsm/postprocessing/EffectComposer.js'
+      import { RenderPass } from '../jsm/postprocessing/RenderPass.js'
+      import { ShaderPass } from '../jsm/postprocessing/ShaderPass.js'
+      import { CopyShader } from '../jsm/shaders/CopyShader.js'
+      import { OutlinePass } from '../jsm/postprocessing/OutlinePass.js'
+      const params = {
+        HuaWei: false,
+        enableFoor2: true,
+        enableDevie: true,
+      }
+      /**
+       * 创建场景对象Scene
+       */
+      var scene = new THREE.Scene()
+
+      var granaryArr = []
+      var Arr = []
+      var label = null
+
+      const loader = new GLTFLoader()
+      loader.load(
+        '../models/NanJingMetroBuilding/NanJingMetroBuilding_5F.gltf',
+        function (object) {
+          object.scene.traverse(function (child) {
+            if (child.isMesh) {
+              child.castShadow = true
+              child.receiveShadow = true
+            }
+          })
+          object.scene.position.y = -2
+          object.scene.position.x = +1.7
+          object.scene.position.z = +1.4
+
+          scene.add(object.scene)
+          console.log('object.scene: ', object.scene)
+        }
+      )
+
+      var tag = document.getElementById('label')
+
+      label = new CSS2DObject(tag)
+
+      tag.style.pointerEvents = 'none' //避免HTML标签遮挡三维场景的鼠标事件
+      scene.add(label)
+
+      // var chooseMesh = null
+
+      // function choose(event) {
+      //   if (chooseMesh) {
+      //     label.element.style.visibility = 'hidden' //显示标签
+      //     // label.element.style.visibility = 'hidden';
+      //   }
+
+      //   var Sx = event.clientX //鼠标单击位置横坐标
+      //   var Sy = event.clientY //鼠标单击位置纵坐标
+      //   //屏幕坐标转WebGL标准设备坐标
+      //   var x = (Sx / window.innerWidth) * 2 - 1 //WebGL标准设备横坐标
+      //   var y = -(Sy / window.innerHeight) * 2 + 1 //WebGL标准设备纵坐标
+      //   //创建一个射线投射器`Raycaster`
+      //   var raycaster = new THREE.Raycaster()
+      //   //通过鼠标单击位置标准设备坐标和相机参数计算射线投射器`Raycaster`的射线属性.ray
+      //   raycaster.setFromCamera(new THREE.Vector2(x, y), camera)
+      //   //返回.intersectObjects()参数中射线选中的网格模型对象
+      //   // 未选中对象返回空数组[],选中一个数组1个元素，选中两个数组两个元素
+      //   var intersects = raycaster.intersectObjects(granaryArr)
+      //   //console.log("射线投射器返回的对象 点point", intersects[0].point);
+      //   //   console.log("射线投射器的对象 几何体",intersects[0].object.geometry.vertices)
+      //   //   intersects.length大于0说明，说明选中了模型
+      //   if (intersects.length > 0) {
+      //     chooseMesh = intersects[0].object
+      //     //chooseMesh.material.color.set(0x000000);//选中改变颜色，这样材质颜色贴图.map和color颜色会相乘
+      //     label.element.style.visibility = 'visible' //显示标签
+      //     label.position.copy(chooseMesh.getWorldPosition())
+      //   }
+      // }
+
+      // addEventListener('click', choose) // 监听窗口鼠标单击事件,鼠标单击选中某个国家Mesh
+      // addEventListener('mousemove', choose);//鼠标滑动事件
+
+      //坐标系
+      // var axesHelper = new THREE.AxesHelper(300)
+
+      // scene.add(axesHelper)
+
+      var camera = new THREE.PerspectiveCamera(
+        45,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      )
+      camera.position.set(2, 3, 0) //镜头XYZ位置
+      // camera.up.set(1, 0, 1);//镜头面向朝向
+
+      scene.background = new THREE.Color(0x000000)
+
+      // 点光源（PointLight）表示的是从一个点朝各个方向发射出光线的一种光照效果
+      const point = new THREE.PointLight(0xffffff)
+      // point.position.set(100, 3000, 100); //点光源位置
+      // 通过add方法插入场景中，不插入的话，渲染的时候不会获取光源的信息进行光照计算
+      scene.add(point) //点光源添加到场景中
+      // const point1 = new THREE.PointLight(0xffffff);//点光源
+      // point1.position.set(100, 300, 600); //点光源位置
+      // scene.add(point1); //点光源添加到场景中
+
+      // 半球光（HemisphereLight）的颜色是从天空到地面两个颜色之间的渐变，与物体材质的颜色作叠加后得到最终的颜色效果
+      const hemiLight = new THREE.HemisphereLight(0xf8f8ff, 0x444444)
+      // hemiLight.position.set( 0, 8000, 0 );
+      scene.add(hemiLight)
+
+      // 方向光，常常用来表现太阳光照的效果
+      const dirLight = new THREE.DirectionalLight(0xf8f8ff)
+      // dirLight.position.set( 300, 500, 100 );
+      dirLight.castShadow = true
+      dirLight.shadow.camera.top = 180
+      dirLight.shadow.camera.bottom = -100
+      dirLight.shadow.camera.left = -120
+      dirLight.shadow.camera.right = 120
+      scene.add(dirLight)
+      /**
+       * 创建渲染器对象
+       */
+      var renderer = new THREE.WebGLRenderer({ antialias: true })
+      renderer.setPixelRatio(window.devicePixelRatio)
+      renderer.setSize(window.innerWidth, window.innerHeight)
+      renderer.shadowMap.enabled = true
+      renderer.autoClear = false
+      renderer.gammaInput = true
+      renderer.gammaOutput = true //inear转gamma
+      document.body.appendChild(renderer.domElement)
+
+      // // 创建一个CSS2渲染器CSS2DRenderer
+      // var labelRenderer = new CSS2DRenderer()
+      // labelRenderer.setSize(window.innerWidth, window.innerHeight)
+      // labelRenderer.domElement.style.position = 'absolute'
+      // // 避免renderer.domElement影响HTMl标签定位，设置top为0px
+      // labelRenderer.domElement.style.top = '0px'
+      // labelRenderer.domElement.style.left = '0px'
+      // //设置.pointerEvents=none，以免模型标签HTML元素遮挡鼠标选择场景模型
+      // labelRenderer.domElement.style.pointerEvents = 'none'
+      // document.body.appendChild(labelRenderer.domElement)
+
+      //界面
+      const gui = new GUI()
+      var name = {
+        lingshan: function () {
+          window.location.href = './webgl_loader_gltf_njMetro.html'
+        },
+        Map: function () {
+          window.location.href = './Map.html'
+        },
+        EMC_DD6300: function () {
+          //展示标签
+          showlabel()
+          if (findmesh != null) {
+            deleline(findmesh)
+            findmesh = scene.getObjectByName('EMC_DD6300')
+            addline(findmesh)
+          } else {
+            findmesh = scene.getObjectByName('EMC_DD6300')
+            addline(findmesh)
+          }
+        },
+        关闭设备详情: function () {
+          label.element.style.visibility = 'hidden'
+        },
+      }
+      gui.add(name, 'Map').name('首页')
+      gui.add(name, 'lingshan').name('返回')
+      gui.add(name, '关闭设备详情')
+      gui.add(name, 'EMC_DD6300')
+      var findmesh = null
+      var line1 = null
+      gui
+        .add(params, 'HuaWei')
+        .name('内部')
+        .onChange((e) => {
+          var inside = scene.getObjectByName('5F_JG')
+
+          if (e == true) {
+            inside.children.forEach(function (mesh) {
+              mesh.material.transparent = true
+              mesh.material.opacity = 0.1
+            })
+          } else {
+            inside.children.forEach(function (mesh) {
+              mesh.material.transparent = true
+              mesh.material.opacity = 1
+            })
+          }
+        })
+
+      var dropdown = { 管理交换机S5130: '未选' }
+      //选项
+      var states = ['001', '002', '003', '未选']
+      // 添加
+      var clipCtrl = gui.add(dropdown, '管理交换机S5130').options(states)
+      // 设置点击事件
+      clipCtrl.onChange((mesh) => {
+        // 同步透明
+        opacity()
+        //展示标签
+        showlabel()
+
+        switch (mesh) {
+          case '001':
+            if (findmesh != null) {
+              deleline(findmesh)
+              findmesh = scene.getObjectByName('JiaoHuanJiS5130')
+              addline(findmesh)
+            } else {
+              findmesh = scene.getObjectByName('JiaoHuanJiS5130')
+              addline(findmesh)
+            }
+            break
+          case '002':
+            if (findmesh != null) {
+              deleline(findmesh)
+              findmesh = scene.getObjectByName('JiaoHuanJiS5130_01')
+              addline(findmesh)
+            } else {
+              findmesh = scene.getObjectByName('JiaoHuanJiS5130_01')
+              addline(findmesh)
+            }
+            break
+          case '003':
+            if (findmesh != null) {
+              deleline(findmesh)
+              findmesh = scene.getObjectByName('JiaoHuanJiS5130_02')
+              addline(findmesh)
+            } else {
+              findmesh = scene.getObjectByName('JiaoHuanJiS5130_02')
+              addline(findmesh)
+            }
+            break
+        }
+      })
+
+      var dropdown = { H3C_WX3540H: '未选' }
+      //选项
+      var states = ['001', '002', '未选']
+      // 添加
+      var clipCtrl = gui.add(dropdown, 'H3C_WX3540H').options(states)
+      // 设置点击事件
+      clipCtrl.onChange((mesh) => {
+        // 同步透明
+        opacity()
+        //展示标签
+        showlabel()
+        switch (mesh) {
+          case '001':
+            if (findmesh != null) {
+              deleline(findmesh)
+              findmesh = scene.getObjectByName('H3C_WX3540H')
+              addline(findmesh)
+            } else {
+              findmesh = scene.getObjectByName('H3C_WX3540H')
+              addline(findmesh)
+            }
+            break
+          case '002':
+            if (findmesh != null) {
+              deleline(findmesh)
+              findmesh = scene.getObjectByName('H3C_WX3540H002')
+              addline(findmesh)
+            } else {
+              findmesh = scene.getObjectByName('H3C_WX3540H002')
+              addline(findmesh)
+            }
+            break
+        }
+      })
+
+      var dropdown = { AF_1000: '未选' }
+      //选项
+      var states = ['001', '002', '未选']
+      // 添加
+      var clipCtrl = gui.add(dropdown, 'AF_1000').options(states)
+      // 设置点击事件
+      clipCtrl.onChange((mesh) => {
+        // 同步透明
+        opacity()
+        //展示标签
+        showlabel()
+        switch (mesh) {
+          case '001':
+            if (findmesh != null) {
+              deleline(findmesh)
+              findmesh = scene.getObjectByName('AF-1000')
+              addline(findmesh)
+            } else {
+              findmesh = scene.getObjectByName('AF-1000')
+              addline(findmesh)
+            }
+            break
+          case '002':
+            if (findmesh != null) {
+              deleline(findmesh)
+              findmesh = scene.getObjectByName('AF-1000_01')
+              addline(findmesh)
+            } else {
+              findmesh = scene.getObjectByName('AF-1000_01')
+              addline(findmesh)
+            }
+            break
+        }
+      })
+
+      var dropdown = { 灾备服务器: '未选' }
+      //选项
+      var states = ['001', '002', '003', '004', '005', '006', '007', '未选']
+      // 添加
+      var clipCtrl = gui.add(dropdown, '灾备服务器').options(states)
+      // 设置点击事件
+      clipCtrl.onChange((mesh) => {
+        // 同步透明
+        opacity()
+        // 同步透明
+        opacity()
+        //展示标签
+        showlabel()
+
+        switch (mesh) {
+          case '001':
+            if (findmesh != null) {
+              deleline(findmesh)
+              findmesh = scene.getObjectByName('ZaiNanFuWuQi_00')
+              addline(findmesh)
+            } else {
+              findmesh = scene.getObjectByName('ZaiNanFuWuQi_00')
+              addline(findmesh)
+            }
+            break
+          case '002':
+            if (findmesh != null) {
+              deleline(findmesh)
+              findmesh = scene.getObjectByName('ZaiNanFuWuQi_01')
+              addline(findmesh)
+            } else {
+              findmesh = scene.getObjectByName('ZaiNanFuWuQi_01')
+              addline(findmesh)
+            }
+            break
+          case '003':
+            if (findmesh != null) {
+              deleline(findmesh)
+              findmesh = scene.getObjectByName('ZaiNanFuWuQi_02')
+              addline(findmesh)
+            } else {
+              findmesh = scene.getObjectByName('ZaiNanFuWuQi_02')
+              addline(findmesh)
+            }
+            break
+          case '004':
+            if (findmesh != null) {
+              deleline(findmesh)
+              findmesh = scene.getObjectByName('ZaiNanFuWuQi_03')
+              addline(findmesh)
+            } else {
+              findmesh = scene.getObjectByName('ZaiNanFuWuQi_03')
+              addline(findmesh)
+            }
+            break
+          case '005':
+            if (findmesh != null) {
+              deleline(findmesh)
+              findmesh = scene.getObjectByName('ZaiNanFuWuQi_04')
+              addline(findmesh)
+            } else {
+              findmesh = scene.getObjectByName('ZaiNanFuWuQi_04')
+              addline(findmesh)
+            }
+            break
+          case '006':
+            if (findmesh != null) {
+              deleline(findmesh)
+              findmesh = scene.getObjectByName('ZaiNanFuWuQi_05')
+              addline(findmesh)
+            } else {
+              findmesh = scene.getObjectByName('ZaiNanFuWuQi_05')
+              addline(findmesh)
+            }
+            break
+          case '007':
+            if (findmesh != null) {
+              deleline(findmesh)
+              findmesh = scene.getObjectByName('ZaiNanFuWuQi_06')
+              addline(findmesh)
+            } else {
+              findmesh = scene.getObjectByName('ZaiNanFuWuQi_06')
+              addline(findmesh)
+            }
+            break
+        }
+      })
+
+      var dropdown = { 核心交换机12508G_AF: '未选' }
+      //选项
+      var states = ['001', '002', '未选']
+      // 添加
+      var clipCtrl = gui.add(dropdown, '核心交换机12508G_AF').options(states)
+      // 设置点击事件
+      clipCtrl.onChange((mesh) => {
+        // 同步透明
+        opacity()
+        //展示标签
+        showlabel()
+
+        switch (mesh) {
+          case '001':
+            if (findmesh != null) {
+              deleline(findmesh)
+              findmesh = scene.getObjectByName('HeXinJiaoHuanJi12508G-AF01')
+              addline(findmesh)
+            } else {
+              findmesh = scene.getObjectByName('HeXinJiaoHuanJi12508G-AF01')
+              addline(findmesh)
+            }
+            break
+          case '002':
+            if (findmesh != null) {
+              deleline(findmesh)
+              findmesh = scene.getObjectByName('HeXinJiaoHuanJi12508G-AF002')
+              addline(findmesh)
+            } else {
+              findmesh = scene.getObjectByName('HeXinJiaoHuanJi12508G-AF002')
+              addline(findmesh)
+            }
+            break
+        }
+      })
+      // 添加线框
+      function addline(findmesh) {
+        var edges = new THREE.EdgesGeometry(findmesh.geometry, 1)
+        var edgesMaterial = new THREE.LineBasicMaterial({
+          color: 0x31deef,
+        })
+        var line = new THREE.LineSegments(edges, edgesMaterial)
+        line.name = 'line'
+        findmesh.add(line)
+      }
+      // 删除线框方法
+      function deleline(findmesh) {
+        var line1 = scene.getObjectByName('line')
+
+        findmesh.remove(line1)
+      }
+      // 展示标签--后期传数据调佣数据库填充
+      function showlabel(mesh) {
+        label.element.style.visibility = 'visible'
+      }
+      // 使外部透明化，以便于观看
+      function opacity() {
+        var inside = scene.getObjectByName('5F_JG')
+        inside.children.forEach(function (mesh) {
+          mesh.material.transparent = true
+          mesh.material.opacity = 0.1
+        })
+      }
+      function render() {
+        renderer.render(scene, camera) //执行渲染操作
+        // labelRenderer.render(scene, camera) //CSS2D渲染
+
+        // composer1.render()
+        requestAnimationFrame(render) //请求再次执行渲染函数render，渲染下一帧
+      }
+      render()
+
+      var controls = new OrbitControls(camera, renderer.domElement)
+      // 上下旋转范围
+      controls.minPolarAngle = 0
+      // controls.maxPolarAngle = Math.PI/2;
+      controls.maxPolarAngle = Math.PI / 2
+
+      // 左右旋转范围
+      controls.minAzimuthAngle = -Math.PI * (80 / 180)
+      controls.maxAzimuthAngle = Math.PI * (100 / 180)
+
+      //缩放控制
+      // controls.minZoom = 0.9;
+      //  controls.maxZoom = 1.7;
+      // onresize 事件会在窗口被调整大小时发生
+      window.onresize = function () {
+        camera.aspect = window.innerWidth / window.innerHeight
+        camera.updateProjectionMatrix()
+
+        renderer.setSize(window.innerWidth, window.innerHeight)
+      }
+    </script>
+  </body>
+</html>

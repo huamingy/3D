@@ -1,0 +1,38 @@
+{
+  "infoWindowField": {
+    "temp1": {
+      "label": "湿度_1",
+      "value": "%"
+    },
+    "temp2": {
+      "label": "湿度_2",
+      "value": "%"
+    },
+    "temp3": {
+      "label": "湿度_3",
+      "value": "%"
+    },
+    "temp4": {
+      "label": "湿度_4",
+      "value": "%"
+    },
+    "temp5": {
+      "label": "湿度_5",
+      "value": "%"
+    },
+    "temp6": {
+      "label": "湿度_6",
+      "value": "%"
+    },
+    "temp7": {
+      "label": "湿度_7",
+      "value": "%"
+    },
+    "temp8": {
+      "label": "湿度_8",
+      "value": "%"
+    }
+    
+   
+  }
+}

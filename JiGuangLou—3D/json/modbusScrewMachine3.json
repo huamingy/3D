@@ -1,0 +1,99 @@
+{
+  "infoWindowField": {
+    "openCoolTowerHint": {
+      "label": "开启冷却塔提示",
+      "value": ""
+      
+    },
+    "coolTowerRefrigerationStatus": {
+      "label": "冷却塔制冷状态提示",
+      "value": ""
+    },
+    "systemStartStopStatus": {
+      "label": "系统启停状态",
+      "value": ""
+    },
+    "screwStatus3": {
+      "label": "3#螺杆机运行状态",
+      "value": ""
+    },
+    "coolWaterPumpStatus3": {
+      "label": "3#冷冻水泵运行状态",
+      "value": ""
+    },
+    "coolWaterPumpRemoteStatus3": {
+      "label": "3#冷冻水泵远程状态",
+      "value": ""
+    },
+    
+    "screwCoolStatus3": {
+      "label": "3#螺杆机冷冻/却阀开状态",
+      "value": ""
+    },
+    "coolPipelineStatus": {
+      "label": "冷冻管道状态",
+      "value": ""
+    },
+    "coolSystemReturn": {
+      "label": "冷冻系统供回水压差",
+      "value": ""
+    },
+
+    "coolSystemReturnPress": {
+      "label": "冷冻系统回水压力",
+      "value": "P"
+    },
+    "difPressValveOpen": {
+      "label": "压差旁通阀开度",
+      "value": "P"
+    },
+    "coolSystemOutPress": {
+      "label": "冷冻系统出水压力",
+      "value": "P"
+    },
+   
+    "coolPumpHzFeedback3": {
+      "label": "3#冷冻泵频率反馈",
+      "value": ""
+    },
+   
+    "readSetCoolWaterTemp3": {
+      "label": "3读设置冷冻出水温度",
+      "value": ""
+    },
+    "freezingOutTemp3": {
+      "label": "3冷冻出水温度",
+      "value": "℃"
+    },
+    "freezingRetTemp3": {
+      "label": "3冷冻回水温度",
+      "value": "℃"
+    },
+    "coolDownOutTemp3": {
+      "label": "3冷却出水温度",
+      "value": "℃"
+    },
+    "coolDownRetTemp3": {
+      "label": "3冷却回水温度",
+      "value": "℃"
+    },
+    "compressorCurrent3": {
+      "label": "3压缩机电流",
+      "value": ""
+    },
+    "flowSwitchStatus3": {
+      "label": "3水流开关_状态",
+      "value": ""
+    },
+   
+    "coolPumpFaultProtectionStatus3": {
+      "label": "3#冷冻泵故障保护状态",
+      "value": ""
+    },
+    "screwFaultStatus3": {
+      "label": "3#螺杆机故障状态",
+      "value": ""
+    }
+    
+  }
+}
